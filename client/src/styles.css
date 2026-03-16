@@ -1,0 +1,205 @@
+/* You can add global styles to this file, and also import other style files */
+/* src/styles.css */
+/* @import url("~node_modules/bootstrap-icons/font/bootstrap-icons.css"); */
+/* @import "bootstrap/dist/css/bootstrap.min.css"; */
+@media print {
+  /* הפקודה הזו בתוך styles.css תעלים את ה-NAV בוודאות */
+  nav, 
+  header, 
+  footer, 
+  .navbar, 
+  .no-print, 
+  button {
+    display: none !important;
+  }
+
+  /* ניקוי שוליים של הדף המודפס */
+  body {
+    background-color: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* עיצוב גלובלי ל-SweetAlert שיתאים לאתר מתכונים יוקרתי */
+.swal2-popup {
+  border-radius: 25px !important; /* פינות עגולות מאוד */
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  padding: 2rem !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1) !important;
+}
+
+.swal2-title {
+  font-weight: 700 !important;
+  color: #2d3436 !important;
+}
+
+.swal2-confirm {
+  border-radius: 12px !important;
+  padding: 12px 30px !important;
+  font-weight: 600 !important;
+}
+/* src/styles.css */
+
+:root {
+  --pasha-gold: #c5a059;  /* זהב פאשה יוקרתי */
+  --pasha-black: #0a0a0a; /* שחור עמוק */
+  --pasha-white: #ffffff;
+}
+
+/* הגדרות גלובליות */
+body {
+  margin: 0;
+  font-family: 'Assistant', 'Segoe UI', sans-serif;
+  background-color: #fcfcfc;
+}
+
+/* ה-NAV */
+.pasha-nav {
+  background-color: var(--pasha-black) !important;
+  border-bottom: 2px solid var(--pasha-gold) !important;
+  padding: 15px 0 !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* לוגו בסגנון פאשה */
+.pasha-logo-wrapper {
+  text-align: center;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.pasha-brand {
+  color: var(--pasha-gold) !important;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 6px;
+  line-height: 1;
+}
+
+.pasha-tagline {
+  color: var(--pasha-white) !important;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  margin-top: 5px;
+}
+
+/* רשימת הקישורים */
+.nav-links {
+  display: flex;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 5px; /* מרווח קטן בין המלבנים */
+}
+
+.nav-links li a {
+  color: var(--pasha-white) !important;
+  text-decoration: none !important;
+  font-size: 0.95rem;
+  font-weight: 400;
+  padding: 10px 18px !important;
+  transition: all 0.3s ease !important;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+/* אפקט Hover - שינוי צבע עדין לזהב */
+.nav-links li a:hover:not(.active) {
+  color: var(--pasha-gold) !important;
+}
+
+/* --- המילוי המוזהב לקישור הפעיל (ACTIVE) --- */
+.nav-links li a.active {
+  background-color: var(--pasha-gold) !important;
+  color: var(--pasha-black) !important; /* כיתוב שחור על זהב */
+  font-weight: 700 !important;
+  border-radius: 0 !important; /* קווים ישרים כמו באתר */
+}
+
+/* כפתורי התחברות */
+.link-login {
+  color: var(--pasha-white) !important;
+  text-decoration: none !important;
+  margin-right: 15px;
+  font-size: 0.95rem;
+}
+
+.btn-pasha-gold {
+  background-color: transparent !important;
+  color: var(--pasha-gold) !important;
+  border: 1px solid var(--pasha-gold) !important;
+  padding: 8px 20px !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: 0.3s !important;
+}
+
+.btn-pasha-gold:hover {
+  background-color: var(--pasha-gold) !important;
+  color: var(--pasha-black) !important;
+}
+
+/* אזור משתמש */
+.user-greet {
+  color: var(--pasha-white) !important;
+  font-size: 0.9rem;
+  margin-right: 20px;
+  border-right: 1px solid #333;
+  padding-right: 15px;
+}
+
+.logout-minimal {
+  background: transparent !important;
+  border: 1px solid #ff4444 !important;
+  color: #ff4444 !important;
+  padding: 4px 10px !important;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-minimal:hover {
+  background: #ff4444 !important;
+  color: white !important;
+}
+/* מצב ראשוני - שקוף לגמרי */
+.pasha-nav {
+  background-color: transparent !important; /* התחלה שקופה */
+  border-bottom: 1px solid rgba(197, 160, 89, 0.3) !important; /* פס זהב עדין מאוד */
+  transition: all 0.4s ease-in-out !important; /* מעבר חלק */
+  box-shadow: none !important;
+}
+
+/* מצב בזמן גלילה - רקע שחור יוקרתי (או שחור שקוף מעט) */
+.pasha-nav.scrolled {
+  background-color: rgba(10, 10, 10, 0.95) !important; /* שחור כמעט מלא */
+  padding: 10px 0 !important; /* ה-NAV מתכווץ מעט בגלילה */
+  border-bottom: 2px solid var(--pasha-gold) !important;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5) !important;
+}
+
+/* וודאי שהלוגו והקישורים נשארים קריאים על הרקע השקוף */
+.pasha-brand, .nav-links li a {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* צל קטן לטקסט כדי שיבלוט על תמונות */
+}
+
+/* כשהקישור פעיל, הוא עדיין מקבל מילוי זהב */
+.nav-links li a.active {
+  background-color: var(--pasha-gold) !important;
+  color: var(--pasha-black) !important;
+  text-shadow: none;
+}
+
+/* התאמה למובייל */
+@media (max-width: 991px) {
+  .navbar-collapse-custom {
+    background: var(--pasha-black);
+    width: 100%;
+    padding-top: 20px;
+  }
+  .nav-links {
+    flex-direction: column;
+    text-align: center;
+  }
+}

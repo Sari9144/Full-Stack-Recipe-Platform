@@ -1,0 +1,866 @@
+<!-- <div class="container mt-5">
+  <div class="card shadow p-4" *ngIf="!isLoading; else loading">
+    <h2 class="text-center mb-4">עריכת מתכון: {{recipe.title}}</h2>
+
+    <form (ngSubmit)="onSave()">
+      <div class="mb-3">
+        <label class="form-label">שם המתכון</label>
+        <input type="text" class="form-control" [(ngModel)]="recipe.title" name="title" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">תיאור קצר</label>
+        <textarea class="form-control" [(ngModel)]="recipe.description" name="description" rows="2"></textarea>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">זמן הכנה (בדקות)</label>
+          <input type="number" class="form-control" [(ngModel)]="recipe.prep_time" name="prep_time">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">רמת קושי</label>
+          <select class="form-select" [(ngModel)]="recipe.difficulty" name="difficulty">
+            <option value="Easy">קל</option>
+            <option value="Medium">בינוני</option>
+            <option value="Hard">קשה</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">הוראות הכנה</label>
+        <textarea class="form-control" [(ngModel)]="recipe.instructions" name="instructions" rows="5"></textarea>
+      </div>
+
+      <div class="d-flex justify-content-between mt-4">
+        <button type="submit" class="btn btn-success px-5">שמור שינויים</button>
+        <button type="button" class="btn btn-outline-secondary px-5" (click)="onCancel()">ביטול</button>
+      </div>
+    </form>
+  </div>
+
+  <ng-template #loading>
+    <div class="text-center mt-5">
+      <div class="spinner-border text-primary" role="status"></div>
+      <p>טוען נתוני מתכון...</p>
+    </div>
+  </ng-template>
+</div> -->
+<!-- <div class="container mt-5 py-5" *ngIf="recipe">
+  <div class="d-flex justify-content-between mb-4 no-print">
+    <button class="btn btn-outline-secondary rounded-pill px-4" (click)="onCancel()">
+      <i class="bi bi-x-circle me-2"></i>ביטול
+    </button>
+    <button class="btn btn-success rounded-pill px-4 shadow" (click)="onSave()">
+      <i class="bi bi-check-lg me-2"></i>שמור שינויים
+    </button>
+  </div>
+
+  <div class="row g-5">
+    <div class="col-md-5">
+      <div class="recipe-card p-4 shadow-sm bg-white rounded-4 h-100">
+        
+        <label class="small text-muted">שם המתכון:</label>
+        <input type="text" [(ngModel)]="recipe.title" class="form-control form-control-lg fw-bold mb-3 border-0 bg-light" placeholder="הכניסי שם למתכון">
+
+        <div class="d-flex gap-2 mb-3">
+          <select [(ngModel)]="recipe.type" class="form-select form-select-sm rounded-pill px-3 shadow-sm w-auto">
+            <option value="Parve">פרווה</option>
+            <option value="Meat">בשרי</option>
+            <option value="Dairy">חלבי</option> -->
+<!-- </select> -->
+<!-- <input type="text" [(ngModel)]="recipe.category" class="form-control form-control-sm rounded-pill px-3 shadow-sm w-auto" placeholder="קטגוריה"> -->
+<!-- <select [(ngModel)]="recipe.category" 
+        class="form-select form-select-sm rounded-pill px-3 shadow-sm w-auto">
+  <option value="" disabled selected>בחר קטגוריה</option>
+  <option value="עיקריות">עיקריות</option>
+  <option value="תוספות">תוספות</option>
+  <option value="סלטים">סלטים</option>
+  <option value="מרקים">מרקים</option>
+  <option value="מאפים">מאפים</option>
+  <option value="לחמים">לחמים</option>
+  <option value="קינוחים">קינוחים</option>
+  <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+  <option value="משקאות">משקאות</option>
+  <option value="ארוחת בוקר">ארוחת בוקר</option>
+  <option value="חגים">חגים</option>
+  <option value="טבעוני">טבעוני</option>
+  <option value="ללא גלוטן">ללא גלוטן</option>
+</select>
+        </div>
+
+        <div class="recipe-meta d-flex justify-content-between text-muted mb-4 p-2 border-top border-bottom">
+          <div class="d-flex align-items-center">
+            <i class="bi bi-clock me-2 text-primary"></i>
+            <input type="number" [(ngModel)]="recipe.prep_time" class="form-control form-control-sm border-0 bg-transparent w-50"> דקות
+          </div>
+          <span><i class="bi bi-person-circle me-2 text-primary"></i>{{ recipe.created_by || 'אורח' }}</span>
+        </div>
+
+        <div class="ingredients-section bg-light p-3 rounded-3 mb-4">
+          <h4 class="fw-bold border-bottom pb-2 mb-3">רכיבים:</h4>
+          <p class="small text-muted">ערכי את הרכיבים (מומלץ רכיב בכל שורה):</p>
+          <textarea [(ngModel)]="recipe.ingredients_raw" class="form-control border-0 bg-light" rows="6" placeholder="לדוגמה: 2 כפות סוכר"></textarea>
+        </div>
+
+        <div class="instructions-section mb-4">
+          <h4 class="fw-bold border-bottom pb-2 mb-3">אופן ההכנה:</h4>
+          <textarea [(ngModel)]="recipe.instructions" class="form-control border-0 shadow-none bg-transparent" rows="8" style="white-space: pre-wrap;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="main-display mb-4 position-relative">
+        <img [src]="currentImage || (baseUrl + recipe.main_image)" 
+             class="img-main shadow-lg rounded-4 w-100" 
+             style="object-fit: cover; max-height: 500px;"
+             alt="Main Image">
+        <div class="position-absolute bottom-0 end-0 m-3">
+            <span class="badge bg-dark opacity-75 p-2">תצוגה מקדימה</span>
+        </div>
+      </div>
+
+      <div class="no-print">
+        <p class="text-muted small mb-3">התמונות המקושרות למתכון:</p>
+        <div class="variations-grid d-flex gap-2">
+          <div class="image-wrapper shadow-sm cursor-pointer" (click)="setMainImage(baseUrl + recipe.main_image)">
+            <img [src]="baseUrl + recipe.main_image" class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;">
+          </div>
+          <div class="image-wrapper shadow-sm cursor-pointer" *ngFor="let v of recipe.gallery" (click)="setMainImage(baseUrl + v)">
+            <img [src]="baseUrl + v" class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;">
+          </div>
+        </div>
+        <div class="mt-3">
+            <button class="btn btn-sm btn-outline-primary rounded-pill"><i class="bi bi-plus"></i> החלף תמונה ראשית</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="container mt-5 py-5" *ngIf="recipe">
+  <div class="d-flex justify-content-between mb-4 no-print">
+    <button class="btn btn-outline-secondary rounded-pill px-4" (click)="onCancel()">
+      <i class="bi bi-x-circle me-2"></i>ביטול
+    </button>
+    <button class="btn btn-success rounded-pill px-4 shadow" (click)="onSave()">
+      <i class="bi bi-check-lg me-2"></i>שמור שינויים
+    </button>
+  </div>
+
+  <div class="row g-5">
+    <div class="col-md-5">
+      <div class="recipe-card p-4 shadow-sm bg-white rounded-4 h-100 border">
+        
+        <label class="small text-muted fw-bold">שם המתכון:</label>
+        <input type="text" [(ngModel)]="recipe.title" class="form-control form-control-lg fw-bold mb-3 border-0 bg-light" placeholder="הכניסי שם למתכון">
+
+        <div class="d-flex gap-2 mb-3">
+          <select [(ngModel)]="recipe.type" class="form-select form-select-sm rounded-pill px-3 shadow-sm w-auto">
+            <option value="Parve">פרווה</option>
+            <option value="Meat">בשרי</option>
+            <option value="Dairy">חלבי</option>
+          </select>
+
+          <select [(ngModel)]="recipe.category" class="form-select form-select-sm rounded-pill px-3 shadow-sm w-auto">
+            <option value="" disabled>בחר קטגוריה</option>
+            <option value="עיקריות">עיקריות</option>
+            <option value="תוספות">תוספות</option>
+            <option value="סלטים">סלטים</option>
+            <option value="מרקים">מרקים</option>
+            <option value="מאפים">מאפים</option>
+            <option value="קינוחים">קינוחים</option>
+            <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+          </select>
+        </div>
+
+        <div class="recipe-meta d-flex justify-content-between text-muted mb-4 p-2 border-top border-bottom">
+          <div class="d-flex align-items-center">
+            <i class="bi bi-clock me-2 text-primary"></i>
+            <input type="number" [(ngModel)]="recipe.prep_time" class="form-control form-control-sm border-0 bg-transparent w-25"> 
+            <span class="ms-1">דקות</span>
+          </div>
+          <span><i class="bi bi-person-circle me-2 text-primary"></i>{{ recipe.created_by || 'אורח' }}</span>
+        </div>
+
+        <div class="ingredients-section bg-light p-3 rounded-3 mb-4">
+          <h4 class="fw-bold border-bottom pb-2 mb-3">רכיבים:</h4>
+          <p class="small text-muted italic">ערכי את הרכיבים (רכיב בכל שורה):</p>
+          <textarea [(ngModel)]="recipe.ingredients_raw" 
+                    class="form-control border-0 bg-light" 
+                    rows="6" 
+                    placeholder="2 כפות סוכר&#10;1 כוס קמח..."></textarea>
+        </div>
+
+        <div class="instructions-section mb-4">
+          <h4 class="fw-bold border-bottom pb-2 mb-3">אופן ההכנה:</h4>
+          <textarea [(ngModel)]="recipe.instructions" 
+                    class="form-control border-0 shadow-none bg-transparent" 
+                    rows="8" 
+                    style="white-space: pre-wrap;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="main-display mb-4 position-relative">
+        <img [src]="currentImage ? currentImage : (recipe.main_image ? (baseUrl + recipe.main_image) : 'assets/placeholder.jpg')" 
+             class="img-main shadow-lg rounded-4 w-100" 
+             style="object-fit: cover; max-height: 500px;"
+             alt="Main Recipe Image">
+        
+        <div class="position-absolute bottom-0 end-0 m-3">
+          <span class="badge bg-dark opacity-75 p-2">תצוגה מקדימה</span>
+        </div>
+      </div>
+
+      <div class="no-print" *ngIf="recipe.gallery && recipe.gallery.length > 0">
+        <p class="text-muted small mb-3 fw-bold">החליפי תצוגה בתמונות שנוצרו:</p>
+        <div class="variations-grid d-flex flex-wrap gap-2">
+          <div class="image-wrapper shadow-sm cursor-pointer border rounded" (click)="setMainImage(baseUrl + recipe.main_image)">
+            <img [src]="baseUrl + recipe.main_image" class="img-thumbnail border-0" style="width: 80px; height: 80px; object-fit: cover;">
+          </div>
+          <div class="image-wrapper shadow-sm cursor-pointer border rounded" 
+               *ngFor="let v of recipe.gallery" 
+               (click)="setMainImage(baseUrl + v)">
+            <img [src]="baseUrl + v" class="img-thumbnail border-0" style="width: 80px; height: 80px; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="container mt-5 py-5" *ngIf="recipe">
+  <div class="d-flex justify-content-between mb-4 no-print">
+    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" (click)="onCancel()">
+      <i class="bi bi-x-circle me-2"></i>ביטול
+    </button>
+    <button type="button" class="btn btn-success rounded-pill px-4 shadow" (click)="onSave()">
+      <i class="bi bi-check-lg me-2"></i>שמור שינויים
+    </button>
+  </div>
+
+  <div class="row g-5">
+    <div class="col-md-5">
+      <div class="recipe-card p-4 shadow-sm bg-white rounded-4 h-100 border">
+        
+        <label class="small text-muted fw-bold">שם המתכון:</label>
+        <input type="text" [(ngModel)]="recipe.title" name="title" class="form-control form-control-lg fw-bold mb-3 border-0 bg-light" placeholder="הכניסי שם למתכון">
+
+        <div class="d-flex gap-2 mb-3">
+          <select [(ngModel)]="recipe.type" name="type" class="form-select form-select-sm rounded-pill px-3 shadow-sm w-auto">
+            <option value="Parve">פרווה</option>
+            <option value="Meat">בשרי</option>
+            <option value="Dairy">חלבי</option>
+          </select>
+
+          <select [(ngModel)]="recipe.category" name="category" class="form-select form-select-sm rounded-pill px-3 shadow-sm w-auto">
+            
+    <option value="עיקריות">עיקריות</option>
+    <option value="תוספות">תוספות</option>
+    <option value="סלטים">סלטים</option>
+    <option value="מרקים">מרקים</option>
+    <option value="מאפים">מאפים</option>
+    <option value="לחמים">לחמים</option>
+    <option value="קינוחים">קינוחים</option>
+    <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+    <option value="משקאות">משקאות</option>
+    <option value="ארוחת בוקר">ארוחת בוקר</option>
+    <option value="חגים">חגים</option>
+    <option value="טבעוני">טבעוני</option>
+    <option value="ללא גלוטן">ללא גלוטן</option>
+          </select>
+        </div>
+
+        <div class="recipe-meta d-flex justify-content-between text-muted mb-4 p-2 border-top border-bottom">
+          <div class="d-flex align-items-center">
+            <i class="bi bi-clock me-2 text-primary"></i>
+            <input type="number" [(ngModel)]="recipe.prep_time" name="prep_time" class="form-control form-control-sm border-0 bg-transparent w-50"> 
+            <span class="ms-1">דקות</span>
+          </div>
+          <span><i class="bi bi-person-circle me-2 text-primary"></i>{{ recipe.created_by || 'אורח' }}</span>
+        </div>
+
+        <div class="ingredients-section bg-light p-3 rounded-3 mb-4">
+          <h4 class="fw-bold border-bottom pb-2 mb-3">רכיבים:</h4>
+          <p class="small text-muted italic">ערכי את הרכיבים (רכיב בכל שורה):</p>
+          <textarea [(ngModel)]="recipe.ingredients_raw" name="ingredients_raw" class="form-control border-0 bg-light" rows="6" placeholder="2 כפות סוכר"></textarea>
+        </div>
+
+        <div class="instructions-section mb-4">
+          <h4 class="fw-bold border-bottom pb-2 mb-3">אופן ההכנה:</h4>
+          <textarea [(ngModel)]="recipe.instructions" name="instructions" class="form-control border-0 shadow-none bg-transparent" rows="8" style="white-space: pre-wrap;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="main-display mb-4 position-relative">
+        <img [src]="currentImage || (baseUrl + recipe.main_image)" 
+             class="img-main shadow-lg rounded-4 w-100" 
+             style="object-fit: cover; max-height: 500px;"
+             alt="Main Image">
+        <div class="position-absolute bottom-0 end-0 m-3">
+          <span class="badge bg-dark opacity-75 p-2">תצוגה מקדימה</span>
+        </div>
+      </div>
+
+      <div class="no-print" *ngIf="recipe.gallery">
+        <p class="text-muted small mb-3">התמונות המקושרות למתכון:</p>
+        <div class="variations-grid d-flex gap-2 flex-wrap">
+          <div class="image-wrapper shadow-sm cursor-pointer border rounded" (click)="setMainImage(baseUrl + recipe.main_image)">
+            <img [src]="baseUrl + recipe.main_image" class="img-thumbnail border-0" style="width: 80px; height: 80px; object-fit: cover;">
+          </div>
+          <div class="image-wrapper shadow-sm cursor-pointer border rounded" *ngFor="let v of recipe.gallery" (click)="setMainImage(baseUrl + v)">
+            <img [src]="baseUrl + v" class="img-thumbnail border-0" style="width: 80px; height: 80px; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="auth-wrapper py-5" *ngIf="recipe">
+  <div class="auth-card recipe-wide-card text-end" dir="rtl">
+    
+    <div class="d-flex justify-content-between align-items-center mb-5 no-print">
+      <button type="button" class="btn-cancel-custom" (click)="onCancel()">
+        ✕ ביטול
+      </button>
+      <h2 class="auth-title m-0">עריכת מתכון ✨</h2>
+      <button type="button" class="btn-save-custom" (click)="onSave()">
+        ✓ שמור שינויים
+      </button>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-5">
+        <div class="edit-section-container">
+          
+          <label class="form-label">שם המתכון</label>
+          <input type="text" [(ngModel)]="recipe.title" name="title" 
+                 class="custom-input mb-4" placeholder="הכניסי שם למתכון">
+
+          <div class="row g-2 mb-4">
+            <div class="col-6">
+              <label class="form-label">סגנון</label>
+              <select [(ngModel)]="recipe.type" name="type" class="custom-select">
+                <option value="Parve">פרווה</option>
+                <option value="Meat">בשרי</option>
+                <option value="Dairy">חלבי</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="form-label">קטגוריה</label>
+              <select [(ngModel)]="recipe.category" name="category" class="custom-select">
+                <option value="עיקריות">עיקריות</option>
+                <option value="קינוחים">קינוחים</option>
+                <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+                </select>
+            </div>
+          </div>
+
+          <div class="recipe-meta-box d-flex justify-content-around align-items-center mb-4">
+            <div class="d-flex align-items-center gap-2">
+              <span class="meta-icon">⏱️</span>
+              <input type="number" [(ngModel)]="recipe.prep_time" class="meta-input">
+              <span class="fw-bold">דקות</span>
+            </div>
+            <div class="vertical-divider"></div>
+            <div class="d-flex align-items-center gap-2">
+              <span class="meta-icon">👤</span>
+              <span class="fw-bold text-emerald">{{ recipe.created_by || 'אורח' }}</span>
+            </div>
+          </div>
+
+          <div class="field mb-4">
+            <label class="form-label">🛒 רכיבים (אחד בכל שורה)</label>
+            <textarea [(ngModel)]="recipe.ingredients_raw" name="ingredients_raw" 
+                      class="custom-textarea" rows="6"></textarea>
+          </div>
+
+          <div class="field">
+            <label class="form-label">👨‍🍳 אופן ההכנה</label>
+            <textarea [(ngModel)]="recipe.instructions" name="instructions" 
+                      class="custom-textarea" rows="8"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-7">
+        <div class="main-display-wrapper mb-4">
+          <img [src]="currentImage || (baseUrl + recipe.main_image)" 
+               class="img-main-large shadow-lg" alt="Main Image">
+          <div class="preview-badge">תצוגה מקדימה</div>
+        </div>
+
+        <div class="gallery-container no-print" *ngIf="recipe.gallery">
+          <p class="form-label small mb-3">בחרי תמונה ראשית מהגלריה:</p>
+          <div class="gallery-grid">
+            <div class="gallery-item" [class.active]="currentImage === baseUrl + recipe.main_image"
+                 (click)="setMainImage(baseUrl + recipe.main_image)">
+              <img [src]="baseUrl + recipe.main_image">
+            </div>
+            <div class="gallery-item" *ngFor="let v of recipe.gallery" 
+                 [class.active]="currentImage === baseUrl + v"
+                 (click)="setMainImage(baseUrl + v)">
+              <img [src]="baseUrl + v">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="auth-wrapper py-5" *ngIf="recipe">
+  <div class="auth-card recipe-wide-card text-end" dir="rtl">
+    
+    <div class="d-flex justify-content-between align-items-center mb-5 no-print">
+      <button type="button" class="btn-cancel-custom" (click)="onCancel()">✕ ביטול</button>
+      <h2 class="auth-title m-0">עריכת המתכון שלי ✨</h2>
+      <button type="button" class="btn-save-custom" (click)="onSave()">✓ שמור שינויים</button>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <div class="edit-section-container">
+          
+          <div class="field mb-4">
+            <label class="form-label">שם המנה</label>
+            <input type="text" [(ngModel)]="recipe.title" class="custom-input" placeholder="איך קוראים לקסם הזה?">
+          </div>
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <label class="form-label">סגנון</label>
+              <select [(ngModel)]="recipe.type" class="custom-select">
+                <option value="Parve">פרווה</option>
+                <option value="Meat">בשרי</option>
+                <option value="Dairy">חלבי</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="form-label">קטגוריה</label>
+              <select [(ngModel)]="recipe.category" class="custom-select">
+                <option value="עיקריות">עיקריות</option>
+                <option value="קינוחים">קינוחים</option>
+                <option value="מאפים">מאפים</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="recipe-meta-box d-flex justify-content-around align-items-center mb-4">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-4">⏱️</span>
+              <input type="number" [(ngModel)]="recipe.prep_time" class="meta-input" style="width: 70px;">
+              <span class="fw-bold text-dark">דקות</span>
+            </div>
+            <div class="vertical-divider"></div>
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-4">👤</span>
+              <span class="fw-bold" style="color: var(--emerald-dark)">{{ recipe.created_by || 'אורח' }}</span>
+            </div>
+          </div>
+
+          <div class="field mb-4">
+            <label class="form-label">🛒 מה צריך? (רכיבים)</label>
+            <textarea [(ngModel)]="recipe.ingredients_raw" class="custom-textarea" rows="6" placeholder="קמח, סוכר, אהבה..."></textarea>
+          </div>
+
+          <div class="field">
+            <label class="form-label">👨‍🍳 איך מכינים?</label>
+            <textarea [(ngModel)]="recipe.instructions" class="custom-textarea" rows="8" placeholder="שלב 1: מחממים תנור..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="main-display-wrapper mb-4 position-relative">
+          <img [src]="currentImage || (baseUrl + recipe.main_image)" class="img-main-large shadow-lg" alt="Main Image">
+          <div class="preview-badge">תצוגה מקדימה</div>
+        </div>
+
+        <div class="gallery-container no-print" *ngIf="recipe.gallery">
+          <label class="form-label small mb-3">בחרי תמונה מהגלריה:</label>
+          <div class="gallery-grid">
+            <div class="gallery-item" [class.active]="currentImage === baseUrl + recipe.main_image" (click)="setMainImage(baseUrl + recipe.main_image)">
+              <img [src]="baseUrl + recipe.main_image">
+            </div>
+            <div class="gallery-item" *ngFor="let v of recipe.gallery" [class.active]="currentImage === baseUrl + v" (click)="setMainImage(baseUrl + v)">
+              <img [src]="baseUrl + v">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="main-page-wrapper" *ngIf="recipe">
+  <div class="glass-card card-wide text-end" dir="rtl">
+    
+    <div class="d-flex justify-content-between align-items-center mb-5 no-print">
+      <button type="button" class="btn-cancel-custom" (click)="onCancel()">✕ ביטול</button>
+      <h1 class="auth-title m-0">עריכת המתכון שלי ✨</h1>
+      <button type="button" class="btn-save-custom" (click)="onSave()">✓ שמור שינויים</button>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <div class="edit-section-container">
+          
+          <div class="field mb-4">
+            <label class="form-label">שם המתכון</label>
+            <input type="text" [(ngModel)]="recipe.title" class="custom-input" placeholder="הכניסי שם למתכון">
+          </div>
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <label class="form-label">סגנון</label>
+              <select [(ngModel)]="recipe.type" class="custom-select">
+                <option value="Parve">פרווה</option>
+                <option value="Meat">בשרי</option>
+                <option value="Dairy">חלבי</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="form-label">קטגוריה</label>
+              <select [(ngModel)]="recipe.category" class="custom-select">
+                <option value="עיקריות">עיקריות</option>
+                <option value="תוספות">תוספות</option>
+                <option value="סלטים">סלטים</option>
+                <option value="קינוחים">קינוחים</option>
+                <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="recipe-meta-box d-flex justify-content-around align-items-center mb-4">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-4">⏱️</span>
+              <input type="number" [(ngModel)]="recipe.prep_time" class="meta-input" style="width: 70px;">
+              <span class="fw-bold">דקות</span>
+            </div>
+            <div class="vertical-divider"></div>
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-4">👤</span>
+              <span class="fw-bold text-emerald">{{ recipe.created_by || 'אורח' }}</span>
+            </div>
+          </div>
+
+          <div class="field mb-4">
+            <label class="form-label">🛒 רכיבים (אחד בכל שורה)</label>
+            <textarea [(ngModel)]="recipe.ingredients_raw" class="custom-textarea" rows="6"></textarea>
+          </div>
+
+          <div class="field">
+            <label class="form-label">👨‍🍳 אופן ההכנה</label>
+            <textarea [(ngModel)]="recipe.instructions" class="custom-textarea" rows="8"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="main-display-wrapper mb-4 position-relative">
+          <img [src]="currentImage || (baseUrl + recipe.main_image)" 
+               class="img-main-large shadow-lg" alt="Main Image">
+          <div class="preview-badge">תצוגה מקדימה</div>
+        </div>
+
+        <div class="gallery-container no-print" *ngIf="recipe.gallery">
+          <label class="form-label small mb-3">החליפי תמונה מהגלריה:</label>
+          <div class="gallery-grid">
+            <div class="gallery-item" 
+                 [class.active]="currentImage === baseUrl + recipe.main_image"
+                 (click)="setMainImage(baseUrl + recipe.main_image)">
+              <img [src]="baseUrl + recipe.main_image">
+            </div>
+            <div class="gallery-item" *ngFor="let v of recipe.gallery" 
+                 [class.active]="currentImage === baseUrl + v"
+                 (click)="setMainImage(baseUrl + v)">
+              <img [src]="baseUrl + v">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="main-page-wrapper" *ngIf="recipe">
+  <div class="glass-card card-wide text-end" dir="rtl">
+    
+    <div class="d-flex justify-content-between align-items-end mb-5 no-print">
+      <div class="title-area">
+        <h1 class="auth-title m-0">עריכת יצירה ✨</h1>
+        <div style="width: 60px; height: 3px; background: #8c6d31; margin-top: 10px;"></div>
+      </div>
+      <div class="action-buttons">
+        <button type="button" class="btn-cancel-custom me-3" (click)="onCancel()">✕ ביטול</button>
+        <button type="button" class="btn-save-custom" (click)="onSave()">✓ שמור שינויים</button>
+      </div>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <div class="edit-section-container">
+          
+          <label class="form-label">שם המתכון</label>
+          <input type="text" [(ngModel)]="recipe.title" class="custom-input mb-4" placeholder="הכניסי שם למתכון">
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <label class="form-label">סגנון</label>
+              <select [(ngModel)]="recipe.type" class="custom-select">
+                <option value="Parve">פרווה</option>
+                <option value="Meat">בשרי</option>
+                <option value="Dairy">חלבי</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="form-label">קטגוריה</label>
+              <select [(ngModel)]="recipe.category" class="custom-select">
+                <option value="עיקריות">עיקריות</option>
+                <option value="תוספות">תוספות</option>
+                <option value="סלטים">סלטים</option>
+                <option value="קינוחים">קינוחים</option>
+                <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="recipe-meta-box d-flex justify-content-around align-items-center mb-4">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-4">⏱️</span>
+              <input type="number" [(ngModel)]="recipe.prep_time" class="meta-input">
+              <span class="fw-bold">דקות הכנה</span>
+            </div>
+            <div style="width: 1px; height: 30px; background: #8c6d31; opacity: 0.2;"></div>
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-4">👨‍🍳</span>
+              <span class="fw-bold text-emerald">{{ recipe.created_by || 'השף של פשה' }}</span>
+            </div>
+          </div>
+
+          <label class="form-label">🛒 רכיבים (אחד בכל שורה)</label>
+          <textarea [(ngModel)]="recipe.ingredients_raw" class="custom-textarea mb-4" rows="6" placeholder="קמח, סוכר..."></textarea>
+
+          <label class="form-label">👨‍🍳 אופן ההכנה</label>
+          <textarea [(ngModel)]="recipe.instructions" class="custom-textarea" rows="8" placeholder="שלבי ההכנה..."></textarea>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="main-display-wrapper mb-4 position-relative">
+          <img [src]="currentImage || (baseUrl + recipe.main_image)" 
+               class="img-main-large shadow-lg" alt="Main Image">
+          <div style="position: absolute; bottom: 30px; left: 30px; background: #0f2621; color: #8c6d31; padding: 5px 20px; font-weight: bold;">
+            תצוגה מקדימה
+          </div>
+        </div>
+
+        <div class="gallery-container no-print" *ngIf="recipe.gallery && recipe.gallery.length > 0">
+          <label class="form-label small mb-3">בחרי תמונה שתופיע כראשית:</label>
+          <div class="gallery-grid d-flex flex-wrap gap-2">
+            <div class="gallery-item" 
+                 [class.active]="currentImage === baseUrl + recipe.main_image"
+                 (click)="setMainImage(baseUrl + recipe.main_image)">
+              <img [src]="baseUrl + recipe.main_image" class="w-100 h-100 object-fit-cover">
+            </div>
+            <div class="gallery-item" *ngFor="let v of recipe.gallery" 
+                 [class.active]="currentImage === baseUrl + v"
+                 (click)="setMainImage(baseUrl + v)">
+              <img [src]="baseUrl + v" class="w-100 h-100 object-fit-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="main-page-wrapper" *ngIf="recipe">
+  <div class="glass-card card-wide text-end" dir="rtl">
+
+    <div class="d-flex justify-content-between align-items-end mb-5 no-print">
+      <div class="title-area">
+        <h1 class="auth-title m-0">עריכת יצירה ✨</h1>
+        <div style="width: 60px; height: 3px; background: #8c6d31; margin-top: 10px;"></div>
+      </div>
+      <div class="action-buttons">
+        <button type="button" class="btn-cancel-custom me-3" (click)="onCancel()">✕ ביטול</button>
+        <button type="button" class="btn-save-custom" (click)="onSave()">✓ שמור שינויים</button>
+      </div>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <div class="edit-section-container">
+
+          <label class="form-label">שם המתכון</label>
+          <input type="text" [(ngModel)]="recipe.title" name="title" class="custom-input mb-4"
+            placeholder="הכניסי שם למתכון">
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <label class="form-label">סגנון</label>
+              <select [(ngModel)]="recipe.type" name="type" class="custom-select">
+                <option value="Parve">פרווה</option>
+                <option value="Meat">בשרי</option>
+                <option value="Dairy">חלבי</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="form-label">קטגוריה</label>
+              <select [(ngModel)]="recipe.category" name="category" class="custom-select"> -->
+                <!-- <option value="עיקריות">עיקריות</option>
+                <option value="תוספות">תוספות</option>
+                <option value="סלטים">סלטים</option>
+                <option value="קינוחים">קינוחים</option>
+                <option value="עוגות ועוגיות">עוגות ועוגיות</option> -->
+                <option value="" disabled selected>בחרי קטגוריה...</option>
+                <!-- <option value="עיקריות">עיקריות</option>
+                <option value="תוספות">תוספות</option>
+                <option value="סלטים">סלטים</option>
+                <option value="מרקים">מרקים</option>
+                <option value="מאפים">מאפים</option>
+                <option value="לחמים">לחמים</option>
+                <option value="קינוחים">קינוחים</option>
+                <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="recipe-meta-box d-flex justify-content-around align-items-center mb-4">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-4">⏱️</span>
+              <input type="number" [(ngModel)]="recipe.prep_time" name="prep_time" class="meta-input">
+              <span class="fw-bold">דקות הכנה</span>
+            </div>
+          </div>
+
+          <label class="form-label">🛒 רכיבים (אחד בכל שורה)</label>
+          <textarea [(ngModel)]="recipe.ingredients_raw" name="ingredients" class="custom-textarea mb-4" rows="6"
+            placeholder="קמח, סוכר..."></textarea>
+
+          <label class="form-label">👨‍🍳 אופן ההכנה</label>
+          <textarea [(ngModel)]="recipe.instructions" name="instructions" class="custom-textarea" rows="8"
+            placeholder="שלבי ההכנה..."></textarea>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="main-display-wrapper mb-4 position-relative">
+          <img [src]="currentImage || (baseUrl + recipe.main_image)" class="img-main-large shadow-lg" alt="Main Image">
+          <div class="preview-badge">תצוגה מקדימה</div>
+        </div>
+
+        <div class="gallery-container no-print">
+          <label class="form-label small mb-3">בחרי תמונה שתופיע כראשית:</label>
+          <div class="gallery-grid d-flex flex-wrap gap-2">
+            <div class="gallery-item" [class.active]="currentImage === baseUrl + recipe.main_image"
+              (click)="setMainImage(baseUrl + recipe.main_image)">
+              <img [src]="baseUrl + recipe.main_image" class="w-100 h-100 object-fit-cover">
+            </div>
+            <div class="gallery-item" *ngFor="let v of recipe.gallery" [class.active]="currentImage === baseUrl + v"
+              (click)="setMainImage(baseUrl + v)">
+              <img [src]="baseUrl + v" class="w-100 h-100 object-fit-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="main-page-wrapper" *ngIf="recipe">
+  <div class="glass-card card-wide text-end" dir="rtl">
+
+    <div class="d-flex justify-content-between align-items-center mb-5 no-print">
+      <div class="title-area">
+        <h1 class="auth-title m-0">עריכת יצירה ✨</h1>
+        <div class="pasha-divider-small"></div>
+      </div>
+      <div class="action-buttons d-flex gap-3">
+        <app-button 
+          text="✕ ביטול" 
+          variant="outline" 
+          (btnClick)="onCancel()">
+        </app-button>
+        <app-button 
+          text="✓ שמור שינויים" 
+          variant="primary" 
+          [isLoading]="isSaving"
+          (btnClick)="onSave()">
+        </app-button>
+      </div>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <div class="edit-section-container">
+          <label class="form-label pasha-gold-text">שם המתכון</label>
+          <input type="text" [(ngModel)]="recipe.title" class="custom-input mb-4" placeholder="הכניסי שם למתכון">
+
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <label class="form-label">סגנון</label>
+              <select [(ngModel)]="recipe.type" class="custom-select">
+                <option value="Parve">פרווה</option>
+                <option value="Meat">בשרי</option>
+                <option value="Dairy">חלבי</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="form-label">קטגוריה</label>
+              <select [(ngModel)]="recipe.category" class="custom-select">
+                <option value="" disabled>בחרי קטגוריה...</option>
+                <option value="עיקריות">עיקריות</option>
+                <option value="תוספות">תוספות</option>
+                <option value="סלטים">סלטים</option>
+                <option value="מרקים">מרקים</option>
+                <option value="מאפים">מאפים</option>
+                <option value="קינוחים">קינוחים</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="recipe-meta-box d-flex justify-content-around align-items-center mb-4">
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-4">⏱️</span>
+              <input type="number" [(ngModel)]="recipe.prep_time" class="meta-input">
+              <span class="fw-bold">דקות הכנה</span>
+            </div>
+          </div>
+
+          <label class="form-label">🛒 רכיבים (אחד בכל שורה)</label>
+          <textarea [(ngModel)]="recipe.ingredients_raw" class="custom-textarea mb-4" rows="6" placeholder="1 כוס קמח..."></textarea>
+
+          <label class="form-label">👨‍🍳 אופן ההכנה</label>
+          <textarea [(ngModel)]="recipe.instructions" class="custom-textarea" rows="8" placeholder="שלבי ההכנה..."></textarea>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="main-display-wrapper mb-4 position-relative">
+          <img [src]="currentImage || (baseUrl + recipe.main_image)" class="img-main-large shadow-lg" alt="Main Image">
+          <div class="preview-badge">תצוגה מקדימה</div>
+        </div>
+
+        <div class="gallery-container no-print">
+          <label class="form-label small mb-3 pasha-gold-text">בחרי תמונה שתופיע כראשית:</label>
+          <div class="gallery-grid d-flex flex-wrap gap-2">
+            <div class="gallery-item" [class.active]="currentImage === baseUrl + recipe.main_image"
+              (click)="setMainImage(baseUrl + recipe.main_image)">
+              <img [src]="baseUrl + recipe.main_image" class="w-100 h-100 object-fit-cover">
+            </div>
+            <div class="gallery-item" *ngFor="let v of recipe.gallery" [class.active]="currentImage === baseUrl + v"
+              (click)="setMainImage(baseUrl + v)">
+              <img [src]="baseUrl + v" class="w-100 h-100 object-fit-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+בסיס הכפתור
+.btn-pasha {
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+/* אפקט ריחופ (Hover) כללי */
+.btn-pasha:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* אפקט לחיצה */
+.btn-pasha:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+/* וריאציות צבעים */
+.primary {
+  background: linear-gradient(135deg, #2d5a27, #3e7a36);
+  color: white;
+}
+
+.success {
+  background: linear-gradient(135deg, #d3b062, #bfa156); /* זהב פשה */
+  color: white;
+}
+
+.admin {
+  background: #2d3436;
+  color: #fab1a0;
+  border: 1px solid #fab1a0;
+}
+
+.danger {
+  background: #ff7675;
+  color: white;
+}
+
+.outline {
+  background: transparent;
+  border: 2px solid #2d5a27;
+  color: #2d5a27;
+}
+
+.outline:hover {
+  background: #2d5a27;
+  color: white;
+}
+
+/* מצב חסום */
+.btn-pasha:disabled {
+  background: #dfe6e9;
+  color: #b2bec3;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}

@@ -1,0 +1,1341 @@
+<!-- <div class="container mt-5">
+  <h2 class="text-center mb-5 fw-bold">המתכונים שלנו</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let recipe of recipes">
+      <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+        
+        <img [src]="baseUrl + recipe.main_image" class="card-img-top" style="height: 220px; object-fit: cover;">
+        
+        <div class="card-body text-center">
+          <h4 class="card-title">{{ recipe.title }}</h4>
+          <span class="badge mb-3" [ngClass]="{
+            'bg-success': recipe.type === 'Parve',
+            'bg-danger': recipe.type === 'Meat',
+            'bg-primary': recipe.type === 'Dairy'
+          }">{{ recipe.type }}</span>
+          
+          <button class="btn btn-primary w-100 py-2 rounded-3" (click)="viewDetails(recipe.id)">
+       לפרטים נוספים 
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            </div>
+        <div class="col-md-4">
+            <app-smart-search></app-smart-search>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+  <h2 class="text-center mb-5 fw-bold">המתכונים שלנו</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let recipe of recipes">
+      <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden position-relative">
+        
+        <button *ngIf="user?.role === 'Admin'" 
+                class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2 rounded-circle" 
+                (click)="deleteRecipe(recipe.id, $event)"
+                title="מחק מתכון"
+                style="z-index: 10;">
+          🗑️
+        </button>
+
+        <img [src]="baseUrl + recipe.main_image" class="card-img-top" style="height: 220px; object-fit: cover;">
+        
+        <div class="card-body text-center">
+          <h4 class="card-title">{{ recipe.title }}</h4>
+          <span class="badge mb-3" [ngClass]="{
+            'bg-success': recipe.type === 'Parve',
+            'bg-danger': recipe.type === 'Meat',
+            'bg-primary': recipe.type === 'Dairy'
+          }">{{ recipe.type }}</span>
+          
+          <button class="btn btn-primary w-100 py-2 rounded-3" (click)="viewDetails(recipe.id)">
+            לפרטים נוספים 
+          </button>
+          <button class="favorite-btn" (click)="toggleFavorite(recipe, $event)">
+  <i class="fa-heart" [ngClass]="recipe.isFavorite ? 'fas text-danger' : 'far'"></i>
+</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+<!-- <div class="container mt-4">
+  <div class="row align-items-center">
+    <div class="col-md-8">
+      <h1 class="display-5 fw-bold text-primary">המתכונים שלנו</h1>
+      <p class="text-muted">גלו טעמים חדשים ומרגשים בכל יום</p>
+    </div>
+    <div class="col-md-4">
+      <app-smart-search></app-smart-search>
+    </div>
+  </div>
+  <hr class="mb-5">
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let recipe of recipes">
+      <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden position-relative recipe-card">
+        
+        <button *ngIf="user?.role === 'Admin'" 
+                class="btn btn-danger btn-sm position-absolute top-0 end-0 m-3 rounded-circle shadow" 
+                (click)="deleteRecipe(recipe.id, $event)">
+          <i class="fas fa-trash"></i>
+        </button>
+
+        <div class="image-wrapper" (click)="viewDetails(recipe.id)">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'https://via.placeholder.com/400x300?text=No+Image'" 
+                 class="card-img-top" 
+                 [alt]="recipe.title">
+        </div>
+        
+        <div class="card-body d-flex flex-column text-center">
+          <h4 class="card-title fw-bold mb-2">{{ recipe.title }}</h4>
+          
+          <div class="mb-3">
+            <span class="badge" [ngClass]="{
+              'bg-success-soft': recipe.type === 'Parve',
+              'bg-danger-soft': recipe.type === 'Meat',
+              'bg-primary-soft': recipe.type === 'Dairy'
+            }">{{ recipe.type }}</span>
+          </div>
+          
+          <div class="mt-auto d-flex align-items-center gap-2">
+            <button class="btn btn-outline-primary flex-grow-1 rounded-3 fw-bold" (click)="viewDetails(recipe.id)">
+              לפרטים נוספים 
+            </button>
+            
+            <button class="favorite-btn" (click)="toggleFavorite(recipe, $event)">
+              <i class="fa-heart" [ngClass]="recipe.isFavorite ? 'fas text-danger' : 'far'"></i>
+            </button>
+            <div class="selection-badge">
+    <input type="checkbox" 
+           (change)="toggleRecipeSelection(recipe.id)" 
+           [checked]="selectedIds.includes(recipe.id)">
+  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="floating-action-button" *ngIf="selectedIds.length > 0">
+  <button class="btn btn-warning rounded-pill shadow-lg px-4 py-2" (click)="generateList()">
+    🛒 הכן רשימת קניות ({{ selectedIds.length }})
+  </button>
+</div> -->
+<!-- <div class="container mt-4">
+  <div class="row align-items-center">
+    <div class="col-md-8">
+      <h1 class="display-5 fw-bold text-primary">המתכונים שלנו</h1>
+      <p class="text-muted">גלו טעמים חדשים ומרגשים בכל יום</p>
+    </div>
+    <div class="col-md-4">
+      <app-smart-search></app-smart-search>
+    </div>
+  </div>
+  <hr class="mb-5">
+</div>
+
+<div class="container pb-5">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let recipe of recipes">
+      <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden position-relative recipe-card" 
+           [class.selected-border]="selectedIds.includes(recipe.id)">
+        
+        <button *ngIf="user?.role === 'Admin'" 
+                class="btn btn-danger btn-sm position-absolute top-0 end-0 m-3 rounded-circle shadow" 
+                (click)="deleteRecipe(recipe.id, $event)" style="z-index: 15;">
+          <i class="fas fa-trash"></i>
+        </button>
+
+        <div class="selection-badge-wrapper">
+          <input type="checkbox" 
+                 class="recipe-checkbox"
+                 (change)="toggleRecipeSelection(recipe.id)" 
+                 [checked]="selectedIds.includes(recipe.id)">
+        </div>
+
+        <div class="image-wrapper" (click)="viewDetails(recipe.id)">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'https://via.placeholder.com/400x300?text=No+Image'" 
+                 class="card-img-top" 
+                 [alt]="recipe.title">
+        </div>
+        
+        <div class="card-body d-flex flex-column text-center">
+          <h4 class="card-title fw-bold mb-2">{{ recipe.title }}</h4>
+          
+          <div class="mb-3">
+            <span class="badge" [ngClass]="{
+              'bg-success-soft': recipe.type === 'Parve',
+              'bg-danger-soft': recipe.type === 'Meat',
+              'bg-primary-soft': recipe.type === 'Dairy'
+            }">{{ recipe.type }}</span>
+          </div>
+          
+          <div class="mt-auto d-flex align-items-center gap-2">
+            <button class="btn btn-outline-primary flex-grow-1 rounded-3 fw-bold" (click)="viewDetails(recipe.id)">
+              לפרטים נוספים 
+            </button>
+            
+            <button class="favorite-btn" (click)="toggleFavorite(recipe, $event)">
+              <i class="fa-heart" [ngClass]="recipe.isFavorite ? 'fas text-danger' : 'far'"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="floating-action-container" *ngIf="selectedIds.length > 0">
+  <button class="btn btn-warning rounded-pill shadow-lg px-4 py-3 fw-bold animate-pop" (click)="generateList()">
+    🛒 הכן רשימת קניות ({{ selectedIds.length }})
+  </button>
+</div>
+
+<div class="overlay-backdrop" *ngIf="shoppingListData" (click)="shoppingListData = null">
+  <div class="modal-wrapper" (click)="$event.stopPropagation()">
+    <app-shopping-list 
+      [list]="shoppingListData" 
+      (close)="shoppingListData = null">
+    </app-shopping-list>
+  </div>
+</div> -->
+
+<!-- <div class="container mt-4" dir="rtl">
+  <div class="row align-items-center mb-4">
+    <div class="col-md-7">
+      <h1 class="display-5 fw-bold text-primary">המתכונים שלנו</h1>
+      <p class="text-muted">גלו טעמים חדשים ומרגשים בכל יום</p>
+    </div>
+    <div class="col-md-5">
+      <app-smart-search></app-smart-search>
+    </div>
+  </div>
+
+  <div class="card p-3 shadow-sm border-0 rounded-4 mb-5 bg-light">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <label class="form-label small fw-bold">חיפוש:</label>
+        <input type="text" class="form-control rounded-pill border-0 shadow-sm" 
+               [(ngModel)]="filters.searchQuery" (input)="applyFilters()" placeholder="שם המתכון...">
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label small fw-bold">כשרות:</label>
+        <select class="form-select rounded-pill border-0 shadow-sm" [(ngModel)]="filters.type" (change)="applyFilters()">
+          <option value="">הכל</option>
+          <option value="Meat">בשרי</option>
+          <option value="Dairy">חלבי</option>
+          <option value="Parve">פרווה</option>
+        </select>
+      </div> -->
+<!-- 
+      <div class="col-md-3">
+        <label class="form-label small fw-bold">קטגוריה:</label>
+        <select class="form-select rounded-pill border-0 shadow-sm" [(ngModel)]="filters.category" (change)="applyFilters()">
+          <option value="">כל הקטגוריות</option>
+          <option value="עיקריות">עיקריות</option>
+          <option value="קינוחים">קינוחים</option>
+          <option value="מרקים">מרקים</option>
+          <option value="מאפים">מאפים</option>
+          <option value="סלטים">סלטים</option>
+        </select>
+      </div> -->
+<!-- <div class="col-md-3">
+  <label class="form-label small fw-bold">קטגוריה:</label>
+  <select class="form-select rounded-pill border-0 shadow-sm" [(ngModel)]="filters.category" (change)="applyFilters()">
+    <option value="">כל הקטגוריות</option>
+    <option value="עיקריות">עיקריות</option>
+    <option value="תוספות">תוספות</option>
+    <option value="סלטים">סלטים</option>
+    <option value="מרקים">מרקים</option>
+    <option value="מאפים">מאפים</option>
+    <option value="לחמים">לחמים</option>
+    <option value="קינוחים">קינוחים</option>
+    <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+    <option value="משקאות">משקאות</option>
+    <option value="ארוחת בוקר">ארוחת בוקר</option>
+    <option value="חגים">חגים</option>
+    <option value="טבעוני">טבעוני</option>
+    <option value="ללא גלוטן">ללא גלוטן</option>
+  </select>
+</div>
+      <div class="col-md-4">
+        <label class="form-label small fw-bold">זמן הכנה: עד {{ filters.maxTime }} דקות</label>
+        <input type="range" class="form-range" min="5" max="180" step="5" 
+               [(ngModel)]="filters.maxTime" (input)="applyFilters()">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center py-5" *ngIf="filteredRecipes.length === 0">
+      <h3 class="text-muted">לא נמצאו מתכונים התואמים את הסינונים שנבחרו.</h3>
+    </div>
+
+    <div class="col-md-4 mb-4" *ngFor="let recipe of filteredRecipes">
+      <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden position-relative recipe-card" 
+           [class.selected-border]="selectedIds.includes(recipe.id)">
+        
+        <button *ngIf="user?.role === 'Admin'" 
+                class="btn btn-danger btn-sm position-absolute top-0 end-0 m-3 rounded-circle shadow" 
+                (click)="deleteRecipe(recipe.id, $event)" style="z-index: 15;">
+          <i class="fas fa-trash"></i>
+        </button>
+
+        <div class="selection-badge-wrapper">
+          <input type="checkbox" 
+                 class="recipe-checkbox"
+                 (change)="toggleRecipeSelection(recipe.id)" 
+                 [checked]="selectedIds.includes(recipe.id)">
+        </div>
+
+        <div class="image-wrapper" (click)="viewDetails(recipe.id)">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'https://via.placeholder.com/400x300?text=No+Image'" 
+                 class="card-img-top" 
+                 [alt]="recipe.title">
+        </div>
+        
+        <div class="card-body d-flex flex-column text-center">
+          <h4 class="card-title fw-bold mb-2">{{ recipe.title }}</h4>
+          
+          <div class="mb-3 d-flex justify-content-center gap-2">
+            <span class="badge" [ngClass]="{
+              'bg-success-soft text-success': recipe.type === 'Parve',
+              'bg-danger-soft text-danger': recipe.type === 'Meat',
+              'bg-primary-soft text-primary': recipe.type === 'Dairy'
+            }">{{ recipe.type }}</span>
+            <span class="badge bg-secondary-soft text-secondary">{{ recipe.category }}</span>
+          </div>
+          
+          <div class="mt-auto d-flex align-items-center gap-2">
+            <button class="btn btn-outline-primary flex-grow-1 rounded-3 fw-bold" (click)="viewDetails(recipe.id)">
+              לפרטים נוספים 
+            </button>
+            
+            <button class="favorite-btn" (click)="toggleFavorite(recipe, $event)">
+              <i class="fa-heart" [ngClass]="recipe.isFavorite ? 'fas text-danger' : 'far'"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="floating-action-container" *ngIf="selectedIds.length > 0">
+  <button class="btn btn-warning rounded-pill shadow-lg px-4 py-3 fw-bold animate-pop" (click)="generateList()">
+    🛒 הכן רשימת קניות ({{ selectedIds.length }})
+  </button>
+</div>
+
+<div class="overlay-backdrop" *ngIf="shoppingListData" (click)="shoppingListData = null">
+  <div class="modal-wrapper" (click)="$event.stopPropagation()">
+    <app-shopping-list 
+      [list]="shoppingListData" 
+      (close)="shoppingListData = null">
+    </app-shopping-list>
+  </div>
+</div> -->
+
+<!-- <div class="main-layout" dir="rtl">
+  
+  <aside class="filters-sidebar">
+    <div class="d-flex align-items-center mb-4">
+        <i class="bi bi-sliders2-vertical text-success fs-4 me-2"></i>
+        <h5 class="fw-bold m-0">סינון מתכונים</h5>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">חיפוש חופשי</label>
+      <div class="input-group shadow-sm rounded-pill overflow-hidden border">
+        <span class="input-group-text bg-white border-0"><i class="bi bi-search text-muted"></i></span>
+        <input type="text" class="form-control border-0 ps-0" 
+               [(ngModel)]="filters.searchQuery" (input)="applyFilters()" placeholder="מה מתחשק לכם?">
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">סוג המנה</label>
+      <select class="form-select rounded-pill border shadow-sm" [(ngModel)]="filters.type" (change)="applyFilters()">
+        <option value="">הכל מהכל</option>
+        <option value="Meat">בשרי 🍖</option>
+        <option value="Dairy">חלבי 🧀</option>
+        <option value="Parve">פרווה 🥑</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">קטגוריה</label>
+      <select class="form-select rounded-pill border shadow-sm" [(ngModel)]="filters.category" (change)="applyFilters()">
+        <option value="">כל הקטגוריות</option>
+    <option value="עיקריות">עיקריות</option>
+    <option value="תוספות">תוספות</option>
+    <option value="סלטים">סלטים</option>
+    <option value="מרקים">מרקים</option>
+    <option value="מאפים">מאפים</option>
+    <option value="לחמים">לחמים</option>
+    <option value="קינוחים">קינוחים</option>
+    <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+    <option value="משקאות">משקאות</option>
+    <option value="ארוחת בוקר">ארוחת בוקר</option>
+    <option value="חגים">חגים</option>
+    <option value="טבעוני">טבעוני</option>
+    <option value="ללא גלוטן">ללא גלוטן</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label d-flex justify-content-between">
+        <span>זמן הכנה</span>
+        <span class="text-success fw-bold">עד {{ filters.maxTime }} דק'</span>
+      </label>
+      <input type="range" class="form-range" min="5" max="180" step="5" 
+             [(ngModel)]="filters.maxTime" (input)="applyFilters()">
+    </div>
+
+    <hr class="my-4 opacity-50">
+    
+    <app-smart-search></app-smart-search>
+  </aside>
+
+  <main>
+    <div class="mb-5">
+      <h1 class="display-5 fw-bold text-dark">המתכונים שלנו ✨</h1>
+      <p class="text-muted fs-5">נמצאו {{ filteredRecipes.length }} מתכונים מעולים עבורך</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 text-center py-5" *ngIf="filteredRecipes.length === 0">
+        <div class="display-1 opacity-25">🍳</div>
+        <h3 class="text-muted mt-3">אופס! לא מצאנו מתכון כזה...</h3>
+        <button class="btn btn-success rounded-pill px-4 mt-2" (click)="resetFilters()">נקה הכל</button>
+      </div>
+
+      <div class="col-xl-4 col-lg-6" *ngFor="let recipe of filteredRecipes">
+        <div class="recipe-card shadow-sm" [class.selected-border]="selectedIds.includes(recipe.id)">
+          
+          <button class="fav-floating shadow-sm" [class.active]="recipe.isFavorite" (click)="toggleFavorite(recipe, $event)">
+            <i class="bi" [ngClass]="recipe.isFavorite ? 'bi-heart-fill' : 'bi-heart'"></i>
+          </button>
+
+          <div class="selection-badge-wrapper">
+            <input type="checkbox" class="recipe-checkbox"
+                   (change)="toggleRecipeSelection(recipe.id)" 
+                   [checked]="selectedIds.includes(recipe.id)">
+          </div>
+
+          <div class="image-wrapper" (click)="viewDetails(recipe.id)" style="cursor: pointer;">
+              <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" 
+                   class="card-img-top" [alt]="recipe.title">
+          </div>
+          
+          <div class="card-body p-4">
+            <h5 class="fw-bold text-dark mb-2 text-truncate">{{ recipe.title }}</h5>
+            
+            <div class="d-flex gap-2 mb-3">
+              <span class="badge-pill-custom" [ngClass]="{
+                'bg-success-soft text-success': recipe.type === 'Parve',
+                'bg-danger-soft text-danger': recipe.type === 'Meat',
+                'bg-primary-soft text-primary': recipe.type === 'Dairy'
+              }">
+                {{ recipe.type === 'Parve' ? 'פרווה' : recipe.type === 'Meat' ? 'בשרי' : 'חלבי' }}
+              </span>
+              <span class="badge-pill-custom bg-light text-secondary border small">{{ recipe.category }}</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+              <span class="small text-muted"><i class="bi bi-clock me-1"></i> {{ recipe.prep_time }} דק'</span>
+              <button class="btn btn-link text-success fw-bold p-0 text-decoration-none" (click)="viewDetails(recipe.id)">
+                למתכון המלא <i class="bi bi-chevron-left small"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="floating-action-container" *ngIf="selectedIds.length > 0">
+  <button class="btn btn-success rounded-pill shadow-lg px-5 py-3 fw-bold animate-pop border-4 border-white" (click)="generateList()">
+     📦 הכן רשימת קניות ({{ selectedIds.length }})
+  </button>
+</div> -->
+<!-- <div class="main-layout" dir="rtl">
+  <div *ngIf="shoppingListData" class="shopping-list-overlay">
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center bg-white p-3 rounded-pill shadow-sm mb-3">
+        <h4 class="m-0 fw-bold text-success">🛒 רשימת הקניות שלך מוכנה!</h4>
+        <button class="btn-close" (click)="closeShoppingList()"></button>
+      </div>
+      <app-shoping-list [data]="shoppingListData"></app-shoping-list>
+    </div>
+  </div>
+
+  <aside class="filters-sidebar">
+    <div class="d-flex align-items-center mb-4">
+        <i class="bi bi-sliders2-vertical text-success fs-4 me-2"></i>
+        <h5 class="fw-bold m-0">סינון מתכונים</h5>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">חיפוש חופשי</label>
+      <div class="input-group shadow-sm rounded-pill overflow-hidden border">
+        <span class="input-group-text bg-white border-0"><i class="bi bi-search text-muted"></i></span>
+        <input type="text" class="form-control border-0 ps-0" 
+               [(ngModel)]="filters.searchQuery" (input)="applyFilters()" placeholder="מה מתחשק לכם?">
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">סוג המנה</label>
+      <select class="form-select rounded-pill border shadow-sm" [(ngModel)]="filters.type" (change)="applyFilters()">
+        <option value="">הכל מהכל</option>
+        <option value="Meat">בשרי 🍖</option>
+        <option value="Dairy">חלבי 🧀</option>
+        <option value="Parve">פרווה 🥑</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">קטגוריה</label>
+      <select class="form-select rounded-pill border shadow-sm" [(ngModel)]="filters.category" (change)="applyFilters()">
+        <option value="">כל הקטגוריות</option>
+        <option value="עיקריות">עיקריות</option>
+        <option value="קינוחים">קינוחים</option>
+        </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label d-flex justify-content-between">
+        <span>זמן הכנה</span>
+        <span class="text-success fw-bold">עד {{ filters.maxTime }} דק'</span>
+      </label>
+      <input type="range" class="form-range" min="5" max="180" step="5" 
+             [(ngModel)]="filters.maxTime" (input)="applyFilters()">
+    </div>
+
+    <hr class="my-4 opacity-50">
+    
+    <app-smart-search (resultsFound)="handleSmartSearchResults($event)"></app-smart-search>
+  </aside>
+
+  <main>
+    <div class="mb-5">
+      <h1 class="display-5 fw-bold text-dark">המתכונים שלנו ✨</h1>
+      <p class="text-muted fs-5" *ngIf="!smartSearchNoResults">נמצאו {{ filteredRecipes.length }} מתכונים מעולים עבורך</p>
+    </div>
+
+    <div class="row g-4" *ngIf="filteredRecipes.length === 0 || smartSearchNoResults">
+      <div class="col-12 text-center py-5">
+        <div class="display-1 opacity-25">🍳</div>
+        <h3 class="text-muted mt-3">אופס! לא מצאנו מתכון מתאים לחיפוש שלך...</h3>
+        <p class="text-secondary">נסו לשנות את רכיבי החיפוש החכם או לאפס מסננים</p>
+        <button class="btn btn-success rounded-pill px-5 mt-2 shadow" (click)="resetFilters()">נקה הכל והצג הכל</button>
+      </div>
+    </div>
+
+    <div class="row g-4" *ngIf="filteredRecipes.length > 0 && !smartSearchNoResults">
+      <div class="col-xl-4 col-lg-6" *ngFor="let recipe of filteredRecipes">
+        <div class="recipe-card shadow-sm" [class.selected-border]="selectedIds.includes(recipe.id)">
+          <button class="fav-floating shadow-sm" [class.active]="recipe.isFavorite" (click)="toggleFavorite(recipe, $event)">
+            <i class="bi" [ngClass]="recipe.isFavorite ? 'bi-heart-fill' : 'bi-heart'"></i>
+          </button>
+          <div class="selection-badge-wrapper">
+            <input type="checkbox" class="recipe-checkbox" (change)="toggleRecipeSelection(recipe.id)" [checked]="selectedIds.includes(recipe.id)">
+          </div>
+          <div class="image-wrapper" (click)="viewDetails(recipe.id)">
+              <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" class="card-img-top">
+          </div>
+          <div class="card-body p-4">
+            <h5 class="fw-bold text-dark mb-2 text-truncate">{{ recipe.title }}</h5>
+            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+               <span class="small text-muted"><i class="bi bi-clock me-1"></i> {{ recipe.prep_time }} דק'</span>
+               <button class="btn btn-link text-success fw-bold p-0 text-decoration-none" (click)="viewDetails(recipe.id)">למתכון המלא</button>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="floating-action-container" *ngIf="selectedIds.length > 0 && !shoppingListData">
+  <button class="btn btn-success rounded-pill shadow-lg px-5 py-3 fw-bold animate-pop border-4 border-white" (click)="generateList()">
+      📦 הכן רשימת קניות ({{ selectedIds.length }})
+  </button>
+</div> -->
+
+<!-- <div class="main-layout" dir="rtl">
+  <div *ngIf="shoppingListData" class="shopping-list-overlay shadow-lg">
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center bg-white p-3 rounded-pill shadow-sm mb-3 border border-success">
+        <h4 class="m-0 fw-bold text-success">🛒 רשימת הקניות שלך מוכנה!</h4>
+        <button class="btn-close" (click)="closeShoppingList()"></button>
+      </div>
+      <app-shopping-list [list]="shoppingListData" (close)="closeShoppingList()"></app-shopping-list>
+    </div>
+  </div>
+
+  <aside class="filters-sidebar">
+    <div class="d-flex align-items-center mb-4">
+        <i class="bi bi-sliders2-vertical text-success fs-4 me-2"></i>
+        <h5 class="fw-bold m-0">סינון מתכונים</h5>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">חיפוש חופשי</label>
+      <div class="input-group shadow-sm rounded-pill overflow-hidden border">
+        <span class="input-group-text bg-white border-0"><i class="bi bi-search text-muted"></i></span>
+        <input type="text" class="form-control border-0 ps-0" 
+               [(ngModel)]="filters.searchQuery" (input)="applyFilters()" placeholder="מה מתחשק לכם?">
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">סוג המנה</label>
+      <select class="form-select rounded-pill border shadow-sm" [(ngModel)]="filters.type" (change)="applyFilters()">
+        <option value="">הכל מהכל</option>
+        <option value="Meat">בשרי 🍖</option>
+        <option value="Dairy">חלבי 🧀</option>
+        <option value="Parve">פרווה 🥑</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">קטגוריה</label>
+      <select class="form-select rounded-pill border shadow-sm" [(ngModel)]="filters.category" (change)="applyFilters()">
+        <option value="">כל הקטגוריות</option>
+        <option value="עיקריות">עיקריות</option>
+        <option value="תוספות">תוספות</option>
+        <option value="סלטים">סלטים</option>
+        <option value="מרקים">מרקים</option>
+        <option value="מאפים">מאפים</option>
+        <option value="לחמים">לחמים</option>
+        <option value="קינוחים">קינוחים</option>
+        <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+        <option value="משקאות">משקאות</option>
+        <option value="ארוחת בוקר">ארוחת בוקר</option>
+        <option value="חגים">חגים</option>
+        <option value="טבעוני">טבעוני</option>
+        <option value="ללא גלוטן">ללא גלוטן</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label d-flex justify-content-between">
+        <span>זמן הכנה</span>
+        <span class="text-success fw-bold">עד {{ filters.maxTime }} דק'</span>
+      </label>
+      <input type="range" class="form-range" min="5" max="180" step="5" 
+             [(ngModel)]="filters.maxTime" (input)="applyFilters()">
+    </div>
+
+    <hr class="my-4 opacity-50">
+    
+    <app-smart-search (resultsFound)="handleSmartSearchResults($event)"></app-smart-search>
+  </aside>
+
+  <main>
+    <div class="mb-5">
+      <h1 class="display-5 fw-bold text-dark">המתכונים שלנו ✨</h1>
+      <p class="text-muted fs-5">נמצאו {{ filteredRecipes.length }} מתכונים מעולים עבורך</p>
+    </div>
+
+    <div class="row g-4" *ngIf="filteredRecipes.length === 0 || smartSearchNoResults">
+      <div class="col-12 text-center py-5">
+        <div class="display-1 opacity-25">🍳</div>
+        <h3 class="text-muted mt-3">אופס! לא מצאנו מתכון כזה...</h3>
+        <button class="btn btn-success rounded-pill px-4 mt-2" (click)="resetFilters()">נקה הכל</button>
+      </div>
+    </div>
+
+    <div class="row g-4" *ngIf="filteredRecipes.length > 0 && !smartSearchNoResults">
+      <div class="col-xl-4 col-lg-6" *ngFor="let recipe of filteredRecipes">
+        <div class="recipe-card shadow-sm" [class.selected-border]="selectedIds.includes(recipe.id)">
+          
+          <button class="fav-floating shadow-sm" [class.active]="recipe.isFavorite" (click)="toggleFavorite(recipe, $event)">
+            <i class="bi" [ngClass]="recipe.isFavorite ? 'bi-heart-fill' : 'bi-heart'"></i>
+          </button>
+
+          <div class="selection-badge-wrapper">
+            <input type="checkbox" class="recipe-checkbox"
+                   (change)="toggleRecipeSelection(recipe.id)" 
+                   [checked]="selectedIds.includes(recipe.id)">
+          </div>
+
+          <div class="image-wrapper" (click)="viewDetails(recipe.id)">
+              <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" 
+                   class="card-img-top" [alt]="recipe.title">
+          </div>
+          
+          <div class="card-body p-4">
+            <h5 class="fw-bold text-dark mb-2 text-truncate">{{ recipe.title }}</h5>
+            
+            <div class="d-flex gap-2 mb-3">
+              <span class="badge-pill-custom" [ngClass]="{
+                'bg-success-soft text-success': recipe.type === 'Parve',
+                'bg-danger-soft text-danger': recipe.type === 'Meat',
+                'bg-primary-soft text-primary': recipe.type === 'Dairy'
+              }">
+                {{ recipe.type === 'Parve' ? 'פרווה' : recipe.type === 'Meat' ? 'בשרי' : 'חלבי' }}
+              </span>
+              <span class="badge-pill-custom bg-light text-secondary border small">{{ recipe.category }}</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+              <span class="small text-muted"><i class="bi bi-clock me-1"></i> {{ recipe.prep_time }} דק'</span>
+              <button class="btn btn-link text-success fw-bold p-0 text-decoration-none" (click)="viewDetails(recipe.id)">
+                למתכון המלא <i class="bi bi-chevron-left small"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="floating-action-container" *ngIf="selectedIds.length > 0 && !shoppingListData">
+  <button class="btn btn-success rounded-pill shadow-lg px-5 py-3 fw-bold animate-pop border-4 border-white" (click)="generateList()">
+      📦 הכן רשימת קניות ({{ selectedIds.length }})
+  </button>
+</div> -->
+<!-- <div class="main-layout" dir="rtl">
+  <div *ngIf="shoppingListData" class="shopping-list-overlay shadow-lg">
+    <div class="container mt-4">
+      <div
+        class="d-flex justify-content-between align-items-center bg-white p-3 rounded-pill shadow-sm mb-3 border border-success">
+        <h4 class="m-0 fw-bold text-success">🛒 רשימת הקניות שלך מוכנה!</h4>
+        <button class="btn-close" (click)="closeShoppingList()"></button>
+      </div>
+      <app-shopping-list [list]="shoppingListData" (close)="closeShoppingList()"></app-shopping-list>
+    </div>
+  </div>
+
+  <aside class="filters-sidebar">
+    <div class="d-flex align-items-center mb-4">
+      <i class="bi bi-sliders2-vertical text-success fs-4 me-2"></i>
+      <h5 class="fw-bold m-0">סינון מתכונים</h5>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">חיפוש חופשי</label>
+      <div class="input-group shadow-sm rounded-pill overflow-hidden border">
+        <span class="input-group-text bg-white border-0"><i class="bi bi-search text-muted"></i></span>
+        <input type="text" class="form-control border-0 ps-0" [(ngModel)]="filters.searchQuery" (input)="applyFilters()"
+          placeholder="מה מתחשק לכם?">
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">סוג המנה</label>
+      <select class="form-select rounded-pill border shadow-sm" [(ngModel)]="filters.type" (change)="applyFilters()">
+        <option value="">הכל מהכל</option>
+        <option value="Meat">בשרי 🍖</option>
+        <option value="Dairy">חלבי 🧀</option>
+        <option value="Parve">פרווה 🥑</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">קטגוריה</label>
+      <select class="form-select rounded-pill border shadow-sm" [(ngModel)]="filters.category"
+        (change)="applyFilters()">
+        <option value="">כל הקטגוריות</option>
+        <option value="עיקריות">עיקריות</option>
+        <option value="תוספות">תוספות</option>
+        <option value="סלטים">סלטים</option>
+        <option value="מרקים">מרקים</option>
+        <option value="מאפים">מאפים</option>
+        <option value="קינוחים">קינוחים</option>
+        <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+        <option value="טבעוני">טבעוני</option>
+        <option value="ללא גלוטן">ללא גלוטן</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label d-flex justify-content-between">
+        <span>זמן הכנה</span>
+        <span class="text-success fw-bold">עד {{ filters.maxTime }} דק'</span>
+      </label>
+      <input type="range" class="form-range" min="5" max="180" step="5" [(ngModel)]="filters.maxTime"
+        (input)="applyFilters()">
+    </div>
+
+    <hr class="my-4 opacity-50">
+
+    <app-smart-search (resultsFound)="handleSmartSearchResults($event)"></app-smart-search>
+  </aside>
+
+  <main>
+    <div class="mb-5">
+      <h1 class="display-5 fw-bold text-dark">המתכונים שלנו ✨</h1>
+      <p class="text-muted fs-5" *ngIf="!smartSearchNoResults">נמצאו {{ filteredRecipes.length }} מתכונים מעולים עבורך
+      </p>
+    </div>
+
+    <div class="row g-4" *ngIf="smartSearchNoResults">
+      <div class="col-12 text-center py-5 bg-white rounded-4 shadow-sm border border-warning">
+        <div class="display-1">🥦❌</div>
+        <h3 class="text-dark mt-3 fw-bold">לא מצאנו מתכונים עם המוצרים האלו</h3>
+        <p class="text-muted">נסו לשנות את רשימת המצרכים או להסיר חלק מהם כדי לקבל תוצאות.</p>
+        <button class="btn btn-outline-success rounded-pill px-4 mt-2" (click)="resetFilters()">חזור לכל
+          המתכונים</button>
+      </div>
+    </div>
+
+    <div class="row g-4" *ngIf="filteredRecipes.length === 0 && !smartSearchNoResults">
+      <div class="col-12 text-center py-5">
+        <div class="display-1 opacity-25">🍳</div>
+        <h3 class="text-muted mt-3">אופס! לא מצאנו מתכון כזה...</h3>
+        <button class="btn btn-success rounded-pill px-4 mt-2" (click)="resetFilters()">נקה מסננים</button>
+      </div>
+    </div>
+
+    <div class="row g-4" *ngIf="filteredRecipes.length > 0 && !smartSearchNoResults">
+      <div class="col-xl-4 col-lg-6" *ngFor="let recipe of filteredRecipes">
+        <div class="recipe-card shadow-sm" [class.selected-border]="selectedIds.includes(recipe.id)">
+
+          <button class="fav-floating shadow-sm" [class.active]="recipe.isFavorite"
+            (click)="toggleFavorite(recipe, $event)">
+            <i class="bi" [ngClass]="recipe.isFavorite ? 'bi-heart-fill' : 'bi-heart'"></i>
+          </button>
+          
+
+          <div class="selection-badge-wrapper">
+            <input type="checkbox" class="recipe-checkbox" (change)="toggleRecipeSelection(recipe.id)"
+              [checked]="selectedIds.includes(recipe.id)">
+          </div>
+
+
+          <button *ngIf="user?.role === 'Admin'"
+              class="btn btn-danger btn-sm position-absolute top-0 end-0 m-3 rounded-circle shadow"
+              (click)="deleteRecipe(recipe.id, $event)" style="z-index: 15;">
+              <i class="fas fa-trash"></i>
+            </button>
+          <div class="image-wrapper" (click)="viewDetails(recipe.id)">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'"
+              class="card-img-top" [alt]="recipe.title">
+          </div>
+
+          <div class="card-body p-4">
+            <h5 class="fw-bold text-dark mb-2 text-truncate">{{ recipe.title }}</h5>
+
+            <div class="d-flex gap-2 mb-3">
+              <span class="badge-pill-custom" [ngClass]="{
+                'bg-success-soft text-success': recipe.type === 'Parve',
+                'bg-danger-soft text-danger': recipe.type === 'Meat',
+                'bg-primary-soft text-primary': recipe.type === 'Dairy'
+              }">
+                {{ recipe.type === 'Parve' ? 'פרווה' : recipe.type === 'Meat' ? 'בשרי' : 'חלבי' }}
+              </span>
+              <span class="badge-pill-custom bg-light text-secondary border small">{{ recipe.category }}</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+              <span class="small text-muted"><i class="bi bi-clock me-1"></i> {{ recipe.prep_time }} דק'</span>
+              <button class="btn btn-link text-success fw-bold p-0 text-decoration-none"
+                (click)="viewDetails(recipe.id)">
+                למתכון המלא <i class="bi bi-chevron-left small"></i>
+              </button>
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="floating-action-container" *ngIf="selectedIds.length > 0 && !shoppingListData">
+  <button class="btn btn-success rounded-pill shadow-lg px-5 py-3 fw-bold animate-pop border-4 border-white"
+    (click)="generateList()">
+    📦 הכן רשימת קניות ({{ selectedIds.length }})
+  </button>
+</div> -->
+<!-- 
+<div class="main-layout" dir="rtl">
+  
+  <div *ngIf="shoppingListData" class="shopping-list-overlay shadow-lg mb-5 animate__animated animate__fadeInDown">
+    <div class="container py-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="m-0 fw-black text-dark" style="font-family: 'Frank Ruhl Libre';">🛒 המצרכים שלך מוכנים</h3>
+        <button class="btn-close" (click)="closeShoppingList()"></button>
+      </div>
+      <app-shopping-list [list]="shoppingListData" (close)="closeShoppingList()"></app-shopping-list>
+    </div>
+  </div>
+
+  <aside class="filters-sidebar no-print">
+    <div class="d-flex align-items-center mb-5 border-bottom border-secondary pb-3">
+      <h5 class="fw-black m-0 text-white" style="letter-spacing: 2px;">FINE FILTERS</h5>
+    </div>
+
+    <div class="filter-group mb-4">
+      <label class="filter-label">חיפוש חופשי</label>
+      <input type="text" class="form-control" [(ngModel)]="filters.searchQuery" (input)="applyFilters()"
+             placeholder="מה לבשל לך?">
+    </div>
+
+    <div class="filter-group mb-4">
+      <label class="filter-label">סוג מטבח</label>
+      <select class="form-select" [(ngModel)]="filters.type" (change)="applyFilters()">
+        <option value="">כל הסוגים</option>
+        <option value="Meat">בשרי 🍖</option>
+        <option value="Dairy">חלבי 🧀</option>
+        <option value="Parve">פרווה 🥑</option>
+      </select>
+    </div>
+
+    <div class="filter-group mb-4">
+      <label class="filter-label">קטגוריה</label>
+      <select class="form-select" [(ngModel)]="filters.category" (change)="applyFilters()">
+        <option value="">כל הקטגוריות</option>
+          <option value="עיקריות">עיקריות</option>
+          <option value="תוספות">תוספות</option>
+          <option value="סלטים">סלטים</option>
+          <option value="מרקים">מרקים</option>
+          <option value="מאפים">מאפים</option>
+          <option value="לחמים">לחמים</option>
+          <option value="קינוחים">קינוחים</option>
+          <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+      </select>
+    </div>
+
+    <div class="filter-group mb-5">
+      <label class="filter-label d-flex justify-content-between">
+        <span>זמן הכנה</span>
+        <span class="text-gold">עד {{ filters.maxTime }} דק'</span>
+      </label>
+      <input type="range" class="form-range custom-range" min="5" max="180" step="5" [(ngModel)]="filters.maxTime" (input)="applyFilters()">
+    </div>
+
+    <app-smart-search (resultsFound)="handleSmartSearchResults($event)"></app-smart-search>
+  </aside>
+
+  <main>
+    <div class="mb-5">
+      <h1 class="display-4 fw-black text-white mb-2" style="font-family: 'Frank Ruhl Libre';">המתכונים שלנו</h1>
+      <p class="text-muted fs-5">נמצאו {{ filteredRecipes.length }} מתכונים שנבחרו בקפידה</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-xl-4 col-lg-6" *ngFor="let recipe of filteredRecipes">
+        <div class="recipe-card shadow-sm" [class.selected-border]="selectedIds.includes(recipe.id)">
+          
+          <button class="fav-floating shadow-sm" [class.active]="recipe.isFavorite" (click)="toggleFavorite(recipe, $event)">
+            <i class="bi" [ngClass]="recipe.isFavorite ? 'bi-heart-fill' : 'bi-heart'"></i>
+          </button>
+          
+          <div class="selection-badge-wrapper">
+            <input type="checkbox" class="recipe-checkbox" (change)="toggleRecipeSelection(recipe.id)" [checked]="selectedIds.includes(recipe.id)">
+          </div>
+
+          <div class="image-wrapper" (click)="viewDetails(recipe.id)">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" class="card-img-top">
+          </div>
+
+          <div class="card-body p-4">
+            <h5 class="recipe-title-gallery mb-3 text-truncate">{{ recipe.title }}</h5>
+
+            <div class="d-flex gap-2 mb-3">
+              <span class="badge rounded-0 bg-dark text-gold border border-secondary small px-3 py-2">{{ recipe.category }}</span>
+              <span class="badge rounded-0 small px-3 py-2" [ngClass]="{
+                'bg-success': recipe.type === 'Parve',
+                'bg-danger': recipe.type === 'Meat',
+                'bg-primary': recipe.type === 'Dairy'
+              }">{{ recipe.type === 'Parve' ? 'פרווה' : recipe.type === 'Meat' ? 'בשרי' : 'חלבי' }}</span>
+            </div>
+
+            <div class="card-body p-4">
+  <h5 class="recipe-title-gallery mb-3 text-truncate">{{ recipe.title }}</h5>
+  
+  <div *ngIf="user?.role === 'Admin'" class="mb-3">
+      <button class="btn btn-sm btn-outline-danger w-100" (click)="deleteRecipe(recipe.id, $event)">
+          <i class="bi bi-trash"></i> מחיקת מתכון
+      </button>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top border-light">
+    <span class="small text-muted fw-bold"><i class="bi bi-clock-history me-1"></i> {{ recipe.prep_time }} דק'</span>
+    <button class="btn-pasha-link" (click)="viewDetails(recipe.id)">
+      למתכון המלא <i class="bi bi-chevron-left small"></i>
+    </button>
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="floating-action-container" *ngIf="selectedIds.length > 0 && !shoppingListData">
+  <button class="btn btn-generate-list animate__animated animate__bounceIn" (click)="generateList()">
+     הכן רשימת קניות ({{ selectedIds.length }})
+  </button>
+</div> -->
+<!-- 
+<div class="main-layout" dir="rtl">
+  
+  <div *ngIf="shoppingListData" class="shopping-list-overlay animate__animated animate__fadeIn">
+    <div class="shopping-content shadow-2xl">
+      <div class="d-flex justify-content-between align-items-center mb-4 p-4 border-bottom border-light">
+        <h2 class="m-0 text-dark fw-bold">🛒 הרשימה שלך</h2>
+        <button class="btn-close" (click)="closeShoppingList()"></button>
+      </div>
+      <div class="p-4">
+        <app-shopping-list [list]="shoppingListData" (close)="closeShoppingList()"></app-shopping-list>
+      </div>
+    </div>
+  </div>
+
+  <aside class="filters-sidebar no-print shadow">
+    <div class="text-center mb-5">
+      <h2 class="text-gold fw-black" style="font-family: 'Frank Ruhl Libre';">PASHA</h2>
+      <p class="small text-muted">ART OF COOKING</p>
+    </div>
+
+    <div class="filter-group mb-4">
+      <label class="filter-label"><i class="bi bi-search me-2"></i>חיפוש מהיר</label>
+      <input type="text" class="form-control" [(ngModel)]="filters.searchQuery" (input)="applyFilters()" placeholder="מה מתחשק לך?">
+    </div>
+
+    <div class="filter-group mb-4">
+      <label class="filter-label">סגנון מנה</label>
+      <select class="form-select" [(ngModel)]="filters.type" (change)="applyFilters()">
+        <option value="">כל המטבחים</option>
+        <option value="Meat">בשרי 🍖</option>
+        <option value="Dairy">חלבי 🧀</option>
+        <option value="Parve">פרווה 🥑</option>
+      </select>
+    </div>
+
+    <div class="filter-group mb-5">
+      <label class="filter-label d-flex justify-content-between">
+        <span>זמן הכנה</span>
+        <span class="text-gold">{{ filters.maxTime }} דק'</span>
+      </label>
+      <input type="range" class="form-range custom-range" min="5" max="180" step="5" [(ngModel)]="filters.maxTime" (input)="applyFilters()">
+    </div>
+
+    <div class="mt-auto">
+       <app-smart-search (resultsFound)="handleSmartSearchResults($event)"></app-smart-search>
+       <button class="btn btn-link text-muted w-100 mt-3 small" (click)="resetFilters()">איפוס הגדרות</button>
+    </div>
+  </aside>
+
+  <main class="p-4 p-lg-5">
+    <div class="mb-5 animate__animated animate__fadeIn">
+      <h1 class="display-3 fw-black mb-2" style="font-family: 'Frank Ruhl Libre';">האוסף שלנו</h1>
+      <div class="d-flex align-items-center gap-3">
+        <div class="line" style="height: 2px; width: 50px; background: #8c6d31;"></div>
+        <p class="text-muted m-0 fs-5">מציג {{ filteredRecipes.length }} יצירות קולינריות</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-xl-4 col-lg-6" *ngFor="let recipe of filteredRecipes">
+        <div class="recipe-card shadow-sm" [class.selected-border]="selectedIds.includes(recipe.id)">
+          
+          <div class="selection-badge-wrapper">
+            <input type="checkbox" class="recipe-checkbox" (change)="toggleRecipeSelection(recipe.id)" [checked]="selectedIds.includes(recipe.id)">
+          </div>
+
+          <button class="fav-floating shadow-sm" [class.active]="recipe.isFavorite" (click)="toggleFavorite(recipe, $event)">
+            <i class="bi" [ngClass]="recipe.isFavorite ? 'bi-heart-fill' : 'bi-heart'"></i>
+          </button>
+          
+          <div class="image-wrapper" (click)="viewDetails(recipe.id)">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" class="card-img-top">
+          </div>
+
+          <div class="card-body p-4">
+            <div class="d-flex gap-2 mb-2">
+               <small class="text-gold text-uppercase fw-bold">{{ recipe.category }}</small>
+            </div>
+            <h5 class="recipe-title-gallery mb-4 text-truncate">{{ recipe.title }}</h5>
+
+            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary">
+               <span class="small text-muted"><i class="bi bi-clock me-1"></i> {{ recipe.prep_time }} דקות</span>
+               <button class="btn-pasha-link" (click)="viewDetails(recipe.id)">
+                  גלה עוד <i class="bi bi-arrow-left ms-1"></i>
+               </button>
+            </div>
+
+            <div *ngIf="user?.role === 'Admin'" class="mt-3">
+              <button class="btn btn-sm btn-outline-danger w-100 opacity-50 hover-opacity-100" (click)="deleteRecipe(recipe.id, $event)">
+                <i class="bi bi-trash"></i> הסר מהאוסף
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="filteredRecipes.length === 0" class="text-center py-5">
+      <i class="bi bi-egg-fried display-1 text-muted"></i>
+      <h3 class="mt-3 text-muted">לא מצאנו מתכונים שמתאימים לחיפוש...</h3>
+      <button class="btn btn-pasha-gold mt-3" (click)="resetFilters()">נקי הכל</button>
+    </div>
+  </main>
+</div>
+
+<div class="floating-action-container" *ngIf="selectedIds.length > 0 && !shoppingListData">
+  <button class="btn btn-generate-list animate__animated animate__bounceInUp" (click)="generateList()">
+     צור רשימת קניות ({{ selectedIds.length }})
+  </button>
+</div> -->
+<!-- <app-shopping-list 
+  *ngIf="shoppingListData" 
+  [list]="shoppingListData" 
+  (close)="closeShoppingList()">
+</app-shopping-list>
+
+<div class="main-layout" dir="rtl">
+  <aside class="filters-sidebar shadow">
+    <div class="text-center mb-4">
+      <h2 class="text-gold">PASHA</h2>
+      <p class="small text-muted">ART OF COOKING</p>
+    </div>
+
+    <div class="filter-group">
+      <label>חיפוש</label>
+      <input type="text" class="form-control" [(ngModel)]="filters.searchQuery" (input)="applyFilters()">
+    </div>
+
+    <div class="mt-4">
+       <app-smart-search (resultsFound)="handleSmartSearchResults($event)"></app-smart-search>
+    </div>
+  </aside>
+
+  <main class="p-4">
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let recipe of filteredRecipes">
+        <div class="recipe-card" [class.selected]="selectedIds.includes(recipe.id)">
+          <input type="checkbox" (change)="toggleRecipeSelection(recipe.id)" [checked]="selectedIds.includes(recipe.id)">
+          <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" (click)="viewDetails(recipe.id)">
+          <div class="p-3">
+            <h5>{{ recipe.title }}</h5>
+            <button class="btn-pasha-link" (click)="viewDetails(recipe.id)">גלה עוד</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="floating-action" *ngIf="selectedIds.length > 0 && !shoppingListData">
+  <button class="btn-generate" (click)="generateList()">צפי ברשימה ({{selectedIds.length}})</button>
+</div> -->
+<!-- <app-shopping-list 
+  *ngIf="shoppingListData" 
+  [list]="shoppingListData" 
+  (close)="closeShoppingList()">
+</app-shopping-list>
+
+<div class="main-layout" dir="rtl">
+  <aside class="filters-sidebar shadow">
+    <div class="text-center mb-5">
+      <h2 class="text-gold fw-black">PASHA</h2>
+      <p class="small text-muted">ART OF COOKING</p>
+    </div>
+
+    <div class="filter-group mb-4">
+      <label class="filter-label">חיפוש מהיר</label>
+      <input type="text" class="form-control" [(ngModel)]="filters.searchQuery" (input)="applyFilters()" placeholder="מה מתחשק לך?">
+    </div>
+
+    <div class="mt-auto">
+       <app-smart-search (resultsFound)="handleSmartSearchResults($event)"></app-smart-search>
+       <button class="btn btn-link text-muted w-100 mt-3 small" (click)="resetFilters()">איפוס הגדרות</button>
+    </div>
+  </aside>
+
+  <main class="content-area p-4 p-lg-5">
+    <div class="mb-5">
+      <h1 class="display-4 fw-black mb-2">האוסף שלנו</h1>
+      <p class="text-muted">מציג {{ filteredRecipes.length }} יצירות קולינריות</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-xl-4 col-lg-6" *ngFor="let recipe of filteredRecipes">
+        <div class="recipe-card shadow-sm" [class.selected-border]="selectedIds.includes(recipe.id)">
+          
+          <div class="selection-badge-wrapper">
+            <input type="checkbox" class="recipe-checkbox" (change)="toggleRecipeSelection(recipe.id)" [checked]="selectedIds.includes(recipe.id)">
+          </div>
+          
+          <div class="image-wrapper" (click)="viewDetails(recipe.id)">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" class="card-img-top">
+          </div>
+
+          <div class="card-body p-4">
+            <h5 class="recipe-title-gallery mb-4 text-truncate">{{ recipe.title }}</h5>
+            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary">
+               <span class="small text-muted"><i class="bi bi-clock me-1"></i> {{ recipe.prep_time }} דקות</span>
+               <button class="btn-pasha-link" (click)="viewDetails(recipe.id)">גלה עוד</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="floating-action-container" *ngIf="selectedIds.length > 0 && !shoppingListData">
+  <button class="btn-generate-list animate__animated animate__bounceInUp" (click)="generateList()">
+      צור רשימת קניות ({{ selectedIds.length }})
+  </button>
+</div> -->
+
+
+<app-shopping-list 
+  *ngIf="shoppingListData" 
+  [list]="shoppingListData" 
+  (close)="closeShoppingList()">
+</app-shopping-list>
+
+<div class="main-layout" dir="rtl">
+  
+  <aside class="filters-sidebar shadow">
+    <div class="text-center mb-5">
+      <h2 class="text-gold fw-black" style="font-family: 'Frank Ruhl Libre';">PASHA</h2>
+      <p class="small text-muted">ART OF COOKING</p>
+    </div>
+
+    <div class="filter-group mb-4">
+      <label class="filter-label"><i class="bi bi-search me-2"></i>חיפוש מהיר</label>
+      <input type="text" class="form-control" [(ngModel)]="filters.searchQuery" (input)="applyFilters()" placeholder="מה מתחשק לך?">
+    </div>
+
+    <div class="filter-group mb-4">
+      <label class="filter-label">סגנון מנה</label>
+      <select class="form-select" [(ngModel)]="filters.type" (change)="applyFilters()">
+        <option value="">כל המטבחים</option>
+        <option value="Meat">בשרי 🍖</option>
+        <option value="Dairy">חלבי 🧀</option>
+        <option value="Parve">פרווה 🥑</option>
+      </select>
+    </div>
+<!-- <div class="filter-group mb-4">
+      <label class="filter-label">קטגוריה</label>
+      <select class="form-select" [(ngModel)]="filters.category" (change)="applyFilters()">
+        <option value="">כל הקטגוריות</option>
+          <option value="עיקריות">עיקריות</option>
+          <option value="תוספות">תוספות</option>
+          <option value="סלטים">סלטים</option>
+          <option value="מרקים">מרקים</option>
+          <option value="מאפים">מאפים</option>
+          <option value="לחמים">לחמים</option>
+          <option value="קינוחים">קינוחים</option>
+          <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+      </select>
+    </div> -->
+
+    <div class="filter-group mb-4">
+      <label class="filter-label">קטגוריה</label>
+      <select class="form-select" [(ngModel)]="filters.category" (change)="applyFilters()">
+        <option value="">כל הקטגוריות</option>
+          <option value="עיקריות">עיקריות</option>
+          <option value="תוספות">תוספות</option>
+          <option value="סלטים">סלטים</option>
+          <option value="מרקים">מרקים</option>
+          <option value="מאפים">מאפים</option>
+          <option value="לחמים">לחמים</option>
+          <option value="קינוחים">קינוחים</option>
+          <option value="עוגות ועוגיות">עוגות ועוגיות</option>
+      </select>
+    </div>
+    <div class="filter-group mb-5">
+      <label class="filter-label d-flex justify-content-between">
+        <span>זמן הכנה</span>
+        <span class="text-gold">{{ filters.maxTime }} דק'</span>
+      </label>
+      <input type="range" class="form-range custom-range" min="5" max="180" step="5" [(ngModel)]="filters.maxTime" (input)="applyFilters()">
+    </div>
+
+    <div class="mt-auto">
+       <app-smart-search (resultsFound)="handleSmartSearchResults($event)"></app-smart-search>
+       <button class="btn btn-link text-muted w-100 mt-3 small" (click)="resetFilters()">איפוס הגדרות</button>
+    </div>
+  </aside>
+
+  <main class="content-area p-4 p-lg-5">
+    <div class="mb-5 animate__animated animate__fadeIn">
+      <h1 class="display-3 fw-black mb-2" style="font-family: 'Frank Ruhl Libre';">האוסף שלנו</h1>
+      <div class="d-flex align-items-center gap-3">
+        <div class="line" style="height: 2px; width: 50px; background: #8c6d31;"></div>
+        <p class="text-muted m-0 fs-5">מציג {{ filteredRecipes.length }} יצירות קולינריות</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-xl-4 col-lg-6" *ngFor="let recipe of filteredRecipes">
+        <div class="recipe-card shadow-sm" [class.selected-border]="selectedIds.includes(recipe.id)">
+          
+          <div class="selection-badge-wrapper">
+            <input type="checkbox" class="recipe-checkbox" (change)="toggleRecipeSelection(recipe.id)" [checked]="selectedIds.includes(recipe.id)">
+          </div>
+
+          <button class="fav-floating shadow-sm" [class.active]="recipe.isFavorite" (click)="toggleFavorite(recipe, $event)">
+            <i class="bi" [ngClass]="recipe.isFavorite ? 'bi-heart-fill' : 'bi-heart'"></i>
+          </button>
+          
+          <div class="image-wrapper" (click)="viewDetails(recipe.id)">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" class="card-img-top">
+          </div>
+
+          <div class="card-body p-4">
+            <div class="d-flex gap-2 mb-2">
+               <small class="text-gold text-uppercase fw-bold">{{ recipe.category }}</small>
+            </div>
+            <h5 class="recipe-title-gallery mb-4 text-truncate">{{ recipe.title }}</h5>
+
+            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary">
+               <span class="small text-muted"><i class="bi bi-clock me-1"></i> {{ recipe.prep_time }} דקות</span>
+               <button class="btn-pasha-link" (click)="viewDetails(recipe.id)">
+                  גלה עוד <i class="bi bi-arrow-left ms-1"></i>
+               </button>
+            </div>
+
+            <div *ngIf="user?.role === 'Admin'" class="mt-3">
+              <button class="btn btn-sm btn-outline-danger w-100 opacity-50 hover-opacity-100" (click)="deleteRecipe(recipe.id, $event)">
+                <i class="bi bi-trash"></i> הסר מהאוסף
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="filteredRecipes.length === 0" class="text-center py-5">
+      <i class="bi bi-egg-fried display-1 text-muted"></i>
+      <h3 class="mt-3 text-muted">לא מצאנו מתכונים שמתאימים לחיפוש...</h3>
+      <button class="btn btn-pasha-gold mt-3" (click)="resetFilters()">נקי הכל</button>
+    </div>
+  </main>
+</div>
+
+<div class="floating-action-container" *ngIf="selectedIds.length > 0 && !shoppingListData">
+  <button class="btn btn-generate-list animate__animated animate__bounceInUp" (click)="generateList()">
+      צור רשימת קניות ({{ selectedIds.length }})
+  </button>
+</div>

@@ -1,0 +1,2793 @@
+<!-- <h2>מרכז ניהול אישי</h2>
+
+<app-user-detail [userData]="authService.currentUser"></app-user-detail>
+
+<div *ngIf="authService.currentUser?.role === 'Admin'">
+    <button>ניהול משתמשים</button>
+</div> -->
+
+<!-- <h2>מרכז ניהול אישי</h2>
+
+<app-user-detail 
+  [userData]="authService.currentUser"
+  (onUpgradeRequest)="handleUpgradeRequest()">
+</app-user-detail>
+
+<div *ngIf="authService.currentUser?.role === 'Admin'">
+    <button routerLink="/admin-management">ניהול משתמשים</button>
+</div> -->
+
+<!-- <h2>מרכז ניהול אישי</h2>
+
+<app-user-detail 
+  [userData]="authService.currentUser"
+  (onUpgradeRequest)="handleUpgradeRequest()">
+</app-user-detail>
+
+<hr>
+
+<div class="actions-container">
+  
+@if (authService.currentUser?.role === 'Reader') {
+    <app-button 
+      text="הגשת בקשה לאישור העלאה" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+  }
+
+  @if (authService.currentUser?.role === 'Admin') {
+    <app-button 
+      text="ניהול משתמשים" 
+      variant="admin" 
+      (btnClick)="goToAdmin()">
+    </app-button>
+  }
+
+  @if (authService.currentUser?.role === 'Admin' || authService.currentUser?.role === 'Uploader') {
+    <app-button 
+      text="הוספת מתכון חדש" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  }
+
+</div> -->
+<!-- <h2>מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr>
+
+  <div class="actions-container">
+    
+    @if (user.role === 'Reader') {
+      <app-button 
+        text="הגשת בקשה לאישור העלאה" 
+        variant="primary" 
+        (btnClick)="handleUpgradeRequest()">
+      </app-button>
+    }
+
+    @if (user.role === 'Admin') {
+      <app-button 
+        text="ניהול משתמשים" 
+        variant="admin" 
+        (btnClick)="goToAdmin()">
+      </app-button>
+    }
+
+    @if (user.role === 'Admin' || user.role === 'Uploader') {
+      <app-button 
+        text="הוספת מתכון חדש" 
+        variant="success" 
+        (btnClick)="goToAddRecipe()">
+      </app-button>
+    }
+
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <p>טוען נתוני משתמש...</p>
+</ng-template> -->
+
+<!-- <h2>מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr>
+
+  @if (user.role === 'Admin' || user.role === 'Uploader') {
+    <div class="stats-container">
+      <div class="stats-card">
+        <p>כמות המתכונים ששיתפת: <strong>{{ recipeCount }}</strong></p>
+        <app-button 
+          text="לצפייה וניהול המתכונים שלי" 
+          variant="primary" 
+          (btnClick)="goToMyRecipes()">
+        </app-button>
+      </div>
+    </div>
+    <hr>
+  }
+
+  <div class="actions-container">
+    
+    @if (user.role === 'Reader') {
+      <app-button 
+        text="הגשת בקשה לאישור העלאה" 
+        variant="primary" 
+        (btnClick)="handleUpgradeRequest()">
+      </app-button>
+    } -->
+
+<!-- @if (user.role === 'Admin') {
+      <app-button 
+        text="ניהול משתמשים" 
+        variant="admin" 
+        (btnClick)="goToAdmin()">
+      </app-button>
+    } -->
+<!-- @if (user.role === 'Admin') {
+  <div class="admin-actions">
+    <app-button 
+      text="כל המשתמשים" 
+      variant="admin" 
+      (btnClick)="goToAdmin('all')">
+    </app-button>
+
+    <app-button 
+      text="משתמשים ממתינים" 
+      variant="warning" 
+      (btnClick)="goToAdmin('pending')">
+    </app-button>
+  </div>
+}
+
+    @if (user.role === 'Admin' || user.role === 'Uploader') {
+      <app-button 
+        text="הוספת מתכון חדש" 
+        variant="success" 
+        (btnClick)="goToAddRecipe()">
+      </app-button>
+    }
+
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <p>טוען נתוני משתמש...</p>
+</ng-template> -->
+<!-- <h2>מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr>
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="stats-container">
+    <div class="stats-card">
+      <p>כמות המתכונים ששיתפת: <strong>{{ recipeCount }}</strong></p>
+      <app-button 
+        text="לצפייה וניהול המתכונים שלי" 
+        variant="primary" 
+        (btnClick)="goToMyRecipes()">
+      </app-button>
+    </div>
+    <hr>
+  </div>
+
+  <div class="actions-container">
+    
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : 'הצג מועדפים'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader'"
+      text="הגשת בקשה לאישור העלאה" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions">
+      <app-button text="כל המשתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+      <app-button text="משתמשים ממתינים" variant="warning" (btnClick)="goToAdmin('pending')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="הוספת מתכון חדש" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section class="favorites-display" *ngIf="showFavorites">
+    <hr>
+    <h3>המתכונים שאהבתי</h3>
+    <div *ngIf="favorites.length > 0; else noFavs" class="favorites-grid">
+      <div *ngFor="let fav of favorites" class="fav-item" (click)="goToRecipe(fav.id)">
+        <img [src]="fav.image_url || 'assets/placeholder.jpg'" alt="">
+        <span>{{ fav.title }}</span>
+      </div>
+    </div>
+    <ng-template #noFavs>
+      <p>עדיין אין לך מתכונים מועדפים.</p>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <p>טוען נתוני משתמש...</p>
+</ng-template> -->
+
+<!-- <h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr>
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="stats-container mb-4">
+    <div class="card shadow-sm border-0 p-3 bg-light">
+      <div class="card-body text-center">
+        <p class="fs-5">כמות המתכונים ששיתפת: <strong class="text-primary">{{ recipeCount }}</strong></p>
+        <app-button 
+          text="לצפייה וניהול המתכונים שלי" 
+          variant="primary" 
+          (btnClick)="goToMyRecipes()">
+        </app-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container d-flex flex-wrap gap-2 justify-content-center mb-4">
+    
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : 'הצג מועדפים'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader'"
+      text="הגשת בקשה לאישור העלאה" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions d-flex gap-2">
+      <app-button text="כל המשתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+      <app-button text="משתמשים ממתינים" variant="warning" (btnClick)="goToAdmin('pending')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="הוספת מתכון חדש" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section class="favorites-display fade-in" *ngIf="showFavorites">
+    <hr>
+    <h3 class="h4 fw-bold mb-3 text-center">המתכונים שאהבתי</h3>
+    
+    <div *ngIf="favorites.length > 0; else noFavs" class="row">
+      <div *ngFor="let fav of favorites" class="col-6 col-md-3 mb-4">
+        <div class="fav-card text-center" (click)="goToRecipe(fav.id)">
+          <div class="fav-img-wrapper mb-2">
+            <img [src]="fav.main_image ? baseUrl + fav.main_image : 'https://via.placeholder.com/150'" 
+                 (error)="handleImageError($event)"
+                 class="img-fluid rounded shadow-sm"
+                 [alt]="fav.title">
+          </div>
+          <span class="fw-bold text-dark d-block text-truncate px-2">{{ fav.title }}</span>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noFavs>
+      <div class="text-center py-4">
+        <p class="text-muted italic">עדיין אין לך מתכונים מועדפים. זה הזמן להוסיף כמה!</p>
+      </div>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <div class="text-center mt-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">טוען נתוני משתמש...</p>
+  </div>
+</ng-template> -->
+
+
+<!-- <h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr>
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="stats-container mb-4">
+    <div class="stats-card card shadow-sm p-3 bg-light text-center">
+      <p class="mb-2">כמות המתכונים ששיתפת: <strong>{{ recipeCount }}</strong></p>
+      <app-button 
+        text="לצפייה וניהול המתכונים שלי" 
+        variant="primary" 
+        (btnClick)="goToMyRecipes()">
+      </app-button>
+    </div>
+    <hr>
+  </div>
+
+  <div class="actions-container d-flex flex-wrap gap-2 justify-content-center mb-4">
+    
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : 'הצג מועדפים'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader'"
+      text="הגשת בקשה לאישור העלאה" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions d-flex gap-2">
+      <app-button text="כל המשתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+      <app-button text="משתמשים ממתינים" variant="warning" (btnClick)="goToAdmin('pending')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="הוספת מתכון חדש" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section class="favorites-display fade-in" *ngIf="showFavorites">
+    <hr>
+    <h3 class="text-center mb-4">המתכונים שאהבתי</h3>
+    
+    <div *ngIf="favorites.length > 0; else noFavs" class="row">
+      <div *ngFor="let fav of favorites" class="col-6 col-md-3 mb-4">
+        <div class="fav-item text-center card h-100 p-2 shadow-sm border-0" (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+          <img [src]="fav.main_image ? baseUrl + fav.main_image : 'https://via.placeholder.com/150'" 
+               (error)="handleImageError($event)"
+               class="img-fluid rounded mb-2 shadow-sm" 
+               style="height: 120px; object-fit: cover;"
+               alt="תמונת מתכון">
+          <span class="fw-bold d-block text-truncate">{{ fav.title }}</span>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noFavs>
+      <p class="text-center text-muted italic">עדיין אין לך מתכונים מועדפים.</p>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <div class="text-center mt-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">טוען נתוני משתמש...</p>
+  </div>
+</ng-template> -->
+
+<!-- <h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr>
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="stats-container mb-4">
+    <div class="stats-card card shadow-sm p-4 bg-light text-center border-0">
+      <p class="mb-3 fs-5">כמות המתכונים ששיתפת: <strong class="text-primary">{{ recipeCount }}</strong></p>
+      <app-button 
+        text="לצפייה וניהול המתכונים שלי" 
+        variant="primary" 
+        (btnClick)="goToMyRecipes()">
+      </app-button>
+    </div>
+    <hr>
+  </div>
+
+  <div class="actions-container d-flex flex-wrap gap-2 justify-content-center mb-4">
+    
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : 'הצג מועדפים'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader'"
+      text="הגשת בקשה לאישור העלאה" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions d-flex gap-2">
+      <app-button text="כל המשתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+      <app-button text="משתמשים ממתינים" variant="warning" (btnClick)="goToAdmin('pending')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="הוספת מתכון חדש" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section class="favorites-display fade-in" *ngIf="showFavorites">
+    <hr>
+    <h3 class="text-center mb-4 fw-bold">המתכונים שאהבתי</h3>
+    
+    <div *ngIf="favorites.length > 0; else noFavs" class="row justify-content-center">
+      <div *ngFor="let fav of favorites" class="col-6 col-md-3 mb-4">
+        <div class="fav-item text-center card h-100 p-2 shadow-sm border-0 transition-hover" 
+             (click)="goToRecipe(fav.id)" 
+             style="cursor: pointer;">
+          
+          <div class="image-wrapper mb-2" style="overflow: hidden; border-radius: 8px;">
+            <img [src]="fav.main_image ? baseUrl + fav.main_image : 'https://via.placeholder.com/150'" 
+                 (error)="handleImageError($event)"
+                 class="img-fluid w-100" 
+                 style="height: 140px; object-fit: cover;"
+                 [alt]="fav.title">
+          </div>
+
+          <span class="fw-bold d-block text-truncate px-1" [title]="fav.title">
+            {{ fav.title }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noFavs>
+      <div class="text-center py-4">
+        <p class="text-muted fst-italic">עדיין אין לך מתכונים מועדפים. זה הזמן להוסיף כמה!</p>
+      </div>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <div class="text-center mt-5 py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">טוען...</span>
+    </div>
+    <p class="mt-3 text-muted">טוען נתוני משתמש...</p>
+  </div>
+</ng-template> -->
+<!-- <h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr>
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="stats-container mb-4">
+    <div class="card shadow-sm border-0 p-3 bg-light">
+      <div class="card-body text-center">
+        <p class="fs-5">כמות המתכונים ששיתפת: <strong class="text-primary">{{ recipeCount }}</strong></p>
+        <app-button 
+          text="לצפייה וניהול המתכונים שלי" 
+          variant="primary" 
+          (btnClick)="goToMyRecipes()">
+        </app-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container d-flex flex-wrap gap-2 justify-content-center mb-4">
+    
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : 'הצג מועדפים'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader'"
+      text="הגשת בקשה לאישור העלאה" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions d-flex gap-2">
+      <app-button text="כל המשתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+      <app-button text="משתמשים ממתינים" variant="warning" (btnClick)="goToAdmin('pending')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="הוספת מתכון חדש" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section class="favorites-display fade-in" *ngIf="showFavorites">
+    <hr>
+    <h3 class="h4 fw-bold mb-3 text-center">המתכונים שאהבתי</h3>
+    
+    <div *ngIf="favorites.length > 0; else noFavs" class="row">
+      <div *ngFor="let fav of favorites" class="col-6 col-md-3 mb-4">
+        <div class="fav-card text-center cursor-pointer" (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+          <div class="fav-img-wrapper mb-2">
+            <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder-recipe.jpg'" 
+                 (error)="handleImageError($event)"
+                 class="img-fluid rounded shadow-sm"
+                 style="height: 150px; width: 100%; object-fit: cover;"
+                 [alt]="fav.title">
+          </div>
+          <span class="fw-bold text-dark d-block text-truncate px-2">{{ fav.title }}</span>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noFavs>
+      <div class="text-center py-4">
+        <p class="text-muted">עדיין אין לך מתכונים מועדפים. זה הזמן להוסיף כמה!</p>
+      </div>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <div class="text-center mt-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">טוען נתוני משתמש...</p>
+  </div>
+</ng-template> -->
+<!-- <h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr>
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="stats-container mb-4">
+    <div class="card shadow-sm border-0 p-3 bg-light">
+      <div class="card-body text-center">
+        <p class="fs-5">כמות המתכונים ששיתפת: <strong class="text-primary">{{ recipeCount }}</strong></p>
+        <app-button 
+          text="לצפייה וניהול המתכונים שלי" 
+          variant="primary" 
+          (btnClick)="goToMyRecipes()">
+        </app-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container d-flex flex-wrap gap-2 justify-content-center mb-4">
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : 'הצג מועדפים'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader'"
+      text="הגשת בקשה לאישור העלאה" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions d-flex gap-2">
+      <app-button text="כל המשתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+      <app-button text="משתמשים ממתינים" variant="warning" (btnClick)="goToAdmin('pending')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="הוספת מתכון חדש" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section class="favorites-display fade-in" *ngIf="showFavorites">
+    <hr>
+    <h3 class="h4 fw-bold mb-3 text-center">המתכונים שאהבתי</h3>
+    
+    <div *ngIf="favorites.length > 0; else noFavs" class="row">
+      <div *ngFor="let fav of favorites" class="col-6 col-md-3 mb-4">
+        <div class="fav-card text-center position-relative card h-100 p-2 shadow-sm border-0">
+          
+          <div class="position-absolute top-0 end-0 p-2 d-flex gap-1" style="z-index: 10;">
+            <button class="btn btn-sm btn-light border shadow-sm" (click)="editRecipe(fav.id, $event)" title="ערוך מתכון">
+              ✏️
+            </button>
+            <button class="btn btn-sm btn-danger shadow-sm" (click)="removeFromFavorites(fav.id, $event)" title="הסר מהמועדפים">
+              🗑️
+            </button>
+          </div>
+
+          <div class="cursor-pointer" (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+            <div class="fav-img-wrapper mb-2">
+              <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder-recipe.jpg'" 
+                   (error)="handleImageError($event)"
+                   class="img-fluid rounded shadow-sm"
+                   style="height: 150px; width: 100%; object-fit: cover;"
+                   [alt]="fav.title">
+            </div>
+            <span class="fw-bold text-dark d-block text-truncate px-2">{{ fav.title }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noFavs>
+      <div class="text-center py-4">
+        <p class="text-muted">עדיין אין לך מתכונים מועדפים. זה הזמן להוסיף כמה!</p>
+      </div>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <div class="text-center mt-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">טוען נתוני משתמש...</p>
+  </div>
+</ng-template> -->
+<!-- 
+<h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr>
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="stats-container mb-4">
+    <div class="card shadow-sm border-0 p-3 bg-light">
+      <div class="card-body text-center">
+        <p class="fs-5">כמות המתכונים ששיתפת: <strong class="text-primary">{{ recipeCount }}</strong></p>
+        <app-button 
+          text="לצפייה וניהול המתכונים שלי" 
+          variant="primary" 
+          (btnClick)="goToMyRecipes()">
+        </app-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container d-flex flex-wrap gap-2 justify-content-center mb-4">
+    
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : 'הצג מועדפים'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader'"
+      text="הגשת בקשה לאישור העלאה" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions d-flex gap-2">
+      <app-button text="כל המשתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+      <app-button text="משתמשים ממתינים" variant="warning" (btnClick)="goToAdmin('pending')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="הוספת מתכון חדש" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section class="favorites-display fade-in" *ngIf="showFavorites">
+    <hr>
+    <h3 class="h4 fw-bold mb-4 text-center">המתכונים שאהבתי</h3>
+    
+    <div *ngIf="favorites.length > 0; else noFavs" class="row">
+      <div *ngFor="let fav of favorites" class="col-6 col-md-3 mb-4">
+        
+        <div class="fav-card text-center position-relative card h-100 p-2 shadow-sm border-0" style="overflow: visible;">
+          
+          <div class="position-absolute top-0 end-0 p-2 d-flex gap-1" style="z-index: 10;">
+            <button class="btn btn-sm btn-light border shadow-sm rounded-circle" 
+                    (click)="editRecipe(fav.id, $event)" 
+                    title="ערוך מתכון"
+                    style="width: 32px; height: 32px; padding: 0;">
+              ✏️
+            </button>
+            <button class="btn btn-sm btn-danger shadow-sm rounded-circle" 
+                    (click)="removeFromFavorites(fav.id, $event)" 
+                    title="הסר מהמועדפים"
+                    style="width: 32px; height: 32px; padding: 0;">
+              🗑️
+            </button>
+          </div>
+
+          <div class="cursor-pointer" (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+            <div class="fav-img-wrapper mb-2">
+              <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder-recipe.jpg'" 
+                   (error)="handleImageError($event)"
+                   class="img-fluid rounded shadow-sm"
+                   style="height: 150px; width: 100%; object-fit: cover;"
+                   [alt]="fav.title">
+            </div>
+            <span class="fw-bold text-dark d-block text-truncate px-2">{{ fav.title }}</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noFavs>
+      <div class="text-center py-4">
+        <p class="text-muted italic">עדיין אין לך מתכונים מועדפים. זה הזמן להוסיף כמה!</p>
+      </div>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <div class="text-center mt-5 py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">טוען...</span>
+    </div>
+    <p class="mt-3 text-muted">טוען נתוני משתמש...</p>
+  </div>
+</ng-template> -->
+<!-- <h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr>
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="stats-container mb-4">
+    <div class="card shadow-sm border-0 p-3 bg-light">
+      <div class="card-body text-center">
+        <p class="fs-5">כמות המתכונים ששיתפת: <strong class="text-primary">{{ recipeCount }}</strong></p>
+        <app-button 
+          text="לצפייה וניהול המתכונים שלי" 
+          variant="primary" 
+          (btnClick)="goToRecipe()">
+        </app-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-container d-flex flex-wrap gap-2 justify-content-center mb-4">
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : 'הצג מועדפים'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader'"
+      text="הגשת בקשה לאישור העלאה" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions d-flex gap-2">
+      <app-button text="כל המשתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+      <app-button text="משתמשים ממתינים" variant="warning" (btnClick)="goToAdmin('pending')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="הוספת מתכון חדש" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section class="favorites-display fade-in" *ngIf="showFavorites">
+    <hr>
+    <h3 class="h4 fw-bold mb-4 text-center">המתכונים שאהבתי</h3>
+    
+    <div *ngIf="favorites.length > 0; else noFavs" class="row">
+      <div *ngFor="let fav of favorites" class="col-6 col-md-3 mb-4">
+        
+        <div class="fav-card text-center position-relative card h-100 p-2 shadow-sm border-0" style="overflow: visible; display: block;">
+          
+          <div class="d-flex gap-1" style="position: absolute; top: 10px; right: 10px; z-index: 999;">
+            <button class="btn btn-sm btn-light shadow-sm border" 
+                    (click)="editRecipe(fav.id, $event)" 
+                    style="border-radius: 50%; width: 32px; height: 32px; padding: 0; line-height: 1;">
+              ✏️
+            </button>
+            <button class="btn btn-sm btn-danger shadow-sm" 
+                    (click)="removeFromFavorites(fav.id, $event)" 
+                    style="border-radius: 50%; width: 32px; height: 32px; padding: 0; line-height: 1;">
+              🗑️
+            </button>
+          </div>
+
+          <div (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+            <div class="fav-img-wrapper mb-2">
+              <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder-recipe.jpg'" 
+                   (error)="handleImageError($event)"
+                   class="img-fluid rounded shadow-sm"
+                   style="height: 150px; width: 100%; object-fit: cover;"
+                   [alt]="fav.title">
+            </div>
+            <span class="fw-bold text-dark d-block text-truncate px-2">{{ fav.title }}</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noFavs>
+      <div class="text-center py-4">
+        <p class="text-muted italic">עדיין אין לך מתכונים מועדפים. זה הזמן להוסיף כמה!</p>
+      </div>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <div class="text-center mt-5 py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">טוען...</span>
+    </div>
+    <p class="mt-3 text-muted">טוען נתוני משתמש...</p>
+  </div>
+</ng-template> -->
+
+
+
+
+<!--  <h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr>
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="my-recipes-management mb-5">
+    <h3 class="h4 fw-bold mb-4 text-center">המתכונים שפרסמתי</h3>
+    
+    <div *ngIf="myRecipes.length > 0; else noPublished" class="row">
+      <div *ngFor="let recipe of myRecipes" class="col-6 col-md-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 position-relative overflow-visible">
+          
+          <div class="d-flex gap-1" style="position: absolute; top: 8px; right: 8px; z-index: 10;">
+            <button class="btn btn-sm btn-light border shadow-sm rounded-circle" 
+                    (click)="editRecipe(recipe.id, $event)" title="ערוך מתכון"
+                    style="width: 32px; height: 32px; padding: 0;">✏️</button>
+            <button class="btn btn-sm btn-danger shadow-sm rounded-circle" 
+                    (click)="deleteRecipe(recipe.id, $event)" title="מחק מתכון"
+                    style="width: 32px; height: 32px; padding: 0;">🗑️</button>
+          </div>
+
+          <div (click)="goToRecipe(recipe.id)" style="cursor: pointer;">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder-recipe.jpg'" 
+                 class="card-img-top" style="height: 140px; object-fit: cover; border-radius: 8px 8px 0 0;">
+            <div class="card-body p-2 text-center">
+              <span class="fw-bold d-block text-truncate">{{ recipe.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noPublished>
+      <p class="text-center text-muted">עדיין לא פרסמת מתכונים משלך.</p>
+    </ng-template>
+    <hr>
+  </div>
+
+  <div class="actions-container d-flex flex-wrap gap-2 justify-content-center mb-4">
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : 'הצג מתכונים שאהבתי'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader'"
+      text="הגשת בקשה לאישור העלאה" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions d-flex gap-2">
+      <app-button text="כל המשתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+      <app-button text="משתמשים ממתינים" variant="warning" (btnClick)="goToAdmin('pending')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="הוספת מתכון חדש" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+-->
+<!-- <section class="favorites-display fade-in" *ngIf="showFavorites">
+  <h3 class="h4 fw-bold mb-4 text-center text-muted">מתכונים שאהבתי</h3>
+  <div *ngIf="favorites.length > 0; else noFavs" class="row">
+    <div *ngFor="let fav of favorites" class="col-6 col-md-2 mb-4">
+      <div class="text-center position-relative">
+        <button class="btn btn-sm btn-danger position-absolute top-0 start-0 m-1 rounded-circle"
+          (click)="removeFromFavorites(fav.id, $event)" style="width: 25px; height: 25px; padding: 0;">×</button>
+        <div (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+          <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder-recipe.jpg'"
+            class="img-fluid rounded shadow-sm mb-1" style="height: 100px; width: 100%; object-fit: cover;">
+          <small class="d-block text-truncate fw-bold">{{ fav.title }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noFavs>
+    <p class="text-center text-muted">אין מתכונים מועדפים להצגה.</p>
+  </ng-template>
+</section> -->
+
+<!-- </ng-container> -->
+
+<!-- <ng-template #loading>
+  <div class="text-center mt-5 py-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-3 text-muted">טוען נתונים...</p>
+  </div>
+</ng-template>  -->
+
+<!-- <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="stats-management-card mb-5">
+  <div class="card shadow-sm border-0 rounded-4 p-4 text-center bg-light">
+    <h3 class="h4 fw-bold mb-2">ניהול המתכונים שלי</h3>
+    <div class="display-5 fw-bold text-primary mb-2">{{ recipeCount }}</div>
+    <p class="text-muted">מתכונים פורסמו על ידך באתר</p>
+
+    <div class="d-flex justify-content-center gap-3 mt-3">
+      <button class="btn btn-primary rounded-pill px-4" (click)="router.navigate(['/my-recipes'])">
+        <i class="bi bi-eye me-2"></i>לצפייה וניהול המתכונים
+      </button>
+      <button class="btn btn-success rounded-pill px-4" (click)="goToAddRecipe()">
+        <i class="bi bi-plus-lg me-2"></i>הוסף מתכון חדש
+      </button>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="main-page-wrapper">
+  <div class="glass-card card-wide-profile">
+    
+    <div class="row g-0">
+      <div class="col-lg-4 border-start-custom">
+        <div class="profile-sidebar text-center p-4">
+          
+          <div class="profile-avatar-circle mx-auto mb-3">
+            {{ user?.username?.charAt(0) | uppercase }}
+          </div>
+
+          <app-user-detail [userData]="user"></app-user-detail>
+
+          <hr class="my-4 opacity-25">
+
+          <div class="d-grid gap-3">
+            <app-button 
+              text="➕ הוספת מתכון חדש" 
+              variant="btn-primary-custom" 
+              (btnClick)="goToAddRecipe()">
+            </app-button>
+
+            <app-button 
+              text="📖 המתכונים שלי" 
+              variant="btn-outline-custom" 
+              (btnClick)="router.navigate(['/my-recipes'])">
+            </app-button>
+
+            <app-button 
+              *ngIf="user?.role === 'Admin'"
+              text="⚙️ ניהול מערכת" 
+              variant="btn-admin-custom" 
+              (btnClick)="goToAdmin('users')">
+            </app-button>
+
+            <app-button 
+              *ngIf="user?.role === 'User'"
+              text="💎 שדרוג חשבון" 
+              variant="btn-upgrade-custom" 
+              (btnClick)="handleUpgradeRequest()">
+            </app-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="profile-content p-4">
+          <h2 class="auth-title mb-4">המרחב האישי שלי</h2>
+          
+          <div class="row g-3 mb-5">
+            <div class="col-md-6">
+              <div class="stat-box">
+                <span class="stat-icon">🍳</span>
+                <div class="stat-info">
+                  <span class="stat-value">{{ recipeCount }}</span>
+                  <span class="stat-label">מתכונים שפרסמתי</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="stat-box clickable" (click)="router.navigate(['/my-recipes'])">
+                <span class="stat-icon">❤️</span>
+                <div class="stat-info">
+                  <span class="stat-value">צפייה</span>
+                  <span class="stat-label">במועדפים שלי</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="welcome-banner p-4 rounded-4">
+            <h4>שמחים לראות אותך, {{ user?.username }}!</h4>
+            <p class="m-0 opacity-75">מה נבשל היום? הקהילה מחכה למתכון הבא שלך.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div> -->
+<!-- 
+<div class="main-page-wrapper">
+  <div class="glass-card card-wide-profile">
+    
+    <div class="row g-0">
+      <div class="col-lg-4 border-start-custom">
+        <div class="profile-sidebar text-center p-4">
+          
+          <div class="profile-avatar-circle mx-auto mb-3">
+            {{ user?.username?.charAt(0) | uppercase }}
+          </div>
+
+          <app-user-detail [userData]="user"></app-user-detail>
+
+          <hr class="my-4 opacity-25">
+
+          <div class="d-grid gap-3">
+            
+            <app-button 
+              *ngIf="user?.role === 'Admin' || user?.role === 'User'"
+              text="➕ הוספת מתכון חדש" 
+              variant="btn-primary-custom" 
+              (btnClick)="goToAddRecipe()">
+            </app-button>
+
+            <app-button 
+              *ngIf="user?.role === 'Admin' || user?.role === 'User'"
+              text="📖 המתכונים שלי" 
+              variant="btn-outline-custom" 
+              (btnClick)="router.navigate(['/my-recipes'])">
+            </app-button>
+
+            <app-button 
+              *ngIf="user?.role === 'Admin'"
+              text="⚙️ ניהול מערכת" 
+              variant="btn-admin-custom" 
+              (btnClick)="goToAdmin('users')">
+            </app-button>
+
+            <app-button 
+              *ngIf="user?.role === 'Viewer'"
+              text="💎 בקשת הרשאת פרסום" 
+              variant="btn-upgrade-custom" 
+              (btnClick)="handleUpgradeRequest()">
+            </app-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="profile-content p-4 text-end">
+          <h2 class="auth-title mb-4">שלום, {{ user?.username }}</h2>
+          
+          <div class="row g-3 mb-5" *ngIf="user?.role !== 'Viewer'">
+            <div class="col-md-6">
+              <div class="stat-box">
+                <span class="stat-icon">🍳</span>
+                <div class="stat-info">
+                  <span class="stat-value">{{ recipeCount }}</span>
+                  <span class="stat-label">מתכונים שפרסמתי</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="stat-box clickable" (click)="router.navigate(['/my-recipes'])">
+                <span class="stat-icon">❤️</span>
+                <div class="stat-info">
+                  <span class="stat-value">צפייה</span>
+                  <span class="stat-label">במועדפים שלי</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="user?.role === 'Viewer'" class="welcome-banner p-4 rounded-4 mb-4" style="background: #f1f5f9; border-right-color: #64748b;">
+            <h4 style="color: #475569;">חשבון לצפייה בלבד 👁️</h4>
+            <p class="m-0 text-muted">כרגע את/ה רשום כצופה. כדי לפרסם מתכונים משלך ולנהל מחברת אישית, יש לבקש שדרוג חשבון.</p>
+          </div>
+
+          <div *ngIf="user?.role !== 'Viewer'" class="welcome-banner p-4 rounded-4">
+            <h4>שמחים לראות אותך בשלן! ✨</h4>
+            <p class="m-0 opacity-75">הקהילה שלנו צמחה בזכות מתכונים כמו שלך.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div> -->
+<!-- <div class="main-page-wrapper">
+  <div class="glass-card card-wide-profile">
+    <div class="row g-0">
+      <div class="col-lg-4 border-start-custom">
+        <div class="profile-sidebar text-center p-4">
+          
+          <div class="profile-avatar-circle mx-auto mb-3" [class.viewer]="user?.role === 'Viewer'">
+            {{ user?.username?.charAt(0) | uppercase }}
+          </div>
+
+          <app-user-detail [userData]="user"></app-user-detail>
+
+          <hr class="my-4 opacity-25">
+
+          <div class="d-grid gap-3">
+            <ng-container *ngIf="user?.role !== 'Viewer'">
+              <app-button text="➕ הוספת מתכון חדש" variant="btn-primary-custom" (btnClick)="goToAddRecipe()"></app-button>
+              <app-button text="📖 המתכונים שלי" variant="btn-outline-custom" (btnClick)="router.navigate(['/my-recipes'])"></app-button>
+            </ng-container>
+
+            <app-button *ngIf="user?.role === 'Admin'" text="⚙️ ניהול מערכת" variant="btn-admin-custom" (btnClick)="goToAdmin('users')"></app-button>
+
+            <app-button *ngIf="user?.role === 'Viewer'" text="💎 בקשת הרשאת פרסום" variant="btn-upgrade-custom" (btnClick)="handleUpgradeRequest()"></app-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="profile-content p-4 text-end">
+          <h2 class="auth-title mb-4">שלום, {{ user?.username }}</h2>
+          
+          <div class="row g-3 mb-5" *ngIf="user?.role !== 'Viewer'">
+            <div class="col-md-6">
+              <div class="stat-box">
+                <span class="stat-icon">🍳</span>
+                <div class="stat-info">
+                  <span class="stat-value">{{ recipeCount }}</span>
+                  <span class="stat-label">מתכונים שפרסמתי</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="stat-box clickable" (click)="router.navigate(['/my-recipes'])">
+                <span class="stat-icon">❤️</span>
+                <div class="stat-info">
+                  <span class="stat-value">צפייה</span>
+                  <span class="stat-label">במועדפים שלי</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="user?.role === 'Viewer'" class="welcome-banner viewer p-4 rounded-4">
+            <h4 class="fw-bold">חשבון לצפייה בלבד 👁️</h4>
+            <p class="m-0">כרגע את/ה רשום כצופה. כדי לפרסם מתכונים משלך, יש לבקש שדרוג חשבון.</p>
+          </div>
+
+          <div *ngIf="user?.role !== 'Viewer'" class="welcome-banner p-4 rounded-4">
+            <h4>שמחים לראות אותך בשלן! ✨</h4>
+            <p class="m-0 opacity-75">הקהילה שלנו מחכה למתכונים החדשים שלך.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="main-page-wrapper">
+  <div class="glass-card card-wide-profile">
+    <div class="row g-0">
+      
+      <div class="col-lg-4 border-start-custom">
+        <div class="profile-sidebar text-center p-4">
+          
+          <div class="profile-avatar-circle mx-auto mb-3" [class.viewer]="user?.role === 'Viewer'">
+            {{ user?.username?.charAt(0) | uppercase }}
+          </div>
+
+          <app-user-detail [userData]="user"></app-user-detail>
+
+          <hr class="my-4 opacity-25">
+
+          <div class="d-grid gap-3">
+            <ng-container *ngIf="user?.role === 'Admin' || user?.role === 'User'">
+              <app-button 
+                text="➕ הוספת מתכון חדש" 
+                variant="btn-primary-custom" 
+                (btnClick)="goToAddRecipe()">
+              </app-button>
+              <app-button 
+                text="📖 המתכונים שלי" 
+                variant="btn-outline-custom" 
+                (btnClick)="router.navigate(['/my-recipes'])">
+              </app-button>
+            </ng-container>
+
+            <app-button 
+              *ngIf="user?.role === 'Admin'" 
+              text="⚙️ ניהול בקשות והרשאות" 
+              variant="btn-admin-custom" 
+              (btnClick)="goToAdmin('users')">
+            </app-button>
+
+            <app-button 
+              *ngIf="user?.role === 'Viewer'" 
+              [text]="isPending ? '⏳ בקשה נשלחה' : '💎 בקשת הרשאת פרסום'" 
+              [variant]="isPending ? 'btn-outline-secondary' : 'btn-upgrade-custom'" 
+              (btnClick)="!isPending && handleUpgradeRequest()">
+            </app-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="profile-content p-4 text-end">
+          <h2 class="auth-title mb-4">שלום, {{ user?.username }}</h2>
+          
+          <div class="row g-3 mb-5" *ngIf="user?.role !== 'Viewer'">
+            <div class="col-md-6">
+              <div class="stat-box">
+                <span class="stat-icon">🍳</span>
+                <div class="stat-info">
+                  <span class="stat-value">{{ recipeCount }}</span>
+                  <span class="stat-label">מתכונים שפרסמתי</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="stat-box clickable" (click)="router.navigate(['/my-recipes'])">
+                <span class="stat-icon">❤️</span>
+                <div class="stat-info">
+                  <span class="stat-value">צפייה</span>
+                  <span class="stat-label">במועדפים שלי</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="user?.role === 'Viewer'" class="welcome-banner viewer p-4 rounded-4">
+            <h4 class="fw-bold">חשבון לצפייה בלבד 👁️</h4>
+            <p class="m-0">כרגע אינך יכול/ה לפרסם מתכונים. לחץ/י על הכפתור מימין כדי לבקש אישור פרסום מהנהלת האתר.</p>
+          </div>
+
+          <div *ngIf="user?.role !== 'Viewer'" class="welcome-banner p-4 rounded-4">
+            <h4>מוכנים לבשל משהו חדש? ✨</h4>
+            <p class="m-0 opacity-75">כאן ניתן לנהל את כל המתכונים ששיתפת עם הקהילה.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="main-page-wrapper">
+  <div class="glass-card card-wide-profile">
+    <div class="row g-0">
+      
+      <div class="col-lg-4 border-start-custom">
+        <div class="profile-sidebar text-center p-4">
+          <div class="profile-avatar-circle mx-auto mb-3" 
+               [ngClass]="{'viewer': user?.role === 'Viewer', 'pending': user?.role === 'Pending'}">
+            {{ user?.username?.charAt(0) | uppercase }}
+          </div>
+
+          <app-user-detail [userData]="user"></app-user-detail>
+
+          <hr class="my-4 opacity-25">
+
+          <div class="d-grid gap-3">
+            <ng-container *ngIf="user?.role === 'Admin' || user?.role === 'Uploader' || user?.role === 'User'">
+              <app-button text="➕ הוספת מתכון חדש" variant="btn-primary-custom" (btnClick)="goToAddRecipe()"></app-button>
+              <app-button text="📖 המתכונים שלי" variant="btn-outline-custom" (btnClick)="router.navigate(['/my-recipes'])"></app-button>
+            </ng-container>
+
+            <app-button *ngIf="user?.role === 'Admin'" text="⚙️ ניהול בקשות שדרוג" variant="btn-admin-custom" (btnClick)="goToAdmin('users')"></app-button>
+
+            <app-button *ngIf="user?.role === 'Viewer'" text="💎 בקשת הרשאת פרסום" variant="btn-upgrade-custom" (btnClick)="handleUpgradeRequest()"></app-button>
+
+            <div *ngIf="user?.role === 'Pending'" class="alert alert-warning py-2 rounded-4" style="font-size: 0.9rem; font-weight: 700;">
+               הבקשה שלך בטיפול מנהל...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="profile-content p-4 text-end">
+          <h2 class="auth-title mb-4">שלום, {{ user?.username }}</h2>
+          
+          <div class="row g-3 mb-5" *ngIf="user?.role === 'Uploader' || user?.role === 'Admin'">
+            <div class="col-md-6">
+              <div class="stat-box">
+                <span class="stat-icon">🍳</span>
+                <div class="stat-info">
+                  <span class="stat-value">{{ recipeCount }}</span>
+                  <span class="stat-label">מתכונים שפרסמתי</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="stat-box clickable" (click)="router.navigate(['/my-recipes'])">
+                <span class="stat-icon">❤️</span>
+                <div class="stat-info">
+                  <span class="stat-value">צפייה</span>
+                  <span class="stat-label">במועדפים שלי</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="user?.role === 'Pending'" class="welcome-banner viewer p-4 rounded-4 shadow-sm" style="border-right-color: #f59e0b;">
+            <h4 style="color: #92400e;">הבקשה נשלחה בהצלחה! ⏳</h4>
+            <p class="m-0">מנהל המערכת בוחן את בקשתך. ברגע שיאשר, תוכל/י להתחיל להוסיף מתכונים משלך.</p>
+          </div>
+
+          <div *ngIf="user?.role === 'Viewer'" class="welcome-banner viewer p-4 rounded-4 shadow-sm">
+            <h4>רוצה לשתף מתכונים? 👁️</h4>
+            <p class="m-0">כדי להוסיף מתכונים חדשים למערכת, יש להגיש בקשת שדרוג לצד הפרופיל שלך.</p>
+          </div>
+
+          <div *ngIf="user?.role === 'Uploader' || user?.role === 'Admin'" class="welcome-banner p-4 rounded-4 shadow-sm">
+            <h4>איזה כיף שחזרת! ✨</h4>
+            <p class="m-0 opacity-75">מה נבשל היום? מחכים למתכון הבא שלך.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="main-page-wrapper">
+  <div class="glass-card card-wide-profile">
+    
+    <div class="row g-0 h-100">
+      <div class="col-lg-4 sidebar-bg text-center p-4">
+        
+        <div class="profile-avatar-circle mx-auto mb-3" 
+             [ngClass]="{
+               'viewer-color': user?.role === 'Viewer',
+               'pending-color': user?.role === 'Pending',
+               'uploader-color': user?.role === 'Uploader' || user?.role === 'Admin'
+             }">
+          {{ user?.username?.charAt(0) | uppercase }}
+        </div>
+
+        <app-user-detail [userData]="user"></app-user-detail>
+
+        <hr class="my-4 opacity-25">
+
+        <div class="d-grid gap-3 px-3">
+          
+          <ng-container *ngIf="user?.role === 'Uploader' || user?.role === 'Admin'">
+            <app-button text="➕ הוספת מתכון" variant="btn-primary-custom" (btnClick)="goToAddRecipe()"></app-button>
+            <app-button text="📖 המתכונים שלי" variant="btn-outline-custom" (btnClick)="router.navigate(['/my-recipes'])"></app-button>
+          </ng-container>
+
+          <app-button *ngIf="user?.role === 'Admin'" text="⚙️ ניהול משתמשים" variant="btn-admin-custom" (btnClick)="goToAdmin('users')"></app-button>
+
+          <app-button *ngIf="user?.role === 'Viewer'" text="💎 בקשת הרשאת פרסום" variant="btn-upgrade-custom" (btnClick)="handleUpgradeRequest()"></app-button>
+          
+          <div *ngIf="user?.role === 'Pending'" class="pending-tag">
+             ⏳ בקשת שדרוג בטיפול
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-8 p-5 text-end">
+        <h2 class="auth-title mb-4">מרחב אישי: {{ user?.username }}</h2>
+        
+        <div class="row g-3 mb-5" *ngIf="user?.role === 'Uploader' || user?.role === 'Admin'">
+          <div class="col-md-6">
+            <div class="stat-box shadow-sm">
+              <span class="stat-icon">🍳</span>
+              <div class="stat-info">
+                <span class="stat-value">{{ recipeCount }}</span>
+                <span class="stat-label">מתכונים שפרסמתי</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="stat-box shadow-sm clickable" (click)="router.navigate(['/my-recipes'])">
+              <span class="stat-icon">❤️</span>
+              <div class="stat-info">
+                <span class="stat-value">צפייה</span>
+                <span class="stat-label">במועדפים שלי</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div [ngSwitch]="user?.role">
+          <div *ngSwitchCase="'Pending'" class="welcome-banner pending shadow-sm">
+            <h4>הבקשה שלך התקבלה! ⏳</h4>
+            <p>אנחנו בודקים את הפרופיל שלך. בקרוב תוכל/י לשתף מתכונים עם כולם.</p>
+          </div>
+
+          <div *ngSwitchCase="'Viewer'" class="welcome-banner viewer shadow-sm">
+            <h4>ברוכים הבאים למחברת המתכונים! 👁️</h4>
+            <p>כרגע את/ה במצב קריאה. רוצה להפוך לבשלן/ית בקהילה? לחץ/י על השדרוג בצד.</p>
+          </div>
+
+          <div *ngSwitchDefault class="welcome-banner success shadow-sm">
+            <h4>איזה כיף שחזרת! ✨</h4>
+            <p>הקהילה מחכה לגלות מה התבשיל הבא שלך.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr class="my-4">
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="my-recipes-management mb-5">
+    <h3 class="h5 fw-bold mb-4 text-center">🥘 המתכונים שפרסמתי ({{ myRecipes.length }})</h3>
+    
+    <div *ngIf="myRecipes.length > 0; else noPublished" class="row justify-content-center">
+      <div *ngFor="let recipe of myRecipes" class="col-6 col-md-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 position-relative overflow-visible">
+          <div class="d-flex gap-1" style="position: absolute; top: 8px; right: 8px; z-index: 10;">
+            <button class="btn btn-sm btn-light border shadow-sm rounded-circle" (click)="editRecipe(recipe.id, $event)">✏️</button>
+            <button class="btn btn-sm btn-danger shadow-sm rounded-circle" (click)="deleteRecipe(recipe.id, $event)">🗑️</button>
+          </div>
+
+          <div (click)="goToRecipe(recipe.id)" style="cursor: pointer;">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder-recipe.jpg'" 
+                 class="card-img-top" style="height: 140px; object-fit: cover; border-radius: 8px 8px 0 0;">
+            <div class="card-body p-2 text-center">
+              <span class="fw-bold d-block text-truncate">{{ recipe.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noPublished>
+      <p class="text-center text-muted italic">עדיין לא פרסמת מתכונים משלך.</p>
+    </ng-template>
+    <hr class="my-4">
+  </div>
+
+  <div class="actions-container d-flex flex-wrap gap-3 justify-content-center mb-5">
+    
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : '❤️ הצג מתכונים שאהבתי'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader' || user.role === 'Viewer'"
+      text="💎 בקשת הרשאת פרסום" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Pending'" class="alert alert-warning m-0 py-2 px-3 rounded-pill">
+      ⏳ בקשת השדרוג שלך ממתינה לאישור מנהל
+    </div>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions d-flex gap-2">
+      <app-button text="👥 כל המשתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+      <app-button text="🔔 ממתינים" variant="warning" (btnClick)="goToAdmin('pending')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="➕ הוספת מתכון חדש" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section class="favorites-display fade-in shadow-sm p-4 bg-light rounded-4" *ngIf="showFavorites">
+    <h3 class="h5 fw-bold mb-4 text-center text-muted">מתכונים שסימנתי באהבה</h3>
+    <div *ngIf="favorites.length > 0; else noFavs" class="row">
+      <div *ngFor="let fav of favorites" class="col-6 col-md-3 mb-4">
+        <div class="card h-100 border-0 shadow-sm transition-hover" (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+          <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder-recipe.jpg'" 
+               class="card-img-top" style="height: 120px; object-fit: cover;">
+          <div class="card-body p-2 text-center">
+            <small class="fw-bold text-truncate d-block">{{ fav.title }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noFavs>
+      <p class="text-center text-muted italic">עדיין לא הוספת מתכונים למועדפים.</p>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <div class="text-center mt-5 py-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-3 text-muted">טוען נתוני משתמש...</p>
+  </div>
+</ng-template> -->
+<!-- <h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr class="my-5">
+
+  <div class="actions-container d-flex flex-wrap gap-3 justify-content-center mb-5">
+    
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : 'הצג מועדפים ❤️'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader'"
+      text="בקשת אישור העלאה 👨‍🍳" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions d-flex gap-2">
+      <app-button text="ניהול משתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="הוספת מתכון חדש +" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="my-recipes mb-5 fade-in">
+    <h3 class="h4 fw-bold mb-4 text-center">המתכונים שפרסמתי ({{ recipeCount }})</h3>
+    <div *ngIf="myRecipes.length > 0; else noRecipes" class="row">
+      <div *ngFor="let recipe of myRecipes" class="col-6 col-md-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 recipe-card-hover position-relative">
+          
+          <div class="action-badges">
+            <button class="btn btn-light border shadow-sm" (click)="editRecipe(recipe.id, $event)">✏️</button>
+            <button class="btn btn-danger shadow-sm" (click)="deleteRecipe(recipe.id, $event)">🗑️</button>
+          </div>
+
+          <div (click)="goToRecipe(recipe.id)">
+            <div class="recipe-img-wrapper">
+              <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" 
+                   (error)="handleImageError($event)" alt="מתכון">
+            </div>
+            <div class="p-2 text-center">
+              <span class="fw-bold text-dark d-block text-truncate">{{ recipe.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noRecipes>
+      <p class="text-center text-muted italic">עדיין לא פרסמת מתכונים.</p>
+    </ng-template>
+  </section>
+
+  <section class="favorites-display fade-in" *ngIf="showFavorites">
+    <hr>
+    <h3 class="h4 fw-bold mb-4 text-center">המועדפים שלי ❤️</h3>
+    <div *ngIf="favorites.length > 0; else noFavs" class="row">
+      <div *ngFor="let fav of favorites" class="col-6 col-md-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 recipe-card-hover position-relative">
+          
+          <div class="action-badges">
+            <button class="btn btn-danger shadow-sm" (click)="removeFromFavorites(fav.id, $event)">💔</button>
+          </div>
+
+          <div (click)="goToRecipe(fav.id)">
+            <div class="recipe-img-wrapper">
+              <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder.jpg'" 
+                   (error)="handleImageError($event)" alt="מתכון">
+            </div>
+            <div class="p-2 text-center">
+              <span class="fw-bold text-dark d-block text-truncate">{{ fav.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noFavs>
+      <p class="text-center text-muted">רשימת המועדפים שלך ריקה.</p>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <div class="text-center mt-5 py-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-3 text-muted">טוען נתוני פרופיל...</p>
+  </div>
+</ng-template> -->
+
+<!-- <div class="profile-container">
+    <ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+        
+        <div class="card-wide-profile mb-5 fade-up">
+            <app-user-detail 
+                [userData]="user"
+                (onUpgradeRequest)="handleUpgradeRequest()">
+            </app-user-detail>
+        </div>
+
+        <div class="action-bar fade-up" style="animation-delay: 0.1s;">
+            <app-button 
+                [text]="showFavorites ? 'הסתר מועדפים' : 'הצג מועדפים ❤️'" 
+                variant="secondary" 
+                (btnClick)="toggleFavorites()">
+            </app-button>
+
+            <app-button *ngIf="user.role === 'Reader'"
+                text="בקשת אישור העלאה 👨‍🍳" 
+                variant="primary" 
+                (btnClick)="handleUpgradeRequest()">
+            </app-button>
+
+            <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+                text="הוספת מתכון חדש +" 
+                variant="success" 
+                (btnClick)="goToAddRecipe()">
+            </app-button>
+        </div>
+
+        <section *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="mb-5 fade-up" style="animation-delay: 0.2s;">
+            <h3 class="section-title">המתכונים שלי ({{ recipeCount }})</h3>
+            
+            <div *ngIf="myRecipes.length > 0; else noRecipes" class="row">
+                <div *ngFor="let recipe of myRecipes" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="recipe-card shadow-sm">
+                        <div class="recipe-img-container">
+                            <div class="floating-actions">
+                                <button class="action-btn btn-edit" (click)="editRecipe(recipe.id, $event)">✏️</button>
+                                <button class="action-btn btn-delete" (click)="deleteRecipe(recipe.id, $event)">🗑️</button>
+                            </div>
+                            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" 
+                                 (error)="handleImageError($event)" 
+                                 (click)="goToRecipe(recipe.id)">
+                        </div>
+                        <div class="p-3 text-center" (click)="goToRecipe(recipe.id)" style="cursor:pointer">
+                            <span class="fw-bold text-dark d-block text-truncate">{{ recipe.title }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <ng-template #noRecipes>
+                <div class="text-center p-5 bg-light rounded-4">
+                    <p class="text-muted mb-0">עדיין לא פרסמת מתכונים. זה הזמן להתחיל!</p>
+                </div>
+            </ng-template>
+        </section>
+
+        <section *ngIf="showFavorites" class="fade-up" style="animation-delay: 0.3s;">
+            <h3 class="section-title">מתכונים שאהבתי ❤️</h3>
+            <div *ngIf="favorites.length > 0; else noFavs" class="row">
+                <div *ngFor="let fav of favorites" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="recipe-card shadow-sm">
+                        <div class="recipe-img-container">
+                            <div class="floating-actions">
+                                <button class="action-btn btn-delete" (click)="removeFromFavorites(fav.id, $event)">💔</button>
+                            </div>
+                            <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder.jpg'" 
+                                 (error)="handleImageError($event)" 
+                                 (click)="goToRecipe(fav.id)">
+                        </div>
+                        <div class="p-3 text-center" (click)="goToRecipe(fav.id)" style="cursor:pointer">
+                            <span class="fw-bold text-dark d-block text-truncate">{{ fav.title }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #noFavs>
+                <p class="text-center text-muted">רשימת המועדפים שלך ריקה.</p>
+            </ng-template>
+        </section>
+
+    </ng-container>
+</div>
+
+<ng-template #loading>
+    <div class="text-center py-5 mt-5">
+        <div class="spinner-grow text-success" role="status"></div>
+        <p class="mt-3 text-muted fw-bold">מכינים את הפרופיל שלך...</p>
+    </div>
+</ng-template> -->
+<!-- <div class="profile-wrapper">
+  <ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+    
+    <div class="user-profile-section animate__animated animate__fadeIn">
+      <app-user-detail 
+        [userData]="user"
+        (onUpgradeRequest)="handleUpgradeRequest()">
+      </app-user-detail>
+    </div>
+
+    <div class="action-pills">
+      <app-button 
+        [text]="showFavorites ? 'הסתר מועדפים' : 'המועדפים שלי ❤️'" 
+        variant="outline" 
+        (btnClick)="toggleFavorites()">
+      </app-button>
+
+      <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+        text="מתכון חדש +" 
+        variant="success" 
+        (btnClick)="goToAddRecipe()">
+      </app-button>
+      
+      <app-button *ngIf="user.role === 'Admin'"
+        text="ניהול מערכת ⚙️" 
+        variant="admin" 
+        (btnClick)="goToAdmin('all')">
+      </app-button>
+    </div>
+
+    <section *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="mb-5">
+      <h3 class="sub-title">היצירות שלי</h3>
+      <div *ngIf="myRecipes.length > 0; else noRecipes" class="recipes-grid">
+        <div *ngFor="let recipe of myRecipes" class="recipe-item">
+          
+          <div class="overlay-controls">
+            <button class="mini-btn btn-edit" (click)="editRecipe(recipe.id, $event)">✎</button>
+            <button class="mini-btn btn-del" (click)="deleteRecipe(recipe.id, $event)">✕</button>
+          </div>
+
+          <div (click)="goToRecipe(recipe.id)" class="cursor-pointer">
+            <div class="img-holder">
+              <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" 
+                   (error)="handleImageError($event)">
+            </div>
+            <div class="recipe-info">
+              <span class="recipe-title">{{ recipe.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noRecipes>
+        <p class="text-center text-muted py-4">עוד לא העלית מתכונים... הגיע הזמן!</p>
+      </ng-template>
+    </section>
+
+    <section *ngIf="showFavorites" class="animate__animated animate__fadeInUp">
+      <h3 class="sub-title">אהבתי ❤️</h3>
+      <div *ngIf="favorites.length > 0; else noFavs" class="recipes-grid">
+        <div *ngFor="let fav of favorites" class="recipe-item">
+          <div class="overlay-controls">
+            <button class="mini-btn btn-del" (click)="removeFromFavorites(fav.id, $event)">✕</button>
+          </div>
+          <div (click)="goToRecipe(fav.id)" class="cursor-pointer">
+            <div class="img-holder">
+              <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder.jpg'" 
+                   (error)="handleImageError($event)">
+            </div>
+            <div class="recipe-info">
+              <span class="recipe-title">{{ fav.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </ng-container>
+</div>
+
+<ng-template #loading>
+  <div class="text-center py-5">
+    <div class="spinner-border text-secondary opacity-50"></div>
+  </div>
+</ng-template> -->
+
+
+<!-- <div class="profile-wrapper">
+  <ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+    
+    <div class="user-profile-section animate__animated animate__fadeIn">
+      <app-user-detail 
+        [userData]="user"
+        (onUpgradeRequest)="handleUpgradeRequest()">
+      </app-user-detail>
+    </div>
+
+    <div class="action-pills">
+      <app-button 
+        [text]="showFavorites ? 'הסתר מועדפים' : 'המועדפים שלי ❤️'" 
+        variant="outline" 
+        (btnClick)="toggleFavorites()">
+      </app-button>
+
+      <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+        text="מתכון חדש +" 
+        variant="success" 
+        (btnClick)="goToAddRecipe()">
+      </app-button>
+      
+      <app-button *ngIf="user.role === 'Admin'"
+        text="ניהול מערכת ⚙️" 
+        variant="admin" 
+        (btnClick)="goToAdmin('all')">
+      </app-button>
+    </div>
+
+    <section *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="mb-5">
+      <h3 class="sub-title">היצירות שלי</h3>
+      
+      <div *ngIf="myRecipes && myRecipes.length > 0; else noRecipes" class="recipes-grid">
+        <div *ngFor="let recipe of myRecipes" class="recipe-item">
+          <div class="overlay-controls">
+            <button class="mini-btn btn-edit" (click)="editRecipe(recipe.id, $event)" title="ערוך">✎</button>
+            <button class="mini-btn btn-del" (click)="deleteRecipe(recipe.id, $event)" title="מחק">✕</button>
+          </div>
+
+          <div (click)="goToRecipe(recipe.id)" class="cursor-pointer">
+            <div class="img-holder">
+              <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" 
+                   (error)="handleImageError($event)" alt="תמונת מתכון">
+            </div>
+            <div class="recipe-info">
+              <span class="recipe-title">{{ recipe.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="showFavorites" class="animate__animated animate__fadeInUp">
+      <h3 class="sub-title">אהבתי ❤️</h3>
+      
+      <div *ngIf="favorites && favorites.length > 0; else noFavs" class="recipes-grid">
+        <div *ngFor="let fav of favorites" class="recipe-item">
+          <div class="overlay-controls">
+            <button class="mini-btn btn-del" (click)="removeFromFavorites(fav.id, $event)" title="הסר מהמועדפים">✕</button>
+          </div>
+          <div (click)="goToRecipe(fav.id)" class="cursor-pointer">
+            <div class="img-holder">
+              <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder.jpg'" 
+                   (error)="handleImageError($event)" alt="תמונת מתכון">
+            </div>
+            <div class="recipe-info">
+              <span class="recipe-title">{{ fav.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </ng-container>
+</div>
+
+<ng-template #noRecipes>
+  <div class="empty-state text-center py-4">
+    <p class="text-muted">עוד לא העלית מתכונים... הגיע הזמן!</p>
+  </div>
+</ng-template>
+
+<ng-template #noFavs>
+  <div class="empty-state text-center py-4">
+    <p class="text-muted">עדיין אין לך מתכונים מועדפים.</p>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <div class="text-center py-5">
+    <div class="spinner-border text-secondary opacity-50" role="status">
+      <span class="visually-hidden">טוען...</span>
+    </div>
+  </div>
+</ng-template> -->
+<!-- 
+<div class="profile-wrapper">
+  <ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+    
+    <div class="user-profile-section animate__animated animate__fadeIn">
+      <div class="user-header-info">
+        <h2 class="mb-0 fw-black">{{ user.name || 'sari' }}</h2>
+        <div class="admin-badge" *ngIf="user.role === 'Admin'">👑 מנהל מערכת</div>
+      </div>
+      
+      <app-user-detail 
+        [userData]="user"
+        (onUpgradeRequest)="handleUpgradeRequest()">
+      </app-user-detail>
+    </div>
+
+    <div class="action-pills">
+      <app-button 
+        [text]="showFavorites ? 'הסתר מועדפים' : 'המועדפים שלי ❤️'" 
+        variant="outline" 
+        (btnClick)="toggleFavorites()">
+      </app-button>
+
+      <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+        text="מתכון חדש +" 
+        variant="success" 
+        (btnClick)="goToAddRecipe()">
+      </app-button>
+      
+      <app-button *ngIf="user.role === 'Admin'"
+        text="ניהול מערכת ⚙️" 
+        variant="admin" 
+        (btnClick)="goToAdmin('all')">
+      </app-button>
+    </div>
+
+    <section *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="mb-5">
+      <h3 class="sub-title">היצירות שלי</h3>
+      
+      <div *ngIf="myRecipes && myRecipes.length > 0; else noRecipes" class="recipes-grid">
+        <div *ngFor="let recipe of myRecipes" class="recipe-item">
+          <div class="overlay-controls">
+            <button class="mini-btn btn-edit" (click)="editRecipe(recipe.id, $event)">✎</button>
+            <button class="mini-btn btn-del" (click)="deleteRecipe(recipe.id, $event)">✕</button>
+          </div>
+
+          <div (click)="goToRecipe(recipe.id)" class="cursor-pointer">
+            <div class="img-holder">
+              <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" 
+                   (error)="handleImageError($event)">
+            </div>
+            <div class="recipe-info">
+              <span class="recipe-title">{{ recipe.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="showFavorites" class="animate__animated animate__fadeInUp">
+      <h3 class="sub-title">אהבתי ❤️</h3>
+      
+      <div *ngIf="favorites && favorites.length > 0; else noFavs" class="recipes-grid">
+        <div *ngFor="let fav of favorites" class="recipe-item">
+          <div class="overlay-controls">
+            <button class="mini-btn btn-del" (click)="removeFromFavorites(fav.id, $event)">✕</button>
+          </div>
+          <div (click)="goToRecipe(fav.id)" class="cursor-pointer">
+            <div class="img-holder">
+              <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder.jpg'" 
+                   (error)="handleImageError($event)">
+            </div>
+            <div class="recipe-info">
+              <span class="recipe-title">{{ fav.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </ng-container>
+</div>
+
+<ng-template #noRecipes>
+  <div class="empty-state text-center py-5">
+    <p class="text-muted fs-5">עוד לא העלית מתכונים... הגיע הזמן!</p>
+  </div>
+</ng-template>
+
+<ng-template #noFavs>
+  <div class="empty-state text-center py-5">
+    <p class="text-muted fs-5">עדיין אין לך מתכונים מועדפים.</p>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <div class="text-center py-5 mt-5">
+    <div class="spinner-border text-warning" role="status"></div>
+    <p class="mt-3 text-muted">טוען את הפרופיל היוקרתי שלך...</p>
+  </div>
+</ng-template> -->
+<!-- <div class="profile-wrapper">
+  <ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+    
+    <div class="user-profile-section animate__animated animate__fadeIn">
+      <div class="profile-header-content">
+        <div class="name-avatar">
+          {{ (user.username || 'S')[0] | uppercase }}
+        </div>
+        
+        <h2 class="user-display-name">{{ user.username }}</h2>
+        <div class="admin-badge" *ngIf="user.role === 'Admin'">👑 מנהל מערכת</div>
+      </div>
+
+      <div class="action-pills mt-4">
+        <app-button 
+          class="pill-btn"
+          [text]="showFavorites ? 'הסתר מועדפים' : 'המועדפים שלי ❤️'" 
+          variant="outline" 
+          (btnClick)="toggleFavorites()">
+        </app-button>
+
+        <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+          class="pill-btn"
+          text="מתכון חדש +" 
+          variant="success" 
+          (btnClick)="goToAddRecipe()">
+        </app-button>
+        
+        <app-button *ngIf="user.role === 'Admin'"
+          class="pill-btn"
+          text="ניהול מערכת ⚙️" 
+          variant="admin" 
+          (btnClick)="goToAdmin('all')">
+        </app-button>
+      </div>
+    </div>
+
+    <section *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="mb-5">
+      <h3 class="sub-title">היצירות שלי</h3>
+      <div *ngIf="myRecipes && myRecipes.length > 0; else noRecipes" class="recipes-grid">
+        <div *ngFor="let recipe of myRecipes" class="recipe-item">
+          <div class="overlay-controls">
+            <button class="mini-btn btn-edit" (click)="editRecipe(recipe.id, $event)">✎</button>
+            <button class="mini-btn btn-del" (click)="deleteRecipe(recipe.id, $event)">✕</button>
+          </div>
+          <div (click)="goToRecipe(recipe.id)" class="cursor-pointer">
+            <div class="img-holder">
+              <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'">
+            </div>
+            <div class="recipe-info">
+              <span class="recipe-title">{{ recipe.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="showFavorites" class="animate__animated animate__fadeInUp">
+      <h3 class="sub-title">אהבתי ❤️</h3>
+      <div *ngIf="favorites && favorites.length > 0; else noFavs" class="recipes-grid">
+        <div *ngFor="let fav of favorites" class="recipe-item">
+          <div class="overlay-controls">
+            <button class="mini-btn btn-del" (click)="removeFromFavorites(fav.id, $event)">✕</button>
+          </div>
+          <div (click)="goToRecipe(fav.id)" class="cursor-pointer">
+            <div class="img-holder">
+              <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder.jpg'">
+            </div>
+            <div class="recipe-info">
+              <span class="recipe-title">{{ fav.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </ng-container>
+</div>
+
+<ng-template #noRecipes><p class="empty-msg">עוד לא העלית מתכונים...</p></ng-template>
+<ng-template #noFavs><p class="empty-msg">עדיין אין מועדפים.</p></ng-template>
+<ng-template #loading><div class="loader">טוען...</div></ng-template> -->
+
+<!-- <h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr class="my-5">
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="my-recipes-management mb-5">
+    <h3 class="h4 fw-bold mb-4 text-center">המתכונים שפרסמתי 🍳</h3>
+    
+    <div *ngIf="myRecipes.length > 0; else noPublished" class="row justify-content-center">
+      <div *ngFor="let recipe of myRecipes" class="col-6 col-md-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 position-relative">
+          
+          <div class="d-flex gap-1" style="position: absolute; top: 8px; right: 8px; z-index: 10;">
+            <button class="btn btn-sm btn-light border shadow-sm rounded-circle" 
+                    (click)="editRecipe(recipe.id, $event)" title="ערוך מתכון"
+                    style="width: 32px; height: 32px; padding: 0;">✏️</button>
+            <button class="btn btn-sm btn-danger shadow-sm rounded-circle" 
+                    (click)="deleteRecipe(recipe.id, $event)" title="מחק מתכון"
+                    style="width: 32px; height: 32px; padding: 0;">🗑️</button>
+          </div>
+
+          <div (click)="goToRecipe(recipe.id)" style="cursor: pointer;">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder-recipe.jpg'" 
+                 class="card-img-top" style="height: 140px; object-fit: cover; border-radius: 8px 8px 0 0;">
+            <div class="card-body p-2 text-center">
+              <span class="fw-bold d-block text-truncate">{{ recipe.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noPublished>
+      <p class="text-center text-muted">עדיין לא פרסמת מתכונים משלך.</p>
+    </ng-template>
+    <hr class="my-5">
+  </div>
+
+  <div class="actions-container d-flex flex-wrap gap-2 justify-content-center mb-5">
+    
+    <app-button 
+      [text]="showFavorites ? 'הסתר מועדפים' : 'המועדפים שלי ❤️'" 
+      variant="secondary" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader' || user.role === 'User'"
+      text="הגשת בקשה לאישור העלאה 🚀" 
+      variant="primary" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <div *ngIf="user.role === 'Admin'" class="admin-actions d-flex gap-2">
+      <app-button text="כל המשתמשים" variant="admin" (btnClick)="goToAdmin('all')"></app-button>
+      <app-button text="משתמשים ממתינים" variant="warning" (btnClick)="goToAdmin('pending')"></app-button>
+    </div>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      text="הוספת מתכון חדש +" 
+      variant="success" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section class="favorites-display fade-in" *ngIf="showFavorites">
+    <h3 class="h4 fw-bold mb-4 text-center text-primary">מתכונים שאהבתי ❤️</h3>
+    
+    <div *ngIf="favorites.length > 0; else noFavs" class="row justify-content-center">
+      <div *ngFor="let fav of favorites" class="col-6 col-md-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 position-relative">
+          
+          <div style="position: absolute; top: 8px; right: 8px; z-index: 10;">
+            <button class="btn btn-sm btn-danger shadow-sm rounded-circle" 
+                    (click)="removeFromFavorites(fav.id, $event)" title="הסר מהמועדפים"
+                    style="width: 32px; height: 32px; padding: 0;">🗑️</button>
+          </div>
+
+          <div (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+            <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder-recipe.jpg'" 
+                 class="card-img-top" style="height: 140px; object-fit: cover; border-radius: 8px 8px 0 0;">
+            <div class="card-body p-2 text-center">
+              <span class="fw-bold d-block text-truncate">{{ fav.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noFavs>
+      <div class="text-center py-4">
+        <p class="text-muted fst-italic">עדיין אין לך מתכונים מועדפים.</p>
+      </div>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <div class="text-center mt-5 py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">טוען...</span>
+    </div>
+    <p class="mt-3 text-muted">טוען נתוני משתמש...</p>
+  </div>
+</ng-template> -->
+<!-- <h2 class="text-center fw-bold my-4">מרכז ניהול אישי</h2>
+
+<ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+  
+  <app-user-detail 
+    [userData]="user"
+    (onUpgradeRequest)="handleUpgradeRequest()">
+  </app-user-detail>
+
+  <hr class="my-5">
+
+  <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'" class="my-recipes-management mb-5">
+    <h3 class="h4 fw-bold mb-4 text-center">המתכונים שפרסמתי 🍳</h3>
+    
+    <div *ngIf="myRecipes.length > 0; else noPublished" class="row justify-content-center">
+      <div *ngFor="let recipe of myRecipes" class="col-6 col-md-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 position-relative recipe-card-hover">
+          <div class="d-flex gap-1" style="position: absolute; top: 8px; right: 8px; z-index: 10;">
+            <button class="btn btn-sm btn-light border shadow-sm rounded-circle" 
+                    (click)="editRecipe(recipe.id, $event)" title="ערוך מתכון">✏️</button>
+            <button class="btn btn-sm btn-danger shadow-sm rounded-circle" 
+                    (click)="deleteRecipe(recipe.id, $event)" title="מחק מתכון">🗑️</button>
+          </div>
+
+          <div (click)="goToRecipe(recipe.id)" style="cursor: pointer;">
+            <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder-recipe.jpg'" 
+                 class="card-img-top" style="height: 140px; object-fit: cover; border-radius: 8px 8px 0 0;">
+            <div class="card-body p-2 text-center">
+              <span class="fw-bold d-block text-truncate">{{ recipe.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noPublished>
+      <p class="text-center text-muted">עדיין לא פרסמת מתכונים משלך.</p>
+    </ng-template>
+    <hr class="my-5">
+  </div>
+
+  <div class="actions-container d-flex flex-wrap gap-3 justify-content-center mb-5">
+    
+    <app-button 
+      class="custom-pill-btn favorites-btn"
+      [text]="showFavorites ? 'הסתר מועדפים' : 'המועדפים שלי ❤️'" 
+      (btnClick)="toggleFavorites()">
+    </app-button>
+
+    <app-button *ngIf="user.role === 'Reader' || user.role === 'User'"
+      class="custom-pill-btn request-btn"
+      text="הגשת בקשה לשדרוג 🚀" 
+      (btnClick)="handleUpgradeRequest()">
+    </app-button>
+
+    <ng-container *ngIf="user.role === 'Admin'">
+      <app-button 
+        class="custom-pill-btn admin-all-btn"
+        text="כל המשתמשים 👥" 
+        (btnClick)="goToAdmin('all')">
+      </app-button>
+
+      <app-button 
+        class="custom-pill-btn admin-pending-btn"
+        text="משתמשים ממתינים ⏳" 
+        (btnClick)="goToAdmin('pending')">
+      </app-button>
+    </ng-container>
+
+    <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+      class="custom-pill-btn add-recipe-btn"
+      text="הוספת מתכון חדש +" 
+      (btnClick)="goToAddRecipe()">
+    </app-button>
+  </div>
+
+  <section class="favorites-display fade-in" *ngIf="showFavorites">
+    <h3 class="h4 fw-bold mb-4 text-center text-primary">המתכונים שאהבתי ❤️</h3>
+    <div *ngIf="favorites.length > 0; else noFavs" class="row justify-content-center">
+      <div *ngFor="let fav of favorites" class="col-6 col-md-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 position-relative recipe-card-hover">
+          <div style="position: absolute; top: 8px; right: 8px; z-index: 10;">
+            <button class="btn btn-sm btn-danger shadow-sm rounded-circle" 
+                    (click)="removeFromFavorites(fav.id, $event)" title="הסר מהמועדפים">🗑️</button>
+          </div>
+          <div (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+            <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder-recipe.jpg'" 
+                 class="card-img-top" style="height: 140px; object-fit: cover; border-radius: 8px 8px 0 0;">
+            <div class="card-body p-2 text-center">
+              <span class="fw-bold d-block text-truncate">{{ fav.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noFavs>
+      <div class="text-center py-4">
+        <p class="text-muted fst-italic">עדיין אין לך מתכונים מועדפים.</p>
+      </div>
+    </ng-template>
+  </section>
+
+</ng-container>
+
+<ng-template #loading>
+  <div class="text-center mt-5 py-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-3 text-muted">טוען נתוני משתמש...</p>
+  </div>
+</ng-template> -->
+
+<!-- <div class="profile-wrapper">
+  <ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+    
+    <div class="user-profile-section animate__animated animate__fadeIn">
+      
+      <app-user-detail [userData]="user"></app-user-detail> -->
+      <!-- <h2 class="user-display-name">{{ user.username }}</h2> -->
+      <!-- <div *ngIf="user.role === 'Viewer' || user.role === 'Reader'" class="status-badge-info">
+             <span class="text-secondary small"><i class="bi bi-eye"></i> מצב צפייה בלבד</span>
+          </div>
+
+          <div *ngIf="user.role === 'Uploader' || user.role === 'Admin' || user.role === 'User'" class="text-success fw-bold small">
+            <i class="bi bi-check-circle-fill"></i> משתמש מאושר
+          </div> -->
+      <!-- <div class="action-pills d-flex justify-content-center gap-3 flex-wrap">
+        
+        <app-button 
+          class="custom-pill-btn favorites-btn"
+          [text]="showFavorites ? 'הסתר מועדפים' : 'המועדפים שלי ❤️'" 
+          (btnClick)="toggleFavorites()">
+        </app-button>
+
+        <app-button *ngIf="user.role === 'Reader' || user.role === 'User'"
+          class="custom-pill-btn request-btn"
+          text="הגשת בקשה לשדרוג 🚀" 
+          (btnClick)="handleUpgradeRequest()">
+        </app-button>
+
+        <ng-container *ngIf="user.role === 'Admin'">
+          <app-button class="custom-pill-btn admin-all-btn" text="כל המשתמשים 👥" (btnClick)="goToAdmin('all')"></app-button>
+          <app-button class="custom-pill-btn admin-pending-btn" text="משתמשים ממתינים ⏳" (btnClick)="goToAdmin('Pending')"></app-button>
+        </ng-container>
+
+        <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+          class="custom-pill-btn add-recipe-btn"
+          text="הוספת מתכון חדש +" 
+          (btnClick)="goToAddRecipe()">
+        </app-button>
+      </div>
+    </div>
+
+    <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'">
+      <h3 class="sub-title">המתכונים שפרסמתי 🍳</h3>
+      <div *ngIf="myRecipes.length > 0; else noPublished" class="recipes-grid">
+        <div *ngFor="let recipe of myRecipes" class="recipe-item">
+          <div class="d-flex gap-1 p-2" style="position: absolute; top: 0; right: 0; z-index: 5;">
+            <button class="btn btn-sm btn-light border shadow-sm rounded-circle" (click)="editRecipe(recipe.id, $event)">✏️</button>
+            <button class="btn btn-sm btn-danger shadow-sm rounded-circle" (click)="deleteRecipe(recipe.id, $event)">🗑️</button>
+          </div>
+          <div (click)="goToRecipe(recipe.id)" style="cursor: pointer;">
+            <div class="img-holder">
+              <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'">
+            </div>
+            <div class="p-3 text-center fw-bold text-truncate">{{ recipe.title }}</div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noPublished><p class="empty-msg">עדיין לא פרסמת מתכונים.</p></ng-template>
+    </div>
+
+    <div *ngIf="showFavorites">
+      <h3 class="sub-title" style="border-right-color: #ff4d6d;">המועדפים שלי ❤️</h3>
+      <div *ngIf="favorites.length > 0; else noFavs" class="recipes-grid">
+        <div *ngFor="let fav of favorites" class="recipe-item">
+          <button class="btn btn-sm btn-danger shadow-sm rounded-circle" 
+                  style="position: absolute; top: 8px; right: 8px; z-index: 5;"
+                  (click)="removeFromFavorites(fav.id, $event)">🗑️</button>
+          <div (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+            <div class="img-holder">
+              <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder.jpg'">
+            </div>
+            <div class="p-3 text-center fw-bold text-truncate">{{ fav.title }}</div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noFavs><p class="empty-msg">אין לך מתכונים מועדפים כרגע.</p></ng-template>
+    </div>
+
+  </ng-container>
+</div>
+
+<ng-template #loading>
+  <div class="text-center py-5 mt-5">
+    <div class="spinner-border text-success" role="status"></div>
+    <p class="mt-3 text-muted">טוען פרופיל...</p>
+  </div>
+</ng-template> -->
+<!-- <div class="profile-wrapper">
+  <ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+    
+    <div class="user-profile-section animate__animated animate__fadeIn">
+      <app-user-detail [userData]="user"></app-user-detail>
+
+      <div class="action-pills d-flex justify-content-center gap-3 flex-wrap">
+        
+        <app-button 
+          class="custom-pill-btn favorites-btn"
+          [text]="showFavorites ? 'הסתר מועדפים' : 'המועדפים שלי ❤️'" 
+          (btnClick)="toggleFavorites()">
+        </app-button>
+
+        <app-button *ngIf="user.role === 'Reader' || user.role === 'User'"
+          class="custom-pill-btn request-btn"
+          text="הגשת בקשה לשדרוג 🚀" 
+          (btnClick)="handleUpgradeRequest()">
+        </app-button> -->
+
+        <!-- <ng-container *ngIf="user.role === 'Admin'">
+          <app-button class="custom-pill-btn admin-all-btn" text="כל המשתמשים 👥" (btnClick)="goToAdmin('all')"></app-button>
+          <app-button class="custom-pill-btn admin-pending-btn" text="משתמשים ממתינים ⏳" (btnClick)="goToAdmin('Pending')"></app-button>
+        </ng-container> -->
+<!-- <ng-container *ngIf="user.role === 'Admin'">
+  <app-button class="custom-pill-btn admin-all-btn" text="כל המשתמשים 👥" (btnClick)="goToAdmin('all')"></app-button>
+  <app-button class="custom-pill-btn admin-pending-btn" text="משתמשים ממתינים ⏳" (btnClick)="goToAdmin('pending')"></app-button>
+</ng-container>
+        <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+          class="custom-pill-btn add-recipe-btn"
+          text="הוספת מתכון חדש +" 
+          (btnClick)="goToAddRecipe()">
+        </app-button>
+      </div>
+    </div>
+
+    <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'">
+      <h3 class="sub-title">המתכונים שפרסמתי 🍳</h3>
+      <div *ngIf="myRecipes.length > 0; else noPublished" class="recipes-grid">
+        <div *ngFor="let recipe of myRecipes" class="recipe-item">
+          <div class="d-flex gap-1 p-2" style="position: absolute; top: 0; right: 0; z-index: 5;">
+            <button class="btn btn-sm btn-light border shadow-sm rounded-circle" (click)="editRecipe(recipe.id, $event)">✏️</button>
+            <button class="btn btn-sm btn-danger shadow-sm rounded-circle" (click)="deleteRecipe(recipe.id, $event)">🗑️</button>
+          </div>
+          <div (click)="goToRecipe(recipe.id)" style="cursor: pointer;">
+            <div class="img-holder">
+              <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" (error)="handleImageError($event)">
+            </div>
+            <div class="p-3 text-center fw-bold text-truncate">{{ recipe.title }}</div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noPublished><p class="empty-msg">עדיין לא פרסמת מתכונים.</p></ng-template>
+    </div>
+
+    <div *ngIf="showFavorites">
+      <h3 class="sub-title" style="border-right-color: #ff4d6d;">המועדפים שלי ❤️</h3>
+      <div *ngIf="favorites.length > 0; else noFavs" class="recipes-grid">
+        <div *ngFor="let fav of favorites" class="recipe-item">
+          <button class="btn btn-sm btn-danger shadow-sm rounded-circle" 
+                  style="position: absolute; top: 8px; right: 8px; z-index: 5;"
+                  (click)="removeFromFavorites(fav.id, $event)">🗑️</button>
+          <div (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+            <div class="img-holder">
+              <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder.jpg'" (error)="handleImageError($event)">
+            </div>
+            <div class="p-3 text-center fw-bold text-truncate">{{ fav.title }}</div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noFavs><p class="empty-msg">אין לך מתכונים מועדפים כרגע.</p></ng-template>
+    </div>
+
+  </ng-container>
+</div>
+
+<ng-template #loading>
+  <div class="text-center py-5 mt-5">
+    <div class="spinner-border text-success" role="status"></div>
+    <p class="mt-3 text-muted">טוען פרופיל...</p>
+  </div>
+</ng-template> -->
+<!-- 
+<div class="profile-wrapper">
+  <ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+    
+    <div class="user-profile-section animate__animated animate__fadeIn">
+      <app-user-detail [userData]="user"></app-user-detail>
+
+      <div class="action-pills d-flex justify-content-center gap-3 flex-wrap mt-4">
+        
+        <app-button 
+          class="custom-pill-btn favorites-btn"
+          [text]="showFavorites ? 'הסתר מועדפים' : 'המועדפים שלי ❤️'" 
+          (btnClick)="toggleFavorites()">
+        </app-button>
+
+        <app-button *ngIf="user.role === 'Reader' || user.role === 'User'"
+          class="custom-pill-btn request-btn"
+          text="בקשת שדרוג 🚀" 
+          (btnClick)="handleUpgradeRequest()">
+        </app-button>
+
+        <ng-container *ngIf="user.role === 'Admin'">
+          <app-button class="custom-pill-btn admin-all-btn" text="ניהול משתמשים 👥" (btnClick)="goToAdmin('all')"></app-button>
+          <app-button class="custom-pill-btn admin-pending-btn" text="ממתינים לאישור ⏳" (btnClick)="goToAdmin('pending')"></app-button>
+        </ng-container>
+
+        <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+          class="custom-pill-btn add-recipe-btn"
+          text="מתכון חדש +" 
+          (btnClick)="goToAddRecipe()">
+        </app-button>
+      </div>
+    </div>
+
+    <div *ngIf="user.role === 'Admin' || user.role === 'Uploader'">
+      <h3 class="sub-title">היצירות שלי 🍳</h3>
+      <div *ngIf="myRecipes.length > 0; else noPublished" class="recipes-grid">
+        <div *ngFor="let recipe of myRecipes" class="recipe-item">
+          <div class="d-flex gap-1 p-2" style="position: absolute; top: 8px; right: 8px; z-index: 5;">
+            <button class="btn btn-sm btn-light border shadow-sm" (click)="editRecipe(recipe.id, $event)">✏️</button>
+            <button class="btn btn-sm btn-dark border-gold shadow-sm" (click)="deleteRecipe(recipe.id, $event)">🗑️</button>
+          </div>
+          
+          <div (click)="goToRecipe(recipe.id)" style="cursor: pointer;">
+            <div class="img-holder">
+              <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'">
+            </div>
+            <div class="recipe-title-text text-truncate">{{ recipe.title }}</div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noPublished><p class="text-white-50 text-center py-4">טרם פורסמו מתכונים ברשותך.</p></ng-template>
+    </div>
+
+    <div *ngIf="showFavorites" class="animate__animated animate__fadeInUp">
+      <h3 class="sub-title" style="border-right-color: #ff4d6d;">שמור לטעימה ❤️</h3>
+      <div *ngIf="favorites.length > 0; else noFavs" class="recipes-grid">
+        <div *ngFor="let fav of favorites" class="recipe-item">
+          <button class="btn btn-sm btn-danger shadow-sm" 
+                  style="position: absolute; top: 8px; right: 8px; z-index: 5;"
+                  (click)="removeFromFavorites(fav.id, $event)">🗑️</button>
+          
+          <div (click)="goToRecipe(fav.id)" style="cursor: pointer;">
+            <div class="img-holder">
+              <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder.jpg'">
+            </div>
+            <div class="recipe-title-text text-truncate">{{ fav.title }}</div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noFavs><p class="text-white-50 text-center py-4">רשימת המועדפים שלך ריקה.</p></ng-template>
+    </div>
+
+  </ng-container>
+</div>
+
+<ng-template #loading>
+  <div class="text-center py-5 mt-5">
+    <div class="spinner-pasha"></div>
+    <p class="mt-3 text-white-50">טוען את המטבח הפרטי...</p>
+  </div>
+</ng-template> -->
+<!-- 
+<div class="profile-wrapper">
+  <ng-container *ngIf="authService.currentUser$ | async as user; else loading">
+    
+    <div class="container animate__animated animate__fadeIn">
+      <app-user-detail [userData]="user"></app-user-detail>
+
+      <div class="action-pills d-flex justify-content-center gap-3 flex-wrap mt-5">
+        <app-button 
+          class="custom-pill-btn"
+          [text]="showFavorites ? 'חזרה ליצירות' : 'המועדפים שלי ❤️'" 
+          (btnClick)="toggleFavorites()">
+        </app-button>
+
+        <app-button *ngIf="user.role === 'Reader' || user.role === 'User'"
+          class="custom-pill-btn request-btn"
+          text="לבקש כובע שף 👨‍🍳" 
+          (btnClick)="handleUpgradeRequest()">
+        </app-button>
+
+        <ng-container *ngIf="user.role === 'Admin'">
+          <app-button class="custom-pill-btn admin-btn" text="נהל קהילה 👥" (btnClick)="goToAdmin('all')"></app-button>
+          <app-button class="custom-pill-btn admin-pending" text="אישור שפים ⏳" (btnClick)="goToAdmin('pending')"></app-button>
+        </ng-container>
+
+        <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+          class="custom-pill-btn gold-btn"
+          text="ליצור קסם חדש +" 
+          (btnClick)="goToAddRecipe()">
+        </app-button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div *ngIf="!showFavorites && (user.role === 'Admin' || user.role === 'Uploader')">
+        <h3 class="sub-title">היצירות שלי <span class="badge-count">{{myRecipes.length}}</span></h3>
+        <div *ngIf="myRecipes.length > 0; else noPublished" class="recipes-grid">
+          <div *ngFor="let recipe of myRecipes" class="recipe-item">
+            <div class="floating-actions">
+              <button class="circle-btn" (click)="editRecipe(recipe.id, $event)"><i class="bi bi-pencil"></i></button>
+              <button class="circle-btn" (click)="deleteRecipe(recipe.id, $event)"><i class="bi bi-trash"></i></button>
+            </div>
+            
+            <div (click)="goToRecipe(recipe.id)" class="recipe-content-wrapper">
+              <div class="img-holder">
+                <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" (error)="handleImageError($event)">
+              </div>
+              <div class="recipe-title-text">{{ recipe.title }}</div>
+            </div>
+          </div>
+        </div>
+        <ng-template #noPublished><div class="empty-state">טרם פרסמת מתכונים. זה הזמן להתחיל!</div></ng-template>
+      </div>
+
+      <div *ngIf="showFavorites" class="animate__animated animate__fadeInUp">
+        <h3 class="sub-title" style="border-right-color: #ff4d6d;">השראות ששמרתי ❤️</h3>
+        <div *ngIf="favorites.length > 0; else noFavs" class="recipes-grid">
+          <div *ngFor="let fav of favorites" class="recipe-item">
+            <div class="floating-actions">
+              <button class="circle-btn fav-remove-btn" (click)="removeFromFavorites(fav.id, $event)">
+                <i class="bi bi-heartbreak-fill"></i>
+              </button>
+            </div>
+            
+            <div (click)="goToRecipe(fav.id)" class="recipe-content-wrapper">
+              <div class="img-holder">
+                <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder.jpg'" (error)="handleImageError($event)">
+              </div>
+              <div class="recipe-title-text">{{ fav.title }}</div>
+            </div>
+          </div>
+        </div>
+        <ng-template #noFavs><div class="empty-state">רשימת המועדפים שלך מחכה שתמלאי אותה...</div></ng-template>
+      </div>
+    </div>
+
+  </ng-container>
+</div> -->
+<div class="profile-wrapper">
+  <ng-container *ngIf="!(authService.currentUser$ | async); else content">
+     <ng-container *ngTemplateOutlet="loading"></ng-container>
+  </ng-container>
+
+  <ng-template #content>
+    <div *ngIf="authService.currentUser$ | async as user" class="user-profile-section animate__animated animate__fadeIn">
+      
+      <div class="container">
+        <app-user-detail [userData]="user"
+       
+        ></app-user-detail>
+
+        <div class="action-pills d-flex justify-content-center gap-3 flex-wrap mt-5">
+          <app-button 
+            class="custom-pill-btn"
+            [text]="showFavorites ? 'חזרה ליצירות' : 'המועדפים שלי ❤️'" 
+            (btnClick)="toggleFavorites()">
+          </app-button>
+
+          <!-- <app-button *ngIf="user.role === 'Reader' || user.role === 'User'"
+            class="custom-pill-btn request-btn"
+            text="לבקש כובע שף 👨‍🍳" 
+            (btnClick)="handleUpgradeRequest()">
+          </app-button> -->
+          <!-- <app-button *ngIf="user.role === 'Reader' || user.role === 'User'"
+  class="custom-pill-btn request-btn"
+  text="לבקש כובע שף 👨‍🍳" 
+  (btnClick)="handleUpgradeRequest()">
+</app-button> -->
+<app-button
+  *ngIf="user.role === 'Reader' || user.role === 'User'"
+  class="custom-pill-btn request-btn"
+  text="לבקש כובע שף 👨‍🍳"
+  (btnClick)="handleUpgradeRequest(user)">
+</app-button>
+
+
+
+          <ng-container *ngIf="user.role === 'Admin'">
+            <app-button class="custom-pill-btn admin-btn" text="נהל קהילה 👥" (btnClick)="goToAdmin('all')"></app-button>
+            <app-button class="custom-pill-btn admin-pending" text="אישור שפים ⏳" (btnClick)="goToAdmin('pending')"></app-button>
+          </ng-container>
+
+          <app-button *ngIf="user.role === 'Admin' || user.role === 'Uploader'"
+            class="custom-pill-btn gold-btn"
+            text="מתכון חדש +" 
+            (btnClick)="goToAddRecipe()">
+          </app-button>
+        </div>
+      </div>
+
+      <div class="container mt-5">
+        <div *ngIf="!showFavorites && (user.role === 'Admin' || user.role === 'Uploader')">
+          <h3 class="sub-title">היצירות שלי <span class="badge-count">{{myRecipes.length}}</span></h3>
+          
+          <div *ngIf="myRecipes.length > 0; else noPublished" class="recipes-grid">
+            <div *ngFor="let recipe of myRecipes" class="recipe-item">
+              <div class="floating-actions">
+                <button class="circle-btn" (click)="editRecipe(recipe.id, $event)"><i class="bi bi-pencil"></i></button>
+                <button class="circle-btn" (click)="deleteRecipe(recipe.id, $event)"><i class="bi bi-trash"></i></button>
+              </div>
+              
+              <div (click)="goToRecipe(recipe.id)" class="recipe-content-wrapper">
+                <div class="img-holder">
+                  <img [src]="recipe.main_image ? baseUrl + recipe.main_image : 'assets/images/placeholder.jpg'" (error)="handleImageError($event)">
+                </div>
+                <div class="recipe-title-text text-truncate">{{ recipe.title }}</div>
+              </div>
+            </div>
+          </div>
+          <ng-template #noPublished><p class="text-center text-white-50 py-5">טרם פורסמו מתכונים ברשותך.</p></ng-template>
+        </div>
+
+        <div *ngIf="showFavorites" class="animate__animated animate__fadeInUp">
+          <h3 class="sub-title" style="border-right-color: #ff4d6d;">שמור לטעימה ❤️</h3>
+          
+          <div *ngIf="favorites.length > 0; else noFavs" class="recipes-grid">
+            <div *ngFor="let fav of favorites" class="recipe-item">
+              <div class="floating-actions">
+                <button class="circle-btn fav-remove-btn" (click)="removeFromFavorites(fav.id, $event)">
+                  <i class="bi bi-heartbreak-fill"></i>
+                </button>
+              </div>
+              
+              <div (click)="goToRecipe(fav.id)" class="recipe-content-wrapper">
+                <div class="img-holder">
+                  <img [src]="fav.main_image ? baseUrl + fav.main_image : 'assets/images/placeholder.jpg'" (error)="handleImageError($event)">
+                </div>
+                <div class="recipe-title-text text-truncate">{{ fav.title }}</div>
+              </div>
+            </div>
+          </div>
+          <ng-template #noFavs><p class="text-center text-white-50 py-5">רשימת המועדפים שלך ריקה.</p></ng-template>
+        </div>
+      </div>
+
+    </div>
+  </ng-template>
+
+  <ng-template #loading>
+    <div class="text-center py-5 mt-5">
+      <div class="spinner-pasha"></div>
+      <p class="mt-3 text-white-50">מסדרים את המטבח הפרטי...</p>
+    </div>
+  </ng-template>
+</div>

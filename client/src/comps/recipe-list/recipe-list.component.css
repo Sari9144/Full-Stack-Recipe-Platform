@@ -1,0 +1,315 @@
+/* 
+:host {
+    display: block;
+    background-color: #000000 !important; 
+    min-height: 100vh;
+    color: #ffffff;
+    direction: rtl;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+    padding: 40px;
+}
+
+.filters-sidebar {
+    background: #111111; 
+    border-radius: 0px; 
+    padding: 35px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    border: 1px solid #8c6d31; 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.filter-label {
+    color: #8c6d31; 
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    display: block;
+    letter-spacing: 1px;
+}
+
+.form-control, .form-select {
+    background-color: #000 !important;
+    border: 1px solid #333 !important;
+    color: white !important;
+    border-radius: 0px !important;
+    padding: 12px 15px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #8c6d31 !important;
+    box-shadow: none;
+}
+
+
+.recipe-card {
+    border-radius: 0px !important;
+    background: #ffffff !important; 
+    border: 1px solid #8c6d31 !important;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    color: #000;
+}
+
+.recipe-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 45px rgba(140, 109, 49, 0.3) !important;
+}
+
+
+.image-wrapper {
+    height: 240px;
+    padding: 10px; 
+    background: white;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #eee;
+}
+
+
+.recipe-title-gallery {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: #000;
+}
+
+.btn-pasha-link {
+    color: #8c6d31 !important;
+    font-weight: 800;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.btn-pasha-link:hover {
+    border-bottom-color: #8c6d31;
+}
+
+.btn-generate-list {
+    background: #8c6d31 !important;
+    color: #000 !important;
+    border-radius: 0px !important;
+    border: 2px solid #000 !important;
+    font-weight: 900 !important;
+    padding: 18px 40px !important;
+    box-shadow: 0 10px 30px rgba(140, 109, 49, 0.5) !important;
+}
+
+
+.shopping-list-overlay {
+    background: #ffffff;
+    border: 1px solid #8c6d31;
+    border-radius: 0px;
+    outline: 4px solid #8c6d31;
+    outline-offset: -12px;
+} */
+ /* פריסה כללית - Dark Luxury */
+.main-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #fff;
+  gap: 0;
+}
+
+/* סרגל צד מעוצב - Sidebar */
+.filters-sidebar {
+  background: #121212;
+  border-left: 1px solid rgba(140, 109, 49, 0.2);
+  padding: 40px 25px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.filter-label {
+  color: #8c6d31;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* שדות קלט בסגנון מינימליסטי */
+.form-control, .form-select {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 8px; /* עיגול עדין */
+  padding: 12px;
+  transition: 0.3s;
+}
+
+.form-control:focus, .form-select:focus {
+  background: #222;
+  border-color: #bd9354;
+  box-shadow: 0 0 10px rgba(189, 147, 72, 0.1);
+  color: #fff;
+}
+
+/* כרטיסי מתכון */
+.recipe-card {
+  background: #161616;
+  border: 1px solid #222;
+  border-radius: 15px; /* עיגול כרטיסים מודרני */
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  height: 100%;
+}
+
+.recipe-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+  border-color: #8c6d31;
+}
+
+/* אפקט בחירה כשהמתכון מסומן לרשימת קניות */
+.recipe-card.selected-border {
+  border: 2px solid #bd9354;
+  background: #1e1b15;
+}
+
+/* תמונה עם אפקט זום */
+.image-wrapper {
+  overflow: hidden;
+  height: 250px;
+  cursor: pointer;
+  position: relative;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.recipe-card:hover .card-img-top {
+  transform: scale(1.1);
+}
+
+/* כפתור מועדפים צף */
+.fav-floating {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.fav-floating.active {
+  color: #ff4d6d;
+  background: #fff;
+}
+
+/* כותרות */
+.recipe-title-gallery {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #f0f0f0;
+  line-height: 1.4;
+}
+
+.text-gold { color: #bd9354 !important; }
+
+/* כפתור יצירת רשימה צף */
+.floating-action-container {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 500; /* מתחת למודאל, מעל הגלריה */
+}
+
+.btn-generate-list {
+  background: linear-gradient(135deg, #bd9354 0%, #8c6d31 100%);
+  color: #000;
+  font-weight: 800;
+  padding: 16px 45px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0 15px 35px rgba(189, 147, 84, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.btn-generate-list:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(189, 147, 84, 0.5);
+}
+
+/* צ'קבוקס בחירה */
+.selection-badge-wrapper {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+}
+
+.recipe-checkbox {
+  width: 22px;
+  height: 22px;
+  accent-color: #bd9354;
+  cursor: pointer;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+}
+
+/* כפתור "גלה עוד" */
+.btn-pasha-link {
+  background: transparent;
+  border: none;
+  color: #bd9354;
+  padding: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-pasha-link:hover {
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* רספונסיביות */
+@media (max-width: 992px) {
+  .main-layout { 
+    grid-template-columns: 1fr; 
+  }
+  .filters-sidebar { 
+    height: auto; 
+    position: relative; 
+    border-left: none;
+    border-bottom: 1px solid rgba(140, 109, 49, 0.2);
+  }
+}

@@ -1,0 +1,115 @@
+/* כרטיס החיפוש החכם - שדרוג לעיצוב זכוכית עדין */
+.smart-search-card {
+  background: rgba(255, 255, 255, 0.03) !important; /* כמעט שקוף */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(189, 147, 84, 0.2) !important;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+/* כותרת משנית */
+.text-gold-muted {
+  color: #bd9354;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* שדה הקלט */
+.custom-input-group {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.custom-input-group input {
+  background: transparent !important;
+  border: none !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.custom-input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* כפתור הוספה קטן */
+.btn-primary-custom {
+  background: #bd9354 !important;
+  color: #000 !important;
+  border: none;
+  border-radius: 8px !important;
+  font-weight: 700;
+  padding: 5px 15px !important;
+}
+
+/* תגיות המצרכים - עדינות יותר */
+.ingredient-tag {
+  background: rgba(189, 147, 84, 0.15) !important;
+  border: 1px solid rgba(189, 147, 84, 0.3);
+  color: #bd9354 !important;
+  font-size: 0.8rem;
+}
+
+.remove-icon:hover {
+  color: #ff4d6d;
+}
+
+/* כפתור החיפוש הראשי */
+.btn-search-custom {
+  background: linear-gradient(45deg, #bd9354, #8c6d31) !important;
+  color: #000 !important;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn-search-custom:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(189, 147, 84, 0.4);
+}
+
+/* תוצאות החיפוש - רשימה דקה */
+.results-scroll-area {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* עיצוב פס גלילה דק */
+.results-scroll-area::-webkit-scrollbar {
+  width: 4px;
+}
+.results-scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(189, 147, 84, 0.3);
+  border-radius: 10px;
+}
+
+.result-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  transition: 0.2s;
+}
+
+.result-item:hover {
+  background: rgba(189, 147, 84, 0.05);
+  border-color: rgba(189, 147, 84, 0.2) !important;
+}
+
+.btn-missing-custom {
+  background: transparent;
+  border: 1px solid rgba(189, 147, 84, 0.4);
+  color: #bd9354;
+  font-size: 0.75rem;
+}
+
+.btn-missing-custom:hover {
+  background: #bd9354;
+  color: #000;
+}
+
+/* קופסת "מה חסר" */
+.missing-ingredients-box {
+  background: rgba(189, 147, 84, 0.05);
+  border: 1px solid rgba(189, 147, 84, 0.2) !important;
+}

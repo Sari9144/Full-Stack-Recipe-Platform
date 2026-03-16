@@ -1,0 +1,121 @@
+<!-- <div class="register-container">
+  <h2>הרשמה למערכת</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    
+    <div class="field">
+  <label>שם משתמש:</label>
+  <input type="text" formControlName="username">
+  @if (registerForm.get('username')?.touched && registerForm.get('username')?.invalid) {
+    <div class="error-msg">
+      @if (registerForm.get('username')?.hasError('required')) { <small>שדה חובה</small> }
+      @if (registerForm.get('username')?.hasError('minlength')) { <small>לפחות 2 תווים</small> }
+    </div>
+  }
+</div>
+
+    <div class="field">
+      <label>אימייל:</label>
+      <input type="email" formControlName="email">
+      @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
+        <div class="error-msg">
+          @if (registerForm.get('email')?.hasError('required')) { <small>שדה חובה</small> }
+          @if (registerForm.get('email')?.hasError('email')) { <small>אימייל לא תקין</small> }
+        </div>
+      }
+    </div>
+
+    <div class="field">
+      <label>סיסמה:</label>
+      <input type="password" formControlName="password">
+      @if (registerForm.get('password')?.touched && registerForm.get('password')?.invalid) {
+        <div class="error-msg">
+          @if (registerForm.get('password')?.hasError('required')) { <small>שדה חובה</small> }
+          @if (registerForm.get('password')?.hasError('minlength')) { <small>לפחות 3 תווים</small> }
+        </div>
+      }
+    </div>
+
+    <div class="field">
+      <label>תפקיד:</label>
+      <select formControlName="role">
+        <option value="Reader">קורא</option>
+        <option value="Uploader">מעלה תוכן</option>
+        <option value="Admin"> מנהל</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid">צור חשבון</button>
+
+    @if (errorMessage) {
+      <p class="server-error">{{ errorMessage }}</p>
+    }
+  </form>
+</div> -->
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h2 class="auth-title">הצטרפי לקהילה ✨</h2>
+    <p class="auth-subtitle">צרי חשבון והתחילי לשתף מתכונים</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+      
+      <div class="field">
+        <label class="form-label">שם משתמש</label>
+        <input type="text" formControlName="username" class="custom-input" placeholder="איך לקרוא לך?">
+        <div class="error-container">
+          @if (registerForm.get('username')?.touched && registerForm.get('username')?.invalid) {
+            <small class="error-msg">שם משתמש קצר מדי או חסר</small>
+          }
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="form-label">אימייל</label>
+        <input type="email" formControlName="email" class="custom-input" placeholder="yourname@example.com">
+        <div class="error-container">
+          @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
+            <small class="error-msg">כתובת אימייל לא תקינה</small>
+          }
+        </div>
+      </div>
+
+      
+      <div class="field">
+        <label class="form-label">סיסמה</label>
+        <input type="password" formControlName="password" class="custom-input" placeholder="לפחות 3 תווים">
+        <div class="error-container">
+          @if (registerForm.get('password')?.touched && registerForm.get('password')?.invalid) {
+            <small class="error-msg">הסיסמה צריכה להיות חזקה יותר</small>
+          }
+        </div>
+      </div>
+      <!-- <div class="field">
+      <label>תפקיד:</label>
+      <select formControlName="role">
+        <option value="Reader">קורא</option>
+        <option value="Uploader">מעלה תוכן</option>
+        <option value="Admin"> מנהל</option>
+      </select>
+    </div> -->
+
+      <!-- <div class="field">
+        <label class="form-label">מה התפקיד שלך?</label>
+        <select formControlName="role" class="custom-select">
+          <option value="Reader">קוראת (לצפות במתכונים)</option>
+          <option value="Uploader">בשלנית (להעלות מתכונים)</option>
+          <option value="Admin">מנהלת</option>
+        </select>
+      </div> -->
+
+      <button type="submit" class="btn-submit-master" [disabled]="registerForm.invalid">
+        צור חשבון חדש
+      </button>
+
+      <!-- @if (errorMessage) {
+        <div class="alert-error mt-3">{{ errorMessage }}</div>
+      } -->
+      
+      <p class="auth-switch">כבר יש לך חשבון? <a routerLink="/login">התחברי כאן</a></p>
+    </form>
+  </div>
+</div>

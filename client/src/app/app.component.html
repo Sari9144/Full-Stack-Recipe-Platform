@@ -1,0 +1,566 @@
+<!-- <nav class="navbar">
+  <div class="logo" routerLink="/">TastyShare</div>
+
+  <ul class="nav-links">
+    <li><a routerLink="/">דף בית</a></li>
+    <li><a routerLink="/recipes">גלריית מתכונים</a></li>
+
+    @if (userRole === 'Admin' || userRole === 'Uploader') {
+      <li><a routerLink="/add-recipe">הוספת מתכון</a></li>
+    }
+
+    <li><a routerLink="/personal-details">אזור אישי</a></li>
+  </ul>
+
+  <div class="auth-group">
+    @if (username) {
+      <span class="welcome-msg">שלום {{ username }}!</span>
+      <button (click)="logout()">התנתק</button>
+    } @else {
+      <a routerLink="/login">כניסה</a>
+      <a routerLink="/register" class="btn-reg">הרשמה</a>
+    }
+  </div>
+</nav>
+<router-outlet></router-outlet> -->
+
+
+<!-- <nav class="navbar">
+  <div class="logo" routerLink="/">מתכוני כיף</div>
+
+  <ul class="nav-links">
+    <li><a routerLink="/">דף בית</a></li>
+    <li><a routerLink="/recipes">גלריית מתכונים</a></li>
+
+    @if (authService.currentUser && (authService.currentUser.role === 'Admin' || authService.currentUser.role === 'Uploader')) {
+      <li><a routerLink="/add-recipe">הוספת מתכון</a></li>
+    }
+
+    <li><a routerLink="/personal-details">אזור אישי</a></li>
+  </ul>
+
+  <div class="auth-group">
+    @if (authService.currentUser) {
+      <span class="welcome-text">שלום {{ authService.currentUser.username }}!</span>
+      <button class="logout-btn" (click)="logout()">התנתק</button>
+    } 
+      <div *ngIf="authService.currentUser">
+  שלום, {{ authService.currentUser.firstName }}!
+</div>
+      @else {
+      <a routerLink="/login" class="nav-btn">כניסה</a>
+      <a routerLink="/register" class="nav-btn register">הרשמה</a>
+    }
+  </div>
+</nav>
+<button (click)="testInterceptor()" style="padding: 10px; background: orange;">
+  בדוק אם ה-Interceptor עובד
+</button>
+<router-outlet></router-outlet> -->
+<!-- <nav class="navbar">
+  <div class="logo" routerLink="/">מתכוני כיף</div>
+
+  <ul class="nav-links">
+    <li><a routerLink="/">דף בית</a></li>
+    <li><a routerLink="/recipes">גלריית מתכונים</a></li>
+
+    @if (authService.currentUser && (authService.currentUser.role === 'Admin' || authService.currentUser.role === 'Uploader')) {
+      <li><a routerLink="/add-recipe">הוספת מתכון</a></li>
+    }
+
+    <li><a routerLink="/personal-details">אזור אישי</a></li>
+  </ul>
+
+  <div class="auth-group">
+    @if (authService.currentUser) {
+      <span class="welcome-text">שלום, {{ authService.currentUser.firstName || authService.currentUser.username }}!</span>
+      <button class="logout-btn" (click)="authService.logout()">התנתק</button>
+    } @else {
+      <a routerLink="/login" class="nav-btn">כניסה</a>
+      <a routerLink="/register" class="nav-btn register">הרשמה</a>
+    }
+  </div>
+</nav>
+
+<router-outlet></router-outlet> -->
+<!-- <nav class="navbar">
+  <div class="logo" routerLink="/">מתכוני כיף</div>
+
+  <ul class="nav-links">
+    <li><a routerLink="/">דף בית</a></li>
+    <li><a routerLink="/recipes">גלריית מתכונים</a></li>
+
+    @if (authService.currentUser && (authService.currentUser.role === 'Admin' || authService.currentUser.role === 'Uploader')) {
+      <li><a routerLink="/add-recipe">הוספת מתכון</a></li>
+    }
+
+    @if (authService.currentUser?.role === 'Admin') {
+      <li><a routerLink="/admin-management" class="admin-link">ניהול משתמשים</a></li>
+    }
+
+    <li><a routerLink="/personal-details">אזור אישי</a></li>
+  </ul>
+
+  <div class="auth-group">
+    @if (authService.currentUser) {
+      <span class="welcome-text">שלום, {{ authService.currentUser.firstName || authService.currentUser.username }}!</span>
+      <button class="logout-btn" (click)="authService.logout()">התנתק</button>
+    } @else {
+      <a routerLink="/login" class="nav-btn">כניסה</a>
+      <a routerLink="/register" class="nav-btn register">הרשמה</a>
+    }
+  </div>
+</nav>
+
+<router-outlet></router-outlet> -->
+
+<!-- <nav class="navbar">
+  <div class="logo" routerLink="/">מתכוני כיף</div>
+  <a routerLink="/login" class="nav-btn">כניסה</a>
+  <ng-container *ngIf="authService.currentUser$ | async as user">
+    <ul class="nav-links">
+      <li><a routerLink="/">דף בית</a></li>
+      <li><a routerLink="/recipes">גלריית מתכונים</a></li>
+
+      <li *ngIf="user.role === 'Admin' || user.role === 'Uploader'">
+        <a routerLink="/add-recipe">הוספת מתכון</a>
+      </li>
+
+      <li *ngIf="user.role === 'Admin'">
+        <a routerLink="/admin-management" class="admin-link">ניהול משתמשים</a>
+      </li>
+
+      <li><a routerLink="/personal-details">אזור אישי</a></li>
+    </ul>
+
+    <div class="auth-group">
+      <span class="welcome-text">שלום, {{ user.username }}!</span>
+      <button class="logout-btn" (click)="authService.logout()">התנתק</button>
+    </div>
+  </ng-container>
+
+  <div class="auth-group" *ngIf="!(authService.currentUser$ | async)">
+    <ul class="nav-links">
+        <li><a routerLink="/">דף בית</a></li>
+        <li><a routerLink="/recipes">גלריית מתכונים</a></li>
+    </ul>
+    <a routerLink="/login" class="nav-btn">כניסה</a>
+    <a routerLink="/register" class="nav-btn register">הרשמה</a>
+     <a routerLink="/'smart-search'" class="nav-btn register">smart-search</a>
+  </div>
+</nav>
+
+<router-outlet></router-outlet> -->
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
+  <div class="container">
+    <div class="logo fw-bold fs-3 text-emerald shadow-text cursor-pointer me-4" routerLink="/">מתכוני כיף</div>
+    
+    <div class="d-flex align-items-center justify-content-between flex-grow-1">
+      <ng-container *ngIf="authService.currentUser$ | async as user">
+        <ul class="nav-links d-flex list-unstyled m-0 gap-4">
+          <li><a routerLink="/" class="nav-link-custom">דף בית</a></li>
+          <li><a routerLink="/recipes" class="nav-link-custom">גלריית מתכונים</a></li>
+
+          <li *ngIf="user.role === 'Admin' || user.role === 'Uploader'">
+            <a routerLink="/add-recipe" class="nav-link-custom">הוספת מתכון</a>
+          </li>
+
+          <li *ngIf="user.role === 'Admin'">
+            <a routerLink="/admin-management" class="nav-link-custom admin-link">ניהול משתמשים</a>
+          </li>
+
+          <li><a routerLink="/personal-details" class="nav-link-custom">אזור אישי</a></li>
+        </ul>
+
+        <div class="auth-group d-flex align-items-center gap-3">
+          <span class="welcome-text fw-medium text-secondary">שלום, {{ user.username }}!</span>
+          <button class="btn btn-outline-emerald rounded-pill px-4" (click)="authService.logout()">התנתק</button>
+        </div>
+      </ng-container>
+
+      <div class="auth-group d-flex align-items-center flex-grow-1 justify-content-between" *ngIf="!(authService.currentUser$ | async)">
+        <ul class="nav-links d-flex list-unstyled m-0 gap-4">
+            <li><a routerLink="/" class="nav-link-custom">דף בית</a></li>
+            <li><a routerLink="/recipes" class="nav-link-custom">גלריית מתכונים</a></li>
+        </ul>
+        <div class="d-flex gap-2">
+            <a routerLink="/login" class="btn btn-link text-dark text-decoration-none fw-bold px-3">כניסה</a>
+            <a routerLink="/register" class="btn btn-emerald rounded-pill px-4 shadow-sm">הרשמה</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet> -->
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3" style="z-index: 1050; position: relative;">
+  <div class="container">
+    <div class="logo fw-bold fs-3 text-emerald me-4" style="cursor: pointer;" routerLink="/">מתכוני כיף</div>
+    
+    <div class="collapse navbar-collapse d-flex justify-content-between">
+      <ng-container *ngIf="authService.currentUser$ | async as user">
+        <ul class="navbar-nav d-flex flex-row gap-4 mb-0">
+          <li class="nav-item"><a routerLink="/" class="nav-link-custom">דף בית</a></li>
+          <li class="nav-item"><a routerLink="/recipes" class="nav-link-custom">גלריית מתכונים</a></li>
+          <li class="nav-item" *ngIf="user.role === 'Admin' || user.role === 'Uploader'">
+            <a routerLink="/add-recipe" class="nav-link-custom">הוספת מתכון</a>
+          </li>
+          <li class="nav-item" *ngIf="user.role === 'Admin'">
+            <a routerLink="/admin-management" class="nav-link-custom admin-link">ניהול משתמשים</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center gap-3">
+          <span class="welcome-text text-secondary">שלום, {{ user.username }}!</span>
+          <button class="btn btn-outline-emerald rounded-pill px-4" (click)="authService.logout()">התנתק</button>
+        </div>
+      </ng-container>
+
+      <div class="d-flex align-items-center justify-content-between w-100" *ngIf="!(authService.currentUser$ | async)">
+        <ul class="navbar-nav d-flex flex-row gap-4 mb-0">
+            <li class="nav-item"><a routerLink="/" class="nav-link-custom">דף בית</a></li>
+            <li class="nav-item"><a routerLink="/recipes" class="nav-link-custom">גלריית מתכונים</a></li>
+        </ul>
+        <div class="d-flex gap-2">
+            <a routerLink="/login" class="btn btn-link text-dark text-decoration-none fw-bold">כניסה</a>
+            <a routerLink="/register" class="btn btn-emerald rounded-pill px-4">הרשמה</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main> -->
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3" style="z-index: 1050; position: relative;">
+  <div class="container">
+    <div class="logo fw-bold fs-3 text-emerald me-4" style="cursor: pointer;" routerLink="/">מתכוני כיף</div>
+    
+    <div class="collapse navbar-collapse d-flex justify-content-between">
+      <ng-container *ngIf="authService.currentUser$ | async as user">
+        <ul class="navbar-nav d-flex flex-row gap-4 mb-0">
+          <li class="nav-item"><a routerLink="/" class="nav-link-custom">דף בית</a></li>
+          <li class="nav-item"><a routerLink="/recipes" class="nav-link-custom">גלריית מתכונים</a></li>
+          <li class="nav-item" *ngIf="user.role === 'Admin' || user.role === 'Uploader'">
+            <a routerLink="/add-recipe" class="nav-link-custom">הוספת מתכון</a>
+          </li>
+          <li class="nav-item" *ngIf="user.role === 'Admin'">
+            <a routerLink="/admin-management" class="nav-link-custom admin-link">ניהול משתמשים</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/personal-details" class="nav-link-custom">אזור אישי</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center gap-3">
+          <span class="welcome-text text-secondary">שלום, {{ user.username }}!</span>
+          <button class="btn btn-outline-emerald rounded-pill px-4" (click)="authService.logout()">התנתק</button>
+        </div>
+      </ng-container>
+
+      <div class="d-flex align-items-center justify-content-between w-100" *ngIf="!(authService.currentUser$ | async)">
+        <ul class="navbar-nav d-flex flex-row gap-4 mb-0">
+            <li class="nav-item"><a routerLink="/" class="nav-link-custom">דף בית</a></li>
+            <li class="nav-item"><a routerLink="/recipes" class="nav-link-custom">גלריית מתכונים</a></li>
+        </ul>
+        <div class="d-flex gap-2">
+            <a routerLink="/login" class="btn btn-link text-dark text-decoration-none fw-bold">כניסה</a>
+            <a routerLink="/register" class="btn btn-emerald rounded-pill px-4">הרשמה</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav> -->
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 sticky-top">
+  <div class="container">
+    <div class="logo fw-bold fs-3 text-emerald me-4" style="cursor: pointer;" routerLink="/">
+      מתכוני כיף
+    </div>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+      
+      <ng-container *ngIf="authService.currentUser$ | async as user; else guestLinks">
+        <ul class="navbar-nav d-flex flex-row gap-4 mb-0">
+          <li class="nav-item"><a routerLink="/" class="nav-link-custom">דף בית</a></li>
+          <li class="nav-item"><a routerLink="/recipes" class="nav-link-custom">גלריית מתכונים</a></li>
+          
+          <li class="nav-item" *ngIf="user.role === 'Admin' || user.role === 'Uploader'">
+            <a routerLink="/add-recipe" class="nav-link-custom">הוספת מתכון</a>
+          </li>
+          
+          <li class="nav-item" *ngIf="user.role === 'Admin'">
+            <a routerLink="/admin-management" class="nav-link-custom admin-link">ניהול משתמשים</a>
+          </li>
+
+          <li class="nav-item">
+            <a routerLink="/personal-details" class="nav-link-custom">אזור אישי</a>
+          </li>
+          
+          <li class="nav-item">
+            <a routerLink="/my-recipes" class="nav-link-custom">המתכונים שלי</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3 ms-auto">
+          <span class="welcome-text text-secondary">
+            שלום, <strong>{{ user.firstName || user.username }}</strong>!
+          </span>
+          <button class="btn btn-outline-emerald rounded-pill px-4" (click)="authService.logout()">
+            התנתק
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-template #guestLinks>
+        <div class="d-flex align-items-center justify-content-between w-100">
+          <ul class="navbar-nav d-flex flex-row gap-4 mb-0">
+            <li class="nav-item"><a routerLink="/" class="nav-link-custom">דף בית</a></li>
+            <li class="nav-item"><a routerLink="/recipes" class="nav-link-custom">גלריית מתכונים</a></li>
+          </ul>
+          
+          <div class="d-flex gap-2 ms-auto">
+            <a routerLink="/login" class="btn btn-link text-dark text-decoration-none fw-bold">כניסה</a>
+            <a routerLink="/register" class="btn btn-emerald rounded-pill px-4 shadow-sm">הרשמה</a>
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</nav>
+
+<main class="page-content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="text-center py-4 text-muted border-top bg-light mt-5">
+  <p>© 2024 מתכוני כיף - כל הזכויות שמורות</p>
+</footer> -->
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 sticky-top">
+  <div class="container">
+    <div class="logo fw-bold fs-3 text-emerald me-4" style="cursor: pointer;" routerLink="/">
+      מתכוני כיף
+    </div>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+      
+      <ng-container *ngIf="authService.currentUser$ | async as u; else guestLinks">
+        <ul class="navbar-nav d-flex flex-row gap-4 mb-0">
+          <li class="nav-item"><a routerLink="/" class="nav-link-custom">דף בית</a></li>
+          <li class="nav-item"><a routerLink="/recipes" class="nav-link-custom">גלריית מתכונים</a></li>
+          
+          <li class="nav-item" *ngIf="u.role === 'Admin' || u.role === 'Uploader'">
+            <a routerLink="/add-recipe" class="nav-link-custom">הוספת מתכון</a>
+          </li>
+          
+          <li class="nav-item" *ngIf="u.role === 'Admin'">
+            <a routerLink="/admin-management" class="nav-link-custom admin-link">ניהול משתמשים</a>
+          </li>
+
+          <li class="nav-item">
+            <a routerLink="/personal-details" class="nav-link-custom">אזור אישי</a>
+          </li>
+          
+          <li class="nav-item">
+            <a routerLink="/my-recipes" class="nav-link-custom">המתכונים שלי</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3 ms-auto">
+          <span class="welcome-text text-secondary">
+            שלום, <strong>{{ u.username }}</strong>!
+          </span>
+          <button class="btn btn-outline-emerald rounded-pill px-4" (click)="authService.logout()">
+            התנתק
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-template #guestLinks>
+        <div class="d-flex align-items-center justify-content-between w-100">
+          <ul class="navbar-nav d-flex flex-row gap-4 mb-0">
+            <li class="nav-item"><a routerLink="/" class="nav-link-custom">דף בית</a></li>
+            <li class="nav-item"><a routerLink="/recipes" class="nav-link-custom">גלריית מתכונים</a></li>
+          </ul>
+          
+          <div class="d-flex gap-2 ms-auto">
+            <a routerLink="/login" class="btn btn-link text-dark text-decoration-none fw-bold">כניסה</a>
+            <a routerLink="/register" class="btn btn-emerald rounded-pill px-4 shadow-sm">הרשמה</a>
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</nav>
+
+<main class="page-content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="text-center py-4 text-muted border-top bg-light mt-5">
+  <p>© 2026 מתכוני כיף - כל הזכויות שמורות</p>
+</footer> -->
+<!-- <nav class="pasha-nav sticky-top">
+  <div class="container d-flex align-items-center justify-content-between">
+    
+    <div class="pasha-logo" routerLink="/">
+      <span class="logo-main">מתכוני כיף</span>
+      <span class="logo-sub">Culinaria & Art</span>
+    </div>
+
+    <button class="menu-toggle d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#pashaMenu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="collapse navbar-collapse-custom d-lg-flex" id="pashaMenu">
+      <ng-container *ngIf="authService.currentUser$ | async as u; else guestLinks">
+        
+        <ul class="nav-links">
+          <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">דף בית</a></li>
+          <li><a routerLink="/recipes" routerLinkActive="active">מתכונים</a></li>
+          <li *ngIf="u.role === 'Admin' || u.role === 'Uploader'"><a routerLink="/add-recipe">הוספה</a></li>
+          <li *ngIf="u.role === 'Admin'"><a routerLink="/admin-management" class="admin-special">ניהול</a></li>
+          <li><a routerLink="/personal-details">אזור אישי</a></li>
+          <li><a routerLink="/my-recipes">למתכונים שלי</a></li>
+        </ul>
+
+        <div class="user-actions">
+          <span class="user-greet">שלום, <strong>{{ u.username }}</strong></span>
+          <button class="logout-minimal" (click)="authService.logout()">התנתק</button>
+        </div>
+      </ng-container>
+
+      <ng-template #guestLinks>
+        <div class="guest-actions-wrapper">
+          <ul class="nav-links me-4">
+            <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">דף בית</a></li>
+            <li><a routerLink="/recipes" routerLinkActive="active">מתכונים</a></li>
+          </ul>
+          <div class="auth-buttons">
+            <a routerLink="/login" class="link-login">כניסה</a>
+            <a routerLink="/register" class="btn-pasha-gold">הרשמה</a>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+  </div>
+</nav>
+
+<main class="page-content">
+  <router-outlet></router-outlet>
+</main> -->
+<!-- <nav class="pasha-nav sticky-top">
+  <div class="container d-flex align-items-center justify-content-between flex-wrap">
+    
+    <div class="pasha-logo-wrapper" routerLink="/">
+      <div class="pasha-brand">PASHA</div>
+      <div class="pasha-tagline">CULINARIA & ART</div>
+    </div>
+
+    <button class="menu-toggle d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#pashaMenu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="collapse navbar-collapse-custom d-lg-flex" id="pashaMenu">
+      <ng-container *ngIf="authService.currentUser$ | async as u; else guestLinks">
+        
+        <ul class="nav-links">
+          <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">דף בית</a></li>
+          <li><a routerLink="/recipes" routerLinkActive="active">מתכונים</a></li>
+          <li *ngIf="u.role === 'Admin' || u.role === 'Uploader'"><a routerLink="/add-recipe" routerLinkActive="active">הוספה</a></li>
+          <li *ngIf="u.role === 'Admin'"><a routerLink="/admin-management" routerLinkActive="active" class="admin-special">ניהול</a></li>
+          <li><a routerLink="/personal-details" routerLinkActive="active">אזור אישי</a></li>
+          <li><a routerLink="/my-recipes" routerLinkActive="active">למתכונים שלי</a></li>
+        </ul>
+
+        <div class="user-actions">
+          <span class="user-greet">שלום, <strong>{{ u.username }}</strong></span>
+          <button class="logout-minimal" (click)="authService.logout()">התנתק</button>
+        </div>
+      </ng-container>
+
+      <ng-template #guestLinks>
+        <div class="guest-actions-wrapper">
+          <ul class="nav-links me-4">
+            <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">דף בית</a></li>
+            <li><a routerLink="/recipes" routerLinkActive="active">מתכונים</a></li>
+          </ul>
+          <div class="auth-buttons">
+            <a routerLink="/login" class="link-login">כניסה</a>
+            <a routerLink="/register" class="btn-pasha-gold">הרשמה</a>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+  </div>
+</nav>
+
+<main class="page-content">
+  <router-outlet></router-outlet>
+</main> -->
+
+<nav class="pasha-nav fixed-top" [class.scrolled]="isScrolled">
+  <div class="container d-flex align-items-center justify-content-between flex-wrap">
+    
+    <div class="pasha-logo-wrapper" routerLink="/">
+      <div class="pasha-brand">PASHA</div>
+      <div class="pasha-tagline">CULINARIA & ART</div>
+    </div>
+
+    <button class="menu-toggle d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#pashaMenu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="collapse navbar-collapse-custom d-lg-flex" id="pashaMenu">
+      <ng-container *ngIf="authService.currentUser$ | async as u; else guestLinks">
+        
+        <ul class="nav-links">
+          <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">דף בית</a></li>
+          <li><a routerLink="/recipes" routerLinkActive="active">מתכונים</a></li>
+          <li *ngIf="u.role === 'Admin' || u.role === 'Uploader'"><a routerLink="/add-recipe" routerLinkActive="active">הוספה</a></li>
+          <li *ngIf="u.role === 'Admin'"><a routerLink="/admin-management" routerLinkActive="active" class="admin-special">ניהול</a></li>
+          <li><a routerLink="/personal-details" routerLinkActive="active">אזור אישי</a></li>
+          <li><a routerLink="/my-recipes" routerLinkActive="active">למתכונים שלי</a></li>
+        </ul>
+
+        <div class="user-actions">
+          <span class="user-greet">שלום, <strong>{{ u.username }}</strong></span>
+          <button class="logout-minimal" (click)="authService.logout()">התנתק</button>
+        </div>
+      </ng-container>
+
+      <ng-template #guestLinks>
+        <div class="guest-actions-wrapper">
+          <ul class="nav-links me-4">
+            <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">דף בית</a></li>
+            <li><a routerLink="/recipes" routerLinkActive="active">מתכונים</a></li>
+          </ul>
+          <div class="auth-buttons">
+            <a routerLink="/login" class="link-login">כניסה</a>
+            <a routerLink="/register" class="btn-pasha-gold">הרשמה</a>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</nav>
+
+<main class="page-content">
+  <router-outlet></router-outlet>
+</main>
