@@ -1,16 +1,4 @@
-// import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-// import { provideRouter } from '@angular/router';
-// import { provideHttpClient } from '@angular/common/http'; // ייבוא חובה
 
-// import { routes } from './app.routes';
-
-// export const appConfig: ApplicationConfig = {
-//   providers: [
-//     provideZoneChangeDetection({ eventCoalescing: true }),
-//     provideRouter(routes),
-//     provideHttpClient() // הוספת הספק של ה-HTTP
-//   ]
-// };
 
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';

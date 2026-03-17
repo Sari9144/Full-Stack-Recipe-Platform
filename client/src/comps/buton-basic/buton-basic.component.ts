@@ -1,22 +1,3 @@
-// import { Component, Input, Output, EventEmitter } from '@angular/core';
-
-// @Component({
-//   selector: 'app-button',
-//   standalone: true,
-//   imports: [],
-//   templateUrl: './buton-basic.component.html', 
-//   styleUrl: './buton-basic.component.css'
-// })
-// export class AppButtonComponent {
-//   @Input() text: string = '';       // הטקסט שיופיע על הכפתור
-//   @Input() variant: string = 'primary'; // עיצוב הכפתור (primary, success, admin)
-  
-//   @Output() btnClick = new EventEmitter<void>();
-
-//   handleClick() {
-//     this.btnClick.emit();
-//   }
-// }
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
